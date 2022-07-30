@@ -35,7 +35,8 @@ export default function Perfil({ navigation }) {
       </View>
 
       <View style={styles.jogarDireita}>
-        <Pressable style={styles.btnEditar}>
+        <Pressable style={styles.btnEditar}
+         onPress = {() => navigation.navigate('EditarPerfil')}>
           <Image source={Lapis} style={styles.lapis}></Image>
         </Pressable>
       </View>
@@ -102,15 +103,15 @@ const styles = StyleSheet.create({
   },
 
   usuario: {
-    borderRadius: '27vw',
+    borderRadius: '9vh',
     display: 'flex',
     alignItems: 'center',
     border: '2px solid black',
   },
 
   circulo: {
-    height: '15vh',
-    width: '33vw',
+    height: '18vh',
+    width: '18vh',
   },
 
   //=============================== Componentes de baixo ================================================

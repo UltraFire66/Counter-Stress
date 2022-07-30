@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   icone: {
     opacity: '40%',
     maxHeight: '35vh',
-    maxWidth: '75vw',
+    maxWidth: '35vh',
   },
 
   escrever: {
