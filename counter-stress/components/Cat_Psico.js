@@ -9,9 +9,10 @@ import {
   ImageBackground
 } from 'react-native';
 
-import Estrelas from './Estrelas';
+
 
 export default function Cat_Psico(props) {
+  
   {var cidade = props.cidade}
   {var fotoPsi = props.fotoPsi}
   {var estrelas = props.estrelas}
@@ -30,7 +31,7 @@ export default function Cat_Psico(props) {
           <View style={styles.info}>
             <Text style={styles.nomepsi}>{props.nome}</Text>
             <Text style={styles.cidade}>De: {props.cidade}</Text>
-            <Estrelas></Estrelas>
+
           </View>
         </View>
       </View>
@@ -40,7 +41,7 @@ export default function Cat_Psico(props) {
 
 const styles = StyleSheet.create({
   fundo:{
-    backgroundColor: 'blue', 
+
     display: 'flex',
     marginTop: '10vw'
   },
@@ -72,11 +73,6 @@ const styles = StyleSheet.create({
     fontSize: '3.7vw',
   },
 
-  b: {
-    display: 'flex',
-    flexDirection: 'row',
-    marginRight: '50vw'
-  },
   frente:{
     display: 'flex',
     justifyContent: 'center',
@@ -88,9 +84,11 @@ const styles = StyleSheet.create({
     width: '12vh',
     borderStyle: 'none'
   },
+
   usuario: {
-    borderRadius: '9vh',
+    borderRadius: '6vh',
     display: 'flex',
     border: '2px none',
   }
+
 });

@@ -19,8 +19,8 @@ export default function Login({navigation}) {
       <Image source={Torii} style={styles.icone}></Image>
       <TextInput style={styles.escrever} placeholder="Digite seu email" />
       <TextInput style={styles.escrever} placeholder="Digite sua senha" />
-      <Pressable style={styles.botao}>
-        <Text style={styles.escritaBotao}>Login</Text>
+      <Pressable style={styles.botao} onPress = {() => navigation.navigate("Tab")}>
+        <Text style={styles.escritaBotao} >Login</Text>
       </Pressable>
       <View style={styles.links}>
         <Text style={styles.escrita}>Esqueceu sua senha?</Text>

@@ -20,6 +20,9 @@ export default function CatalogoPsi({navigation}) {
         <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" 
         cidade = "Cataguases" 
         estrelas = '1'></Cat_Psico>
+        <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" 
+        cidade = "Cataguases" 
+        estrelas = '1'></Cat_Psico>
       </View>
 
     )

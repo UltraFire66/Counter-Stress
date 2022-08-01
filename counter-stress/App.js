@@ -35,16 +35,18 @@ export default function App() {
     
       
       <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "CatalogoPsi">
+        initialRouteName = "Login">
+        <Stack.Screen name = "Tab" component = {Tabs}/>
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
         <Stack.Screen name = "Cadastro" component = {Cadastro}/>
         <Stack.Screen name = "Perfil" component = {Perfil}/>
         <Stack.Screen name = "EditarPerfil" component = {EditarPerfil}/>
-        <Stack.Screen name = "Diario" component = {Diario}/>
-        <Stack.Screen name = "MEs" component = {MEs}/>
-        <Stack.Screen name = "CatalogoPsi" component = {CatalogoPsi}/>
+        
+      
       </Stack.Navigator>
+
+      
 
 
     </NavigationContainer>

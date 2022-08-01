@@ -6,6 +6,7 @@ import {
   Image,
   TextInput,
   Pressable,
+  ScrollView
 } from 'react-native';
 
 import CategoriasMEs from '../components/CategoriasMEs';
@@ -16,10 +17,12 @@ export default function MEs({navigation}) {
     return (
 
       <View style = {styles.container}>
-       <CategoriasMEs cor = '#C4BFE7' escrita = "Meditação" corBorda = '#8E4FCD'></CategoriasMEs>
-       <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15'></CategoriasMEs>
-       <CategoriasMEs cor = '#78ABC6' escrita = "Autoconhecimento" corBorda = '#225ED2'></CategoriasMEs>
-       <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
+        <ScrollView>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Meditação" corBorda = '#8E4FCD'></CategoriasMEs>
+        <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15'></CategoriasMEs>
+        <CategoriasMEs cor = '#78ABC6' escrita = "Autoconhecimento" corBorda = '#225ED2'></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
+        </ScrollView>
       </View>
 
     )

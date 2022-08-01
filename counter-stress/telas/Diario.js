@@ -17,7 +17,7 @@ var escritaDiario1 = "Dois dias se passaram e eu ainda não descobri, estou estu
 
 var escritaDiario2 = "Após mais uma semana de estudos, concluo que o Caio é de fato o ser humano mais lindo do mundo ...";
 
-export default function EscritaPerfil(props) {
+export default function EscritaPerfil({navigation}) {
 
     return (
 
@@ -38,7 +38,6 @@ export default function EscritaPerfil(props) {
       <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
       <EntradaDiario data = {"23/05/2022"} escrita = {escritaDiario1}/>
       <EntradaDiario data = {"30/05/2022"} escrita = {escritaDiario2}/>
-
       </View>
 
     )
@@ -103,6 +102,7 @@ const styles = StyleSheet.create({
     marginLeft: '15vw',
     color: '#8E4FCD'
   },
+
 
 //========================== Parte superior de ADD entrada====================
 
