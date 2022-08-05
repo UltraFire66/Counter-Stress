@@ -10,7 +10,7 @@ import {
 
 
 
-export default function EntradaDiario(props) {
+export default function CategoriasMEs(props) {
 
  
 
@@ -43,7 +43,7 @@ export default function EntradaDiario(props) {
 
 const styles = StyleSheet.create({
 
-  container: {
+  /* container: {
    
    padding: '2.3vh'
     
@@ -55,5 +55,5 @@ const styles = StyleSheet.create({
     fontSize: '7vw'
 
   }
-
+ */
 });

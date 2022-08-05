@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "CounterStress",
+    "slug": "CounterStress",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "android": {
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/torii.png",
+      "backgroundColor": "#FFFFFF"
+     }
+   }
+}

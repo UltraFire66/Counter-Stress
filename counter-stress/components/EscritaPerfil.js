@@ -28,7 +28,7 @@ export default function EscritaPerfil(props) {
 
 const styles = StyleSheet.create({
 
-  container: {
+  /* container: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     maxWidth: '12vw',
     maxHeight: '6vh'
 
-  }
+  } */
 
 
 });

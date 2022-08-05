@@ -40,7 +40,7 @@ export default function Cat_Psico(props) {
 }
 
 const styles = StyleSheet.create({
-  fundo:{
+  /* fundo:{
 
     display: 'flex',
     marginTop: '10vw'
@@ -89,6 +89,6 @@ const styles = StyleSheet.create({
     borderRadius: '6vh',
     display: 'flex',
     border: '2px none',
-  }
+  } */
 
 });

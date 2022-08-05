@@ -30,7 +30,7 @@ export default function MEs({navigation}) {
 }
 
 const styles = StyleSheet.create({
-
+/* 
   container: {
     display:'flex',
     justifyContent:'center',
@@ -44,5 +44,5 @@ const styles = StyleSheet.create({
 
   
 
-
+ */
 });

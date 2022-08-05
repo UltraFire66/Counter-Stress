@@ -32,7 +32,7 @@ export default function EntradaDiario(props) {
 
 const styles = StyleSheet.create({
 
-  container: {
+  /* container: {
    
     height: '20vh',
     width: '100vw',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     width: '89vw'
 
   },
-  
+   */
 
 
 });

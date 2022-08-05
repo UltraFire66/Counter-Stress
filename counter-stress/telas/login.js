@@ -37,7 +37,7 @@ export default function Login({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+ /*  container: {
     flex: 1,
     justifyContent: 'center',
     backgroundImage: 'linear-gradient(#8E4FCD, #225ED2)',
@@ -106,5 +106,5 @@ const styles = StyleSheet.create({
     
   },
 
-  
+   */
 });

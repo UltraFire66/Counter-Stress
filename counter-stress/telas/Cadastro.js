@@ -50,7 +50,7 @@ export default function Cadastro({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  fundo: {
+  /* fundo: {
     backgroundImage: 'linear-gradient(#8E4FCD,#C4BFE7)',
     width: '100%',
     height: '100%',
@@ -134,5 +134,5 @@ centeredView: {
     padding: 10,
     elevation: 2
   },
-
+ */
 });

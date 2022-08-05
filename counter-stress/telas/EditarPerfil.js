@@ -75,7 +75,7 @@ export default function EditarPerfil({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-
+/* 
  container: {
    height: '100vh',
    width: '100vw',
@@ -174,5 +174,5 @@ const styles = StyleSheet.create({
     fontSize: '18px'
 
   },
-
+ */
 });

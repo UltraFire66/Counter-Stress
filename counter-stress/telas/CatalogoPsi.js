@@ -31,7 +31,7 @@ export default function CatalogoPsi({navigation}) {
 
 const styles = StyleSheet.create({
 
-  a: {
+ /*  a: {
     display:'flex',
     justifyContent:'center',
     alignItems: 'center',
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 
   },
 
-
+ */
 
   
 

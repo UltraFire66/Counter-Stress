@@ -34,7 +34,7 @@ export default function CadastroUsuario({navigation}) {
 
 const styles = StyleSheet.create({
   
-  fundo: {
+ /*  fundo: {
     backgroundImage: 'linear-gradient(#8E4FCD,#C4BFE7)',
     width: '100%',
     height: '100%',
@@ -99,5 +99,5 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
     
   },
-
+ */
 })

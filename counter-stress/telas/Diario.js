@@ -46,7 +46,7 @@ export default function EscritaPerfil({navigation}) {
 
 const styles = StyleSheet.create({
 
-  container: {
+/*   container: {
     display: 'flex',
     alignItems: 'center',
     height: '100vh',
@@ -106,6 +106,6 @@ const styles = StyleSheet.create({
 
 //========================== Parte superior de ADD entrada====================
 
-
+ */
 
 });

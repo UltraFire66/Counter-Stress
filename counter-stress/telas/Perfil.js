@@ -9,6 +9,11 @@ import {
   ImageBackground,
 } from 'react-native';
 
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Fontisto from 'react-native-vector-icons/Fontisto';
+
 import Wallpaper from '../assets/wallpaper.jpg';
 import Icone from '../assets/dantePerfil.jpg';
 import EscritaPerfil from '../components/EscritaPerfil';
@@ -43,7 +48,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <Image source={Usuario} style={styles.imagemUsuario}></Image>
+          <EvilIcons name = "user" size={'180%'}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
         <Text style={styles.escrita}>Passarinho Tui Tui</Text>
@@ -51,7 +56,7 @@ export default function Perfil({ navigation }) {
 
      <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <Image source={Carta} style={styles.carta}></Image>
+          <MaterialCommunity name = "email-outline" size = {'150%'}></MaterialCommunity>
           <Text style={styles.titulo}>Email:</Text>
         </View>
         <Text style={styles.escrita}>caioLindo@gmail.com</Text>
@@ -59,7 +64,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <Image source={Cartao} style={styles.cartao}></Image>
+          <AntDesign name = "idcard" size = {"140%"}></AntDesign>
           <Text style={styles.titulo}>Nome:</Text>
         </View>
         <Text style={styles.escrita}>Diego de Souza Camillo</Text>
@@ -67,7 +72,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <Image source={Cadeado} style={styles.cadeado}></Image>
+          <Fontisto name = "locked" size = {"130%"} ></Fontisto>
           <Text style={styles.titulo}>Senha:</Text>
           <Pressable style = {styles.botaoEditarSenha}>
             <Image source = {Lapis} style = {styles.lapisSenha}></Image>
@@ -88,7 +93,7 @@ export default function Perfil({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  //=============================== Tela de perfil ================================================
+/*   //=============================== Tela de perfil ====================================
   telaPerfil: {
     width: '100vw',
     height: '33vh',
@@ -114,7 +119,7 @@ const styles = StyleSheet.create({
     width: '18vh',
   },
 
-  //=============================== Componentes de baixo ================================================
+  //=============================== Componentes de baixo =============================
 
   jogarDireita: {
     width: '100%',
@@ -125,7 +130,7 @@ const styles = StyleSheet.create({
   btnEditar: {
     marginTop: '2vh',
     width: '18vw',
-    heigth: '7vh',
+    heigth: '3vh',
     borderRadius: '8vh',
     backgroundColor: '#D9D9D9',
     border: '2px solid black',
@@ -137,7 +142,7 @@ const styles = StyleSheet.create({
 
   lapis: {
     flex: 1,
-    maxHeight: '5vh',
+    maxHeight: '3.5vh',
     maxWidth: '9vw',
 
     resizeMode: 'contain',
@@ -158,6 +163,7 @@ const styles = StyleSheet.create({
 
   titulo: {
     fontSize: '5vw',
+    marginLeft: '3vw'
   },
 
   escrita: {
@@ -165,32 +171,7 @@ const styles = StyleSheet.create({
     marginLeft: '10vw',
   },
 
-  imagemUsuario: {
-    resizeMode: 'contain',
-    maxWidth: '12vw',
-    maxHeight: '6vh',
-  },
-
-  carta: {
-    resizeMode: 'contain',
-    maxWidth: '13.5vw',
-    maxHeight: '6vh',
-  },
-
-  cartao: {
-    resizeMode: 'contain',
-    maxWidth: '10vw',
-    maxHeight: '5vh',
-    marginRight: '2vw'
-  },
-
-  cadeado: {
-    resizeMode: 'contain',
-    maxWidth: '7vw',
-    maxHeight: '5vh',
-    marginRight: '2vw'
-
-  },
+  
 
   senha: {
     fontSize: '7vw',
@@ -246,5 +227,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
     
   },
-
+ */
 });
