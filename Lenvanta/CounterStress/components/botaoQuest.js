@@ -17,15 +17,11 @@ export default function BotaoQuest() {
   
     return (
 
-        <LinearGradient
-        style={styles.container}
-        start={{x: 1,y: 0}}
-        end={{x: 0, y: 0}}
-        colors={["#C4BFE7", " #78ABC6"]}>
+        <View style = {styles.container}>
 
          <Image source={Torii} style={styles.torii}></Image>
 
-      </LinearGradient>
+      </View>
 
     )
 
