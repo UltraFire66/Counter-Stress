@@ -1,33 +1,33 @@
-
-import React from 'react';
-import { Text,
+import * as React from 'react';
+import {
+  Text,
   View,
   StyleSheet,
-  Image,
-  TextInput,
-  Pressable }
-  from 'react-native';
+  
+} from 'react-native';
 
-import { vw, vh, vmin, vmax } from 'react-native-expo-viewport-units';
-import { LinearGradient } from 'expo-linear-gradient';
+
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 
-
-import Torii from './assets/torii.png';
-
 import Login from './telas/login';
 import Cadastro from './telas/Cadastro';
-import CadastroUsuario from './telas/CadastroUsuario'; 
+import CadastroUsuario from './telas/CadastroUsuario';
+import Diario from './telas/Diario';
+import MEs from './telas/MEs'
+import CatalogoPsi from './telas/CatalogoPsi';//catálogo de psicologos
 
 
 const Stack = createStackNavigator();
 
+
+
 export default function App() {
   return (
-
+      <>
+    
     <NavigationContainer>
 
     
@@ -35,9 +35,11 @@ export default function App() {
       <Stack.Navigator screenOptions= { {headerShown: false}}
         initialRouteName = "Login">
         <Stack.Screen name = "Login" component = {Login}/>
-        <Stack.Screen name = "Cadastro" component = {Cadastro}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
-        
+        <Stack.Screen name = "Cadastro" component = {Cadastro}/>
+        <Stack.Screen name = "Diario" component = {Diario}/>
+        <Stack.Screen name = "MEs" component = {MEs}/>
+        <Stack.Screen name = "CatalogoPsi" component = {CatalogoPsi}/>
       
       </Stack.Navigator>
 
@@ -45,14 +47,10 @@ export default function App() {
 
 
     </NavigationContainer>
-    
-
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-    
-   
 
 });
-  
