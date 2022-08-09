@@ -12,6 +12,8 @@ import Home from "../telas/Home";
 import Quest from "../telas/EntQuestionario"
 import BotaoQuest from "./botaoQuest";
 
+import {vh,vw} from 'react-native-expo-viewport-units';
+
 const Tab = createBottomTabNavigator();
 
 const Tabs = () =>{
@@ -23,23 +25,15 @@ const Tabs = () =>{
       tabBarStyle: { 
       borderTopColor:'white',
       backgroundColor: '#C4BFE7',
-      display: 'flex',
-    
-      
+      paddingTop:  vh(2),
+      height: vh(10),
+     
       
       borderTopWidth:3
       },
 
-      activeTintColor: 'black',
-        inactiveTintColor: '#aaa',
-        indicatorStyle: {
-                backgroundColor: 'red',
-                height: '80%',
-                borderRadius: 30,
-                marginBottom: 8,
-                marginLeft: 12,
-                width: '45%'
-            },
+      tabBarActiveTintColor: 'black',
+       
       
       }}
 
@@ -53,7 +47,7 @@ const Tabs = () =>{
         tabBarLabel: '',
         tabBarIcon : ({size,color}) => (
 
-          <FontAwesome5 name = "home" size = {size} color = {color}/>
+          <FontAwesome5 name = "home" size = {32} color = {color}/>
         )
       }}
       />
@@ -65,7 +59,7 @@ const Tabs = () =>{
         tabBarLabel: '',
         tabBarIcon : ({size,color}) => (
 
-          <MaterialCommunity name = "notebook" size = {size} color = {color}/>
+          <MaterialCommunity name = "notebook" size = {32} color = {color}/>
 
         )
       }}
@@ -94,7 +88,7 @@ const Tabs = () =>{
       options = {{
         tabBarLabel: '',
         tabBarIcon: ({size,color}) => (
-          <MaterialIcons name = "category" size = {size + 4} color = {color}/>
+          <MaterialIcons name = "category" size = {36 } color = {color}/>
         )
       }}
       />
@@ -105,7 +99,7 @@ const Tabs = () =>{
       options = {{
         tabBarLabel: '',
         tabBarIcon: ({size,color}) => (
-          <FontAwesome5 name = "user-graduate" size = {size} color = {color}/>
+          <FontAwesome5 name = "user-graduate" size = {32} color = {color}/>
         )
       }}
       />

@@ -17,11 +17,16 @@ export default function BotaoQuest() {
   
     return (
 
-        <View style = {styles.container}>
+      <LinearGradient
+      colors={['#C4BFE7', '#78ABC6']}
+      start={{x: 0, y: 0.5}}
+      end={{x: 1, y: 1}}
+      style={styles.container}
+    >
 
          <Image source={Torii} style={styles.torii}></Image>
 
-      </View>
+      </LinearGradient>
 
     )
 
@@ -30,10 +35,10 @@ export default function BotaoQuest() {
 const styles = StyleSheet.create({
 
   container: {
-    width:  vh(10),
-    height: vh(10),
-    borderRadius:  vh(5),
-    marginBottom:  vh(9),
+    width:  vh(13),
+    height: vh(13),
+    borderRadius:  vh(6.5),
+    marginBottom:  vh(12),
     borderWidth: 3,
     borderColor: 'white',
     display: 'flex',
@@ -44,8 +49,8 @@ const styles = StyleSheet.create({
 
   torii: {
     flex: 1,
-    width:  vh(5.5),
-    height:  vh(5.5),
+    width:  vh(7),
+    height:  vh(7),
     resizeMode: 'contain'
 
 

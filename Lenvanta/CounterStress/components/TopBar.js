@@ -1,19 +1,22 @@
 import * as React from 'react';
 import {
-
+  Text,
   View,
   StyleSheet,
-
 } from 'react-native';
 
-import TopBar from '../components/TopBar';
 
-export default function Home(props) {
+import { vh, vw } from 'react-native-expo-viewport-units';
+
+
+export default function TopBar(props) {
+
 
     return (
 
       <View style = {styles.container}>
-        <TopBar/>
+        
+          
       </View>
 
     )
@@ -23,7 +26,10 @@ export default function Home(props) {
 const styles = StyleSheet.create({
 
    container: {
-    
-  },
- 
-})
+    height: vh(15),
+    width: '100%',
+    backgroundColor: 'red',
+   }
+
+
+});
