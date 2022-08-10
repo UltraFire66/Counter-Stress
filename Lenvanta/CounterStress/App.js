@@ -16,6 +16,7 @@ import CadastroUsuario from './telas/CadastroUsuario';
 import Diario from './telas/Diario';
 import MEs from './telas/MEs'
 import CatalogoPsi from './telas/CatalogoPsi';//catálogo de psicologos
+import Perfil from './telas/Perfil';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -36,7 +37,7 @@ export default function App() {
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
         <Stack.Screen name = "Cadastro" component = {Cadastro}/>
-     
+
         
       
       </Stack.Navigator>

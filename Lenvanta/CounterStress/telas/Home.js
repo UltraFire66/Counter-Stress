@@ -8,12 +8,12 @@ import {
 
 import TopBar from '../components/TopBar';
 
-export default function Home(props) {
+export default function Home({navigation}) {
 
     return (
 
       <View style = {styles.container}>
-        <TopBar/>
+        <TopBar voltaPara = {navigation.navigate("Login")} perfil = {navigation.navigate("Home")} />
       </View>
 
     )
