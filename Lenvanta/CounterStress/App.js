@@ -32,11 +32,12 @@ export default function App() {
     
       
       <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "Tab">
+        initialRouteName = "Perfil">
         <Stack.Screen name = "Tab" component = {Tabs}/>
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
         <Stack.Screen name = "Cadastro" component = {Cadastro}/>
+        <Stack.Screen name = "Perfil" component = {Perfil}/>
 
         
       

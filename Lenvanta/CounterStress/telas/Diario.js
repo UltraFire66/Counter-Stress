@@ -7,7 +7,7 @@ import {
 
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
-
+import TopBar from '../components/TopBar';
 
 
 var escritaDiario = "eu não sei como o Caio consegue ser tão lindo e inteligente, que homem lindo ...";
@@ -19,7 +19,7 @@ var escritaDiario2 = "Após mais uma semana de estudos, concluo que o Caio é de
 export default function Diario({navigation}) {
 
     return (
-
+     
       <View style = {styles.container}>
        <View style = {styles.divAddNovaEntrada}>
         <View style = {styles.divMais}>
