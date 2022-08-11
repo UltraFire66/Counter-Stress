@@ -30,6 +30,12 @@ export default function Perfil({ navigation }) {
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
         <ImageBackground source={Wallpaper} resizeMode="cover" style={styles.fundo} blurRadius={1.5}>
+
+        <Pressable style = {styles.fechar} onPress = {() => navigation.navigate("Tab")} >
+
+            <AntDesign name = "close" size = {30}/>
+
+          </Pressable>
           <ImageBackground
             style={styles.circulo}
             imageStyle={styles.usuario}
@@ -40,7 +46,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.jogarDireita}>
         <Pressable style={styles.btnEditar}>
-          <Image source={Lapis} style={styles.lapis}/>
+          <MaterialCommunity name = "pencil" size={25} />
         </Pressable>
       </View>
 
@@ -105,6 +111,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
+  fechar: {
+
+    position: 'absolute',
+    right: vw(4),
+    top: vh(3)
+
+  },
+
   usuario: {
     borderRadius: vh(9),
     display: "flex",
@@ -127,25 +141,19 @@ const styles = StyleSheet.create({
   },
 
   btnEditar: {
-    marginTop: vh(2),
+    marginTop: vh(1),
     width: vw(18),
     heigth: vh(3),
     borderRadius: vh(8),
     backgroundColor: "#D9D9D9",
-    border: "2px solid black",
+    borderWidth: 2,
+    borderColor: "black",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     marginRight: 10,
   },
 
-  lapis: {
-    flex: 1,
-    maxHeight: vh(3.5),
-    maxWidth: vw(9),
-
-    resizeMode: "contain",
-  },
 
   escritaPerfil: {
     display: "flex",
@@ -185,7 +193,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: vw(5),
-    border: "1.8px solid black",
+    borderWidth: 1.8,
+    borderColor: "black",
     marginLeft: vw(30),
   },
 

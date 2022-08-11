@@ -16,11 +16,7 @@ export default function Home({navigation}) {
     return (
 
       <View style = {styles.container}>
-        <TopBar>
-
-          
-          
-        </TopBar>
+        <TopBar/>
 
         <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("Perfil")}}>
         
@@ -42,9 +38,7 @@ const styles = StyleSheet.create({
       marginTop: 25,
       marginLeft: vw(85),
    },
-   user: {
-
-   }
+   
 
   
   

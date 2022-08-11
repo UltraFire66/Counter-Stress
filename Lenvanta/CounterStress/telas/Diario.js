@@ -3,24 +3,33 @@ import {
   Text,
   View,
   StyleSheet,
+  Pressable
 } from 'react-native';
 
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
-
-var escritaDiario = "eu não sei como o Caio consegue ser tão lindo e inteligente, que homem lindo ...";
+var escritaDiario = "É puro espetáculo: comida, compras e diversão fora do campo ";
 
 var escritaDiario1 = "Dois dias se passaram e eu ainda não descobri, estou estudando mais ...";
 
-var escritaDiario2 = "Após mais uma semana de estudos, concluo que o Caio é de fato o ser humano mais lindo do mundo ...";
+var escritaDiario2 = "Se você gosta do esporte, acaba se identificando com os times do lugar para onde você viaja.";
 
 export default function Diario({navigation}) {
 
     return (
-     
+      <>
+      <TopBar/>
+
+      <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("Perfil")}}>
+
+        <AntDesign name = "user" size = {35} />
+
+      </Pressable>
       <View style = {styles.container}>
+         
        <View style = {styles.divAddNovaEntrada}>
         <View style = {styles.divMais}>
           <View style = {styles.barraVertical}></View>
@@ -38,12 +47,18 @@ export default function Diario({navigation}) {
       <EntradaDiario data = {"23/05/2022"} escrita = {escritaDiario1}/>
       <EntradaDiario data = {"30/05/2022"} escrita = {escritaDiario2}/>
       </View>
-
+      </>
     )
 
 }
 
 const styles = StyleSheet.create({
+
+    perfil: {
+    position: 'absolute',
+    marginTop: 25,
+    marginLeft: vw(85),
+  },
 
     container: {
     display: 'flex',
@@ -53,7 +68,6 @@ const styles = StyleSheet.create({
   },
 
   divAddNovaEntrada: {
-    marginTop: vh(3),
     height: vh(10),
     width: vw(100),
     display: 'flex',
