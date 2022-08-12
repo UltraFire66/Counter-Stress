@@ -19,7 +19,8 @@ import CatalogoPsi from './telas/CatalogoPsi';//catálogo de psicologos
 import Perfil from './telas/Perfil';
 import EditarPerfil from './telas/EditarPerfil';
 import SubMEs from './telas/SubMEs';
-
+import CategoriasMEs from './components/CategoriasMEs';
+import Planejamento from './telas/Planejamento';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -35,7 +36,7 @@ export default function App() {
     
       
       <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "SubMEs">
+        initialRouteName = "Tab">
         <Stack.Screen name = "Tab" component = {Tabs}/>
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
@@ -43,7 +44,8 @@ export default function App() {
         <Stack.Screen name = "Perfil" component = {Perfil}/>
         <Stack.Screen name = "editarPerfil" component = {EditarPerfil}/>
         <Stack.Screen name = "SubMEs" component = {SubMEs}/>
-        
+        <Stack.Screen name = "CategoriasMEs" component={CategoriasMEs}/>
+        <Stack.Screen name = "Planejamento" component={Planejamento}/>
       
       </Stack.Navigator>
 

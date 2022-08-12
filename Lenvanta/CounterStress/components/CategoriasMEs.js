@@ -7,14 +7,14 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
 
 
 export default function CategoriasMEs(props) {
 
- 
+ const navigation = useNavigation();
 
     return (
 
@@ -34,7 +34,7 @@ export default function CategoriasMEs(props) {
           shadowOpacity: 0.5,
           borderWidth: 3,
           borderColor: props.corBorda,
-          }}>
+          }} onPress = {() => navigation.navigate(props.navegarPara)}>
           <Text style = {styles.escrita} >{props.escrita}</Text>
         </Pressable>
       </View>

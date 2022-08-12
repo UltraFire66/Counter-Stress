@@ -24,7 +24,7 @@ export default function Login({navigation}) {
     style={styles.container}
     start={{x: 0,y: 0}}
     end={{x: 0, y: 1}}
-    colors={["#8E4FCD", "#225ED2"]}>
+    colors={["#8E4FCD", "#5694fa"]}>
 
 
       <Image source={Torii} style={styles.icone}></Image>
@@ -58,6 +58,8 @@ export default function Login({navigation}) {
 const styles = StyleSheet.create({
     container: {
     flex: 1,
+    height: vh(100),
+    width: vw(100),
     justifyContent: 'center',
     padding: 8,
     display: 'flex',
@@ -109,8 +111,9 @@ const styles = StyleSheet.create({
 
   link: {
     fontSize: vh(2.5),
-    color: '#8E4FCD',
+    color: '#c6aefa',
     fontWeight: 'bold',
+    opacity: 0.8,
     marginLeft: 6,
     textDecorationLine: 'underline',
 

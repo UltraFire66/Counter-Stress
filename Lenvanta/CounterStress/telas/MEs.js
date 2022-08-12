@@ -24,14 +24,14 @@ export default function MEs({navigation}) {
       </Pressable>
       <View style = {styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Meditação" corBorda = '#8E4FCD'></CategoriasMEs>
-        <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15'></CategoriasMEs>
-        <CategoriasMEs cor = '#78ABC6' escrita = "Autoconhecimento" corBorda = '#225ED2'></CategoriasMEs>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
-        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD'></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Meditação" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15' navegarPara = "Planejamento"></CategoriasMEs>
+        <CategoriasMEs cor = '#78ABC6' escrita = "Autoconhecimento" corBorda = '#225ED2' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
         
         </ScrollView>
         

@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Pressable
+  Pressable,
+  Image
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -34,35 +35,31 @@ export default function SubMEs({navigation}) {
           style={styles.background}
           start={{x: 0,y: 0}}
           end={{x: 0, y: 1}}
-          colors={["#8E4FCD", "#C4BFE7"]}>
+          colors={["#308A15", "#ABD79E"]}>
 
         
 
        
-            <MaterialCommunityIcons name = "meditation" size = {200} style = {styles.icone} />
+            <Image source = {{uri: 'https://pasteboard.co/XXewNcXDAmWk.png'}} style = {styles.icone} />
           <View style = {styles.fundo}>
             <ScrollView style = {styles.componentes} showsVerticalScrollIndicator={false}>
 
               <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 1" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 1" corBorda = '#308A15' />
                   <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 2" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 2" corBorda = '#308A15' />
               </View>
               <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 3" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 3" corBorda = '#308A15' />
                   <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 4" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 4" corBorda = '#308A15' />
               </View>
               <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 5" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 5" corBorda = '#308A15' />
                   <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 6" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#ABD79E' escrita = "Planejamento 6" corBorda = '#308A15' />
               </View>
-              <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 7" corBorda = '#8E4FCD' />
-                  <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 8" corBorda = '#8E4FCD' />
-              </View>
+              
               
 
             </ScrollView>
@@ -103,7 +100,9 @@ const styles = StyleSheet.create({
 
   icone:{
    marginBottom: vh(20),
-   opacity: 0.5
+   opacity: 0.5,
+   width: vh(5),
+   height: vh(5),
   },
  
   mes:{

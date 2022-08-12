@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: vh(2.8),
-    color: '#8E4FCD',
+    color: '#c6aefa',
+    opacity: 0.8,
     fontWeight: 'bold',
     marginLeft: 6,
     textDecorationLine: 'underline',

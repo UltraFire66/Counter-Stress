@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 
   container: {
    marginTop: vh(3),
-   padding: vh(2.3),
+   
   },
 
   escrita:{
