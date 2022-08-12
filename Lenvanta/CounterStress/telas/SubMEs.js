@@ -38,16 +38,15 @@ export default function SubMEs({navigation}) {
        
             <MaterialCommunityIcons name = "meditation" size = {200} style = {styles.icone} />
 
-            <ScrollView   >
-            
-            <View style = {styles.mes} >
-                
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Transcendental" corBorda = '#8E4FCD'></SubCategoriasMEs>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Guiada" corBorda = '#8E4FCD'></SubCategoriasMEs>
-            
-            </View>
+            <ScrollView style = {styles.componentes}>
 
-           </ScrollView>
+              <View style = {styles.conjunto}>
+                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação1" corBorda = '#8E4FCD' />
+                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação1" corBorda = '#8E4FCD' />
+              </View>
+
+            </ScrollView>
+          
 
           </LinearGradient>
 
@@ -61,34 +60,41 @@ export default function SubMEs({navigation}) {
 
 const styles = StyleSheet.create({
  
-  container: {
-    display:'flex',
-    justifyContent:'center',
-    alignItems: 'center',
-    width: vw(100),
-    height: vh(50),
-
-  },
 
   perfil: {
     position: 'absolute',
     marginTop: 25,
     marginLeft: vw(85),
  },
- fundo: {
-    width: '100%',
-    height: '100%',
+  fundo: {
+    width: vw(100),
+    height: vh(100),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
- },
+  },
 
- icone:{
-   
-    zIndex: 0,
- },
- mes:{
+  icone:{
+   marginBottom: vh(20),
+   opacity: 0.5
+  },
+ 
+  mes:{
     flexDirection: 'row',
     position: 'absolute'
- }
+  },
+
+  componentes: {
+
+    position: 'absolute',
+    
+  },
+
+  conjunto: {
+
+    display: 'flex',
+    flexDirection: 'row',
+
+
+  },  
 });

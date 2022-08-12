@@ -70,7 +70,7 @@ export default function EditarPerfil({navigation}) {
           <TextInput style = {styles.campoEditar} value = {"Deigo"}/>
         </View>
 
-         <Pressable style = {styles.btn}>
+         <Pressable style = {styles.btn} onPress = {() => navigation.navigate("Perfil")}>
       
         <Text style = {styles.txtBtn}>Editar Dados</Text>
       
@@ -169,7 +169,6 @@ const styles = StyleSheet.create({
       height: vh(7),
       backgroundColor: '#E5E5E5',
       borderRadius: vw(4),
-      textIndent: 15,
       fontSize: 15,
       marginBottom: vh(3),
       shadowColor: '#171717',

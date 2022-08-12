@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   View,
   StyleSheet,
-
+  Pressable
 } from 'react-native';
 
 import Cat_Psico from '../components/Cat_Psico';
