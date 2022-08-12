@@ -45,7 +45,7 @@ export default function Perfil({ navigation }) {
       </View>
 
       <View style={styles.jogarDireita}>
-        <Pressable style={styles.btnEditar}>
+        <Pressable style={styles.btnEditar}  onPress = {() => navigation.navigate("editarPerfil")}>
           <MaterialCommunity name = "pencil" size={25} />
         </Pressable>
       </View>
