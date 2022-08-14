@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import Planejamento from '../assets/planejamento.png';
+
 import { vh, vw } from 'react-native-expo-viewport-units';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -40,7 +42,7 @@ export default function SubMEs({navigation}) {
         
 
        
-            <Image source = {{uri: 'https://pasteboard.co/XXewNcXDAmWk.png'}} style = {styles.icone} />
+            <Image source={Planejamento} style = {styles.icone} />
           <View style = {styles.fundo}>
             <ScrollView style = {styles.componentes} showsVerticalScrollIndicator={false}>
 
@@ -100,9 +102,9 @@ const styles = StyleSheet.create({
 
   icone:{
    marginBottom: vh(20),
-   opacity: 0.5,
-   width: vh(5),
-   height: vh(5),
+   opacity: 0.3,
+   width: vh(45),
+   height: vh(45),
   },
  
   mes:{
