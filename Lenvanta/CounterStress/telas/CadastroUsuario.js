@@ -1,4 +1,5 @@
-import * as React from 'react';
+import *  as React from 'react';
+import  {useState} from 'react';
 import {
   Text,
   View,
@@ -8,11 +9,30 @@ import {
   Pressable,
 } from 'react-native';
 
+import firebase , {db} from '../server/conexao';
+
 
 import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function CadastroUsuario({navigation}) {
+  
+  const [nome,setNome] = useState('');
+  const [email,setEmail] = useState('');
+  const [senha,setSenha] = useState('');
+  const [senhaNovamente,setSenhaNovamente] = useState('');
+
+  
+
+  function Cadastro(userId, score) {
+    const reference = ref(db, 'users/' + email);
+    set(reference, {
+      nome: nome,
+      email: email,
+      senha: senha
+    });
+  }
+
   return(
     <LinearGradient
     style={styles.fundo}
@@ -22,11 +42,23 @@ export default function CadastroUsuario({navigation}) {
 
       <Text style = {styles.titulo}>Cadastro</Text>
 
-      <TextInput style={styles.escrever} placeholder="Digite seu email" />
-      <TextInput style={styles.escrever} placeholder="Digite seu nome" />
-      <TextInput style={styles.escrever} placeholder="Digite sua senha" />
-      <TextInput style={styles.escrever} placeholder="Digite sua senha novamente" />
-      <Pressable style={styles.botao} >
+      <TextInput style={styles.escrever}
+      placeholder="Digite seu email"
+      onChangeText={(value)=>setEmail(value)} />
+
+      <TextInput style={styles.escrever}
+      placeholder="Digite seu nome"
+      onChangeText={(value)=>setNome(value)} />
+
+      <TextInput style={styles.escrever} 
+      placeholder="Digite sua senha" 
+      onChangeText={(value)=>setSenha(value)} />
+
+      <TextInput style={styles.escrever} 
+      placeholder="Digite sua senha novamente" 
+      onChangeText={(value)=>setSenhaNovamente(value)}/>
+
+      <Pressable style={styles.botao} onPress = {Cadastro} >
       <Text style={styles.escritaBotao}>Cadastrar</Text>
       </Pressable>
 
@@ -39,6 +71,9 @@ export default function CadastroUsuario({navigation}) {
 
     </LinearGradient>
   )
+
+
+
 }
 
 const styles = StyleSheet.create({

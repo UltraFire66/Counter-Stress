@@ -10,6 +10,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+
+
 import Login from './telas/login';
 import Cadastro from './telas/Cadastro';
 import CadastroUsuario from './telas/CadastroUsuario';
@@ -27,6 +29,7 @@ const Stack = createStackNavigator();
 
 
 
+
 export default function App() {
   return (
       <>
@@ -36,7 +39,7 @@ export default function App() {
     
       
       <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "Tab">
+        initialRouteName = "CadastroUsuario">
         <Stack.Screen name = "Tab" component = {Tabs}/>
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
