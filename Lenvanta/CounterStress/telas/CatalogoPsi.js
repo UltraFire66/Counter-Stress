@@ -7,6 +7,7 @@ import {
 
 import Cat_Psico from '../components/Cat_Psico';
 import FotoPsi from '../assets/Wall-e.jpg';
+import FotoPsi2 from '../assets/telaPerfilKratos.jpg';
 import { vh , vw} from 'react-native-expo-viewport-units';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TopBar from '../components/TopBar';
@@ -26,8 +27,8 @@ export default function CatalogoPsi({navigation}) {
         <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" 
         cidade = "Cataguases" 
         estrelas = '1'></Cat_Psico>
-        <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" 
-        cidade = "Cataguases" 
+        <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" 
+        cidade = "Leopoldina" 
         estrelas = '1'></Cat_Psico>
       </View>
       </>
