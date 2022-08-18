@@ -9,29 +9,24 @@ import {
   Pressable,
 } from 'react-native';
 
-import firebase , {db} from '../server/conexao';
 
+import Axios from 'axios';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function CadastroUsuario({navigation}) {
   
-  const [nome,setNome] = useState('');
-  const [email,setEmail] = useState('');
-  const [senha,setSenha] = useState('');
+  const [nomeres,setNome] = useState('');
+  const [emailres,setEmail] = useState('');
+  const [senhares,setSenha] = useState('');
   const [senhaNovamente,setSenhaNovamente] = useState('');
 
   
-
-  function Cadastro(userId, score) {
-    const reference = ref(db, 'users/' + email);
-    set(reference, {
-      nome: nome,
-      email: email,
-      senha: senha
-    });
+  const registro = () =>{
+    Axios.post("http://localhost:3000/register", {nome: nomeres , senha: senhares});
   }
+  
 
   return(
     <LinearGradient
@@ -58,7 +53,7 @@ export default function CadastroUsuario({navigation}) {
       placeholder="Digite sua senha novamente" 
       onChangeText={(value)=>setSenhaNovamente(value)}/>
 
-      <Pressable style={styles.botao} onPress = {Cadastro} >
+      <Pressable style={styles.botao} onPress = {registro}>
       <Text style={styles.escritaBotao}>Cadastrar</Text>
       </Pressable>
 

@@ -1,21 +1,41 @@
-import { initializeApp } from 'firebase/app';
-import { getDatabase, ref, onValue, set } from 'firebase/database';
+const express = require('express');
+const mysql = require('mysql');
+const cors = require('cors');
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAj_oiX-kPjxcx8yC804d_tDDHoxicx8z4",
-    authDomain: "counter-stress-8fbe5.firebaseapp.com",
-    databaseURL: "https://counter-stress-8fbe5-default-rtdb.firebaseio.com",
-    projectId: "counter-stress-8fbe5",
-    storageBucket: "counter-stress-8fbe5.appspot.com",
-    messagingSenderId: "740084003817",
-    appId: "1:740084003817:web:4cb451ee384d5ebeba5178"
-  };
-  
-  initializeApp(firebaseConfig);
-  
-  export const db = getDatabase();
+const app = express();
 
-  
-  
-  export default !firebase.apps.length ? 
-  firebase.initializeApp(firebaseConfig) : firebase.app();
+app.use(express.json());
+app.use(cors());
+
+const db = mysql.createConnection({
+    user: "freedb_CaioRangel",
+    host: "sql.freedb.tech",
+    password: "TCx!c3eA@C2JG4t",
+    database: "freedb_Counter-Stress",
+
+});
+
+app.get('/',(req,res)=> {
+
+    return res.json ({
+        message: "Ta rodando"
+    });
+
+});
+
+app.post('/register',(req,res) =>{
+
+    const nome = req.body.nome;
+    const senha = req.body.senha;
+
+    db.query(
+        "INSERT INTO usuarios (nome,senha) VALUES (?,?)",
+        [nome,senha],
+        (err,result) =>{
+            console.log(err);
+        }
+    );
+
+});
+
+app.listen(3000, '127.0.0.1');
