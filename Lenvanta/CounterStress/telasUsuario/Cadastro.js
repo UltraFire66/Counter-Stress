@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: vh(2.8),
-    color: '#c6aefa',
+    color: '#8E4FCD',
     fontWeight: 'bold',
     opacity: 0.8,
     marginLeft: 6,

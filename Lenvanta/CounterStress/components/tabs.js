@@ -5,11 +5,11 @@ import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-import Diario from "../telas/Diario";
-import MEs from "../telas/MEs";
-import Catalogo from "../telas/CatalogoPsi";
-import Home from "../telas/Home";
-import Quest from "../telas/EntQuestionario"
+import Diario from "../telasUsuario/Diario";
+import MEs from "../telasUsuario/MEs";
+import Catalogo from "../telasUsuario/CatalogoPsi";
+import Home from "../telasUsuario/Home";
+import Quest from "../telasUsuario/EntQuestionario"
 import BotaoQuest from "./botaoQuest";
 
 import {vh,vw} from 'react-native-expo-viewport-units';

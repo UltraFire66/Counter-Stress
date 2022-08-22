@@ -24,7 +24,7 @@ export default function CadastroUsuario({navigation}) {
 
   
   const registro = () =>{
-    Axios.post("http://localhost:3000/register", {nome: nomeres , senha: senhares});
+    Axios.post("http://localhost:3000/register/", {nome: nomeres , senha: senhares});
   }
   
 
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   },
   link: {
     fontSize: vh(2.8),
-    color: '#c6aefa',
+    color: '#8E4FCD',
     opacity: 0.8,
     fontWeight: 'bold',
     marginLeft: 6,

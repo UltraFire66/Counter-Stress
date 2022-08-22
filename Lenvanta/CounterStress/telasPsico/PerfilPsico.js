@@ -12,15 +12,15 @@ import {
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Fontisto from "react-native-vector-icons/Fontisto";
+import Foundation from "react-native-vector-icons/Foundation";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import { vh, vw } from "react-native-expo-viewport-units";
 
-import Wallpaper from "../assets/wallpaper.jpg";
-import Icone from "../assets/dantePerfil.jpg";
+import Wallpaper from "../assets/wallpaper2.jpg";
+import Icone from "../assets/Wall-e.jpg";
 import EscritaPerfil from "../components/EscritaPerfil";
 import Usuario from "../assets/iconePerfil.png";
-import Lapis from "../assets/iconeLapis.png";
 import Carta from "../assets/iconeCarta.png";
 import Cartao from "../assets/iconeNome.png";
 import Cadeado from "../assets/iconeCadeado.png";
@@ -55,7 +55,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}> Passarinho Tui Tui</Text>
+        <Text style={styles.escrita}> Wall-e da silva</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -63,26 +63,23 @@ export default function Perfil({ navigation }) {
           <MaterialCommunity name="email-outline" size={32} />
           <Text style={styles.titulo}>Email:</Text>
         </View>
-        <Text style={styles.escrita}> caioLindo@gmail.com</Text>
+        <Text style={styles.escrita}> SilvaWall@gmail.com</Text>
       </View>
-
+    
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <AntDesign name="idcard" size={30} />
-          <Text style={styles.titulo}>Nome:</Text>
+          <Foundation name="telephone" size={30} />
+          <Text style={styles.titulo}>Telefone:</Text>
         </View>
-        <Text style={styles.escrita}> Diego de Souza Camillo</Text>
+        <Text style={styles.escrita}> (32) 912345-6789</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <EvilIcons name="lock" size={40}/>
+          <FontAwesome name="map-marker" size={30}/>
           <Text style={styles.titulo}>Senha:</Text>
-          <Pressable style={styles.botaoEditarSenha}>
-            <Image source={Lapis} style={styles.lapisSenha} />
-          </Pressable>
         </View>
-        <Text style={styles.senha}> . . . . . . .</Text>
+        <Text style={styles.escrita}> Cataguases - MG</Text>
       </View>
 
       <View style={styles.links}>
@@ -138,6 +135,7 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     alignItems: "flex-end",
+    marginBottom: vh(4),
   },
 
   btnEditar: {
@@ -157,10 +155,10 @@ const styles = StyleSheet.create({
 
   escritaPerfil: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: 'row',
     marginLeft: vw(5),
     marginBottom: vh(5),
+    justifyContent: "flex-start",
   },
   topo: {
     display: "flex",
@@ -176,13 +174,8 @@ const styles = StyleSheet.create({
 
   escrita: {
     fontSize: vw(5),
-    marginLeft: vw(10),
-  },
-
-  senha: {
-    fontSize: vw(7),
-    fontWeight: "bold",
-    marginLeft: vw(10),
+    marginLeft: vw(2),
+    marginTop: vh(0.4),
   },
 
   botaoEditarSenha: {
