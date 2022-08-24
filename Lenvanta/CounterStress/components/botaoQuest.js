@@ -12,8 +12,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Torii from '../assets/torii.png';
 
 
-export default function BotaoQuest() {
+export default function BotaoQuest({props}) {
 
+    
   
     return (
 
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
   },
 
   torii: {
+    opacity: 0.4,
     flex: 1,
     width:  vh(7),
     height:  vh(7),

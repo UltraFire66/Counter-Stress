@@ -9,7 +9,7 @@ import Diario from "../telasUsuario/Diario";
 import MEs from "../telasUsuario/MEs";
 import Catalogo from "../telasUsuario/CatalogoPsi";
 import Home from "../telasUsuario/Home";
-import Quest from "../telasUsuario/EntQuestionario"
+import Quest from "../telasUsuario/EntrarQuest"
 import BotaoQuest from "./botaoQuest";
 
 import {vh,vw} from 'react-native-expo-viewport-units';
@@ -67,7 +67,7 @@ const Tabs = () =>{
 
       <Tab.Screen 
       name = "Quest"
-      component = {Home}
+      component = {Quest}
       
       options = {{
         tabBarLabel: '',

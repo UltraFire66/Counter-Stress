@@ -25,11 +25,10 @@ import EditarPerfil from './telasUsuario/EditarPerfil';
 import SubMEs from './telasUsuario/SubMEs';
 import CategoriasMEs from './components/CategoriasMEs';
 import Planejamento from './telasUsuario/Planejamento';
+import EntrarQuest from './telasUsuario/EntrarQuest';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
-
-
 
 
 export default function App() {
@@ -41,7 +40,7 @@ export default function App() {
     
       
       <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "PerfilPsico">
+        initialRouteName = "CadastroUsuario">
         <Stack.Screen name = "Tab" component = {Tabs}/>
         <Stack.Screen name = "Login" component = {Login}/>
         <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>

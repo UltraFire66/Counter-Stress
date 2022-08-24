@@ -24,7 +24,7 @@ export default function CadastroUsuario({navigation}) {
 
   
   const registro = () =>{
-    Axios.post("http://localhost:3000/register/", {nome: nomeres , senha: senhares});
+    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares});
   }
   
 
