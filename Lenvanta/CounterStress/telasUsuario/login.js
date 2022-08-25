@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {useState} from 'react';
+
 import {
   Text,
   View,
@@ -7,6 +9,8 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
+
+import Axios from 'axios';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
 
@@ -18,6 +22,25 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 export default function Login({navigation}) {
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const [loginStatus,setLoginStatus] = useState('');
+
+  const Login = () => {
+
+    Axios.post("https://counterstress.glitch.me/login", {nome: email , senha: senha
+  }).then((response) => {
+    if(response.data.message){
+      setLoginStatus('Errado');
+    }
+    else{
+      navigation.navigate("Tab");
+    }
+  });
+   
+  }
   return (
 
     <LinearGradient
@@ -28,9 +51,13 @@ export default function Login({navigation}) {
 
 
       <Image source={Torii} style={styles.icone}></Image>
-      <TextInput style={styles.escrever} placeholder="Digite seu email" />
-      <TextInput style={styles.escrever} placeholder="Digite sua senha" />
-      <Pressable style={styles.botao}  onPress = {() => navigation.navigate("Tab")}>
+      {loginStatus ?
+      <TextInput style={styles.escrever} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>
+      :<TextInput style={styles.escrever2} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>}
+     
+      <TextInput style={styles.escrever} placeholder="Digite sua senha" value = {senha} onChangeText = {(value) => {setSenha(value)}}/>
+
+      <Pressable style={styles.botao}  onPress = {Login()}>
         <Text style={styles.escritaBotao} >Login</Text>
       </Pressable>
       <View style={styles.links}>
@@ -80,6 +107,19 @@ const styles = StyleSheet.create({
     marginTop: vh(5),
     borderRadius: vw(5),
     backgroundColor: '#E5E5E5',
+    fontSize: 16,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: 'black',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  escrever2: {
+    width: vw(80),
+    height: vh(9),
+    marginTop: vh(5),
+    borderRadius: vw(5),
+    backgroundColor: 'red',
     fontSize: 16,
     textAlign: 'center',
     fontWeight: 'bold',

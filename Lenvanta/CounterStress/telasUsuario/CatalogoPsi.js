@@ -23,14 +23,17 @@ export default function CatalogoPsi({navigation}) {
         <AntDesign name = "user" size = {35} />
 
       </Pressable>
-      <View style = {styles.container}>
-        <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" 
-        cidade = "Cataguases" 
-        estrelas = '1'></Cat_Psico>
-        <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" 
-        cidade = "Leopoldina" 
-        estrelas = '1'></Cat_Psico>
-      </View>
+
+      <LinearGradient
+      style={styles.container}
+      start={{x: 0,y: 0}}
+      end={{x: 0, y: 1}}
+      colors={["#8E4FCD", "#C4BFE7"]}>
+
+        <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" cidade = "Cataguases" estrelas = '1'></Cat_Psico>
+        <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" cidade = "Leopoldina" estrelas = '1'></Cat_Psico>
+
+      </LinearGradient>
       </>
     )
 
