@@ -9,6 +9,9 @@ import {
   ImageBackground,
 } from "react-native";
 
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth";
+
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -21,6 +24,9 @@ import Icone from "../assets/dantePerfil.jpg";
 import Lapis from "../assets/iconeLapis.png";
 
 export default function Perfil({ navigation }) {
+  
+  const {user} = useContext(AuthContext);
+  
   return (
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
@@ -50,7 +56,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}> Passarinho Tui Tui</Text>
+        <Text style={styles.escrita}>{user.data[0].nomeUsuario}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -58,7 +64,7 @@ export default function Perfil({ navigation }) {
           <MaterialCommunity name="email-outline" size={32} />
           <Text style={styles.titulo}>Email:</Text>
         </View>
-        <Text style={styles.escrita}> caioLindo@gmail.com</Text>
+        <Text style={styles.escrita}> {user.data[0].email} </Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -66,7 +72,7 @@ export default function Perfil({ navigation }) {
           <AntDesign name="idcard" size={30} />
           <Text style={styles.titulo}>Nome:</Text>
         </View>
-        <Text style={styles.escrita}> Diego de Souza Camillo</Text>
+        <Text style={styles.escrita}> {user.data[0].nome}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -77,7 +83,7 @@ export default function Perfil({ navigation }) {
             <Image source={Lapis} style={styles.lapisSenha} />
           </Pressable>
         </View>
-        <Text style={styles.senha}> . . . . . . .</Text>
+        <Text style={styles.senha}> {user.data[0].senha}</Text>
       </View>
 
       <View style={styles.links}>

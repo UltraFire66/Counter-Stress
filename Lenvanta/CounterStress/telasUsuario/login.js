@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {useState} from 'react';
-
+import {useState,useContext} from 'react';
+import { AuthContext } from '../contexts/auth';
 import {
   Text,
   View,
@@ -28,15 +28,21 @@ export default function Login({navigation}) {
 
   const [loginStatus,setLoginStatus] = useState('');
 
-  const Login = () => {
+  const {Login} = useContext(AuthContext);
 
-    Axios.post("https://counterstress.glitch.me/login", {nome: email , senha: senha
+  const FuncLogin = () => {
+    Login(email,senha);
+  }
+
+  const LoginAntigo = () => {
+
+    Axios.post("https://counterstress.glitch.me/login", {email: email , senha: senha
   }).then((response) => {
-    if(response.data.message){
-      setLoginStatus('Errado');
+    if(response.data.message == 'Nao encontrado'){
+      setLoginStatus("Errado");
     }
     else{
-      navigation.navigate("Tab");
+      navigation.navigate("Tab", {usuario: response.data[0]});
     }
   });
    
@@ -51,13 +57,13 @@ export default function Login({navigation}) {
 
 
       <Image source={Torii} style={styles.icone}></Image>
-      {loginStatus ?
+      {loginStatus == '' ?
       <TextInput style={styles.escrever} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>
       :<TextInput style={styles.escrever2} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>}
      
       <TextInput style={styles.escrever} placeholder="Digite sua senha" value = {senha} onChangeText = {(value) => {setSenha(value)}}/>
 
-      <Pressable style={styles.botao}  onPress = {Login()}>
+      <Pressable style={styles.botao}  onPress = {FuncLogin}>
         <Text style={styles.escritaBotao} >Login</Text>
       </Pressable>
       <View style={styles.links}>

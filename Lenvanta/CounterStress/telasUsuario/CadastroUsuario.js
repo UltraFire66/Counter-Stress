@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   Pressable,
+  a
 } from 'react-native';
 
 
@@ -16,7 +17,8 @@ import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function CadastroUsuario({navigation}) {
-  
+
+  const [nomeUsu,setNomeUsu] = useState('');
   const [nomeres,setNome] = useState('');
   const [emailres,setEmail] = useState('');
   const [senhares,setSenha] = useState('');
@@ -24,7 +26,8 @@ export default function CadastroUsuario({navigation}) {
 
   
   const registro = () =>{
-    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares});
+    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu});
+    navigation.navigate('Login');
   }
   
 
@@ -38,11 +41,15 @@ export default function CadastroUsuario({navigation}) {
       <Text style = {styles.titulo}>Cadastro</Text>
 
       <TextInput style={styles.escrever}
+      placeholder="Digite seu Nome de Usuario"
+      onChangeText={(value)=>setNomeUsu(value)} />
+
+      <TextInput style={styles.escrever}
       placeholder="Digite seu email"
       onChangeText={(value)=>setEmail(value)} />
 
       <TextInput style={styles.escrever}
-      placeholder="Digite seu nome"
+      placeholder="Digite seu nome Completo"
       onChangeText={(value)=>setNome(value)} />
 
       <TextInput style={styles.escrever} 
@@ -53,9 +60,16 @@ export default function CadastroUsuario({navigation}) {
       placeholder="Digite sua senha novamente" 
       onChangeText={(value)=>setSenhaNovamente(value)}/>
 
-      <Pressable style={styles.botao} onPress = {registro}>
-      <Text style={styles.escritaBotao}>Cadastrar</Text>
-      </Pressable>
+      {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' ? 
+        <View style={styles.botaoCinza}>
+          <Text style={styles.escritaBotao}>Cadastrar</Text>
+        </View>:
+
+        <Pressable style={styles.botao} onPress = {registro}>
+          <Text style={styles.escritaBotao}>Cadastrar</Text>
+        </Pressable>}
+
+     
 
       <View style={styles.links}>
         <Text style={styles.escrita}>Já tem uma conta?</Text>
@@ -113,12 +127,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  botaoCinza: {
+    backgroundColor: 'gray',
+    width: vw(52),
+    height: vh(9),
+    marginTop: vh(4),
+    borderRadius: vw(8),
+    display: 'flex',
+    border: 'solid 1px black',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
   escritaBotao: {
     fontSize: vh(4)
   },
 
   links: {
-    marginTop: vh(10),
+    marginTop: vh(5),
     display: 'flex',
     flexDirection: 'row',
     width: '100%',

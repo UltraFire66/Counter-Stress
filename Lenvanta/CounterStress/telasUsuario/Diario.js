@@ -23,7 +23,7 @@ export default function Diario({navigation}) {
       <>
       <TopBar/>
 
-      <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("Perfil")}}>
+      <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("PerfilUsuario")}}>
 
         <AntDesign name = "user" size = {35} />
 

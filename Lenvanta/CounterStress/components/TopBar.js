@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
     height: vh(12),
     width: vw(100),
     backgroundColor: '#C4BFE7',
+    borderBottomWidth: 3,
+    borderColor: 'white',
     display: 'flex',
     position: 'relative',
     alignItems: 'flex-end',

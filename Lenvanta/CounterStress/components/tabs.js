@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { useState } from 'react';
+
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { useRoute } from '@react-navigation/native';
 
 import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -17,6 +20,8 @@ import {vh,vw} from 'react-native-expo-viewport-units';
 const Tab = createBottomTabNavigator();
 
 const Tabs = () =>{
+
+  const [clicado,setClicado] = useState(false);
 
   return(
 
@@ -73,8 +78,9 @@ const Tabs = () =>{
         tabBarLabel: '',
     
         tabBarIcon : ({size,color}) => (
+          
 
-          <BotaoQuest/>
+          <BotaoQuest clicado = {clicado}/>
 
         )
       }}

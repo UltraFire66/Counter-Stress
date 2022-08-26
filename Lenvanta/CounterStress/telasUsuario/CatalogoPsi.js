@@ -5,6 +5,8 @@ import {
   Pressable
 } from 'react-native';
 
+import { LinearGradient } from 'expo-linear-gradient';
+
 import Cat_Psico from '../components/Cat_Psico';
 import FotoPsi from '../assets/Wall-e.jpg';
 import FotoPsi2 from '../assets/telaPerfilKratos.jpg';
@@ -15,26 +17,25 @@ import TopBar from '../components/TopBar';
 export default function CatalogoPsi({navigation}) {
 
     return (
-      <>
+      <LinearGradient
+      style={styles.container}
+      start={{x: 0,y: 0}}
+      end={{x: 0, y: 1}}
+      colors={["#78ABC6", "#C4BFE7"]}>
       <TopBar/>
 
-      <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("Perfil")}}>
+      <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("PerfilUsuario")}}>
 
         <AntDesign name = "user" size = {35} />
 
       </Pressable>
 
-      <LinearGradient
-      style={styles.container}
-      start={{x: 0,y: 0}}
-      end={{x: 0, y: 1}}
-      colors={["#8E4FCD", "#C4BFE7"]}>
+      
 
         <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" cidade = "Cataguases" estrelas = '1'></Cat_Psico>
         <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" cidade = "Leopoldina" estrelas = '1'></Cat_Psico>
 
       </LinearGradient>
-      </>
     )
 
 }
@@ -43,8 +44,9 @@ const styles = StyleSheet.create({
 
   container: {
 
-    marginTop: vh(4),
-
+    
+    height: vh(100),
+    width: vw(100),
   },
 
   perfil: {

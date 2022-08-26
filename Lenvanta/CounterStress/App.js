@@ -9,7 +9,7 @@ import Tabs from './components/tabs';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
+import AuthProvider from './contexts/auth';
 //psicologo
 import PerfilPsico from './telasPsico/PerfilPsico';
 
@@ -36,23 +36,27 @@ export default function App() {
       <>
     
     <NavigationContainer>
+    
+      <AuthProvider>
+        
+        <Stack.Navigator screenOptions= { {headerShown: false}}
+          initialRouteName = "Tab">
+          <Stack.Screen name = "Tab" component = {Tabs}/>
+          <Stack.Screen name = "Login" component = {Login}/>
+          <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
+          <Stack.Screen name = "Cadastro" component = {Cadastro}/>
+          <Stack.Screen name = "PerfilUsuario" component = {PerfilUsuario}/>
+          <Stack.Screen name = "editarPerfil" component = {EditarPerfil}/>
+          <Stack.Screen name = "SubMEs" component = {SubMEs}/>
+          <Stack.Screen name = "CategoriasMEs" component={CategoriasMEs}/>
+          <Stack.Screen name = "Planejamento" component={Planejamento}/>
+          <Stack.Screen name = "PerfilPsico" component = {PerfilPsico}/>
+        
+        </Stack.Navigator>
 
+      </AuthProvider>
     
       
-      <Stack.Navigator screenOptions= { {headerShown: false}}
-        initialRouteName = "CadastroUsuario">
-        <Stack.Screen name = "Tab" component = {Tabs}/>
-        <Stack.Screen name = "Login" component = {Login}/>
-        <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
-        <Stack.Screen name = "Cadastro" component = {Cadastro}/>
-        <Stack.Screen name = "PerfilUsuario" component = {PerfilUsuario}/>
-        <Stack.Screen name = "editarPerfil" component = {EditarPerfil}/>
-        <Stack.Screen name = "SubMEs" component = {SubMEs}/>
-        <Stack.Screen name = "CategoriasMEs" component={CategoriasMEs}/>
-        <Stack.Screen name = "Planejamento" component={Planejamento}/>
-        <Stack.Screen name = "PerfilPsico" component = {PerfilPsico}/>
-      
-      </Stack.Navigator>
 
       
 

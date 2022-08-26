@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { vh } from 'react-native-expo-viewport-units';
 
+import { useState } from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import Torii from '../assets/torii.png';
@@ -15,9 +16,10 @@ import Torii from '../assets/torii.png';
 export default function BotaoQuest({props}) {
 
     
-  
+
     return (
 
+      
       <LinearGradient
       colors={['#C4BFE7', '#78ABC6']}
       start={{x: 0, y: 0.5}}
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-
   },
 
   torii: {
