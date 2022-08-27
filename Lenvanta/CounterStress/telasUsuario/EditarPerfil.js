@@ -9,6 +9,11 @@ import {
   ImageBackground
 } from 'react-native';
 
+import { useState ,useContext } from 'react';
+
+
+import { AuthContext } from '../contexts/auth';
+
 import Wallpaper from '../assets/wallpaper.jpg';
 import Icone from '../assets/dantePerfil.jpg';
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
@@ -16,6 +21,16 @@ import Feather from "react-native-vector-icons/Feather";
 import { vh, vw } from 'react-native-expo-viewport-units';
 
 export default function EditarPerfil({navigation}) {
+
+  const {Edit,user} = useContext(AuthContext);
+
+  const [nomeUsu,setNomeUsu] = useState('');
+  const [nome,setNome] = useState('');
+  const [email,setEmail] = useState('');
+
+  const handleEdit = () =>{
+    Edit(email,nome,nomeUsu,user.data[0].id)
+  }
 
     return (
 
@@ -57,20 +72,23 @@ export default function EditarPerfil({navigation}) {
       
         <View >
           <Text style = {styles.escrita}>Usuário: </Text>
-          <TextInput style = {styles.campoEditar} value = {"Passarinho Tui Tui"}/>
+          <TextInput style = {styles.campoEditar} value = {nomeUsu}
+          onChangeText = {(value) => setNomeUsu(value)}/>
         </View>
 
         <View >
           <Text style = {styles.escrita}>E-mail: </Text>
-          <TextInput style = {styles.campoEditar} value = {"deigocamillo@gmail.com"}/>
+          <TextInput style = {styles.campoEditar} value = {email}
+          onChangeText = {(value) => setEmail(value)}/>
         </View>
 
         <View >
           <Text style = {styles.escrita}>Nome: </Text>
-          <TextInput style = {styles.campoEditar} value = {"Deigo"}/>
+          <TextInput style = {styles.campoEditar} value = {nome}
+          onChangeText = {(value) => setNome(value)}/>
         </View>
 
-         <Pressable style = {styles.btn} onPress = {() => navigation.navigate("Perfil")}>
+         <Pressable style = {styles.btn} onPress = {handleEdit}>
       
         <Text style = {styles.txtBtn}>Editar Dados</Text>
       

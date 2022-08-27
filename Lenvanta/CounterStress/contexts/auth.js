@@ -23,8 +23,24 @@ function AuthProvider ({children}){
   });
     }
 
+    function Edit(email,nome,nomeUsu,id){
+        Axios.post("https://counterstress.glitch.me/edit", {email: email , 
+        nome : nome, id : id, nomeUsu: nomeUsu
+        }).then((response) => {
+        if(response.data.message == 'Nao encontrado'){
+            alert('erro ao editar perfil');
+            navigation.navigate('PerfilUsuario')
+        }
+        else{
+            setUser(response);
+            alert('Operação feita com sucesso');
+            navigation.navigate('PerfilUsuario');
+        }
+  });
+    }
+
     return (
-        <AuthContext.Provider value={{user, Login}}>
+        <AuthContext.Provider value={{user, Login,Edit}}>
             {children}
         </AuthContext.Provider>
     )

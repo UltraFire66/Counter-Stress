@@ -30,23 +30,10 @@ export default function Login({navigation}) {
 
   const {Login} = useContext(AuthContext);
 
-  const FuncLogin = () => {
+  const handleLogin = () => {
     Login(email,senha);
   }
 
-  const LoginAntigo = () => {
-
-    Axios.post("https://counterstress.glitch.me/login", {email: email , senha: senha
-  }).then((response) => {
-    if(response.data.message == 'Nao encontrado'){
-      setLoginStatus("Errado");
-    }
-    else{
-      navigation.navigate("Tab", {usuario: response.data[0]});
-    }
-  });
-   
-  }
   return (
 
     <LinearGradient
@@ -63,7 +50,7 @@ export default function Login({navigation}) {
      
       <TextInput style={styles.escrever} placeholder="Digite sua senha" value = {senha} onChangeText = {(value) => {setSenha(value)}}/>
 
-      <Pressable style={styles.botao}  onPress = {FuncLogin}>
+      <Pressable style={styles.botao}  onPress = {handleLogin}>
         <Text style={styles.escritaBotao} >Login</Text>
       </Pressable>
       <View style={styles.links}>
