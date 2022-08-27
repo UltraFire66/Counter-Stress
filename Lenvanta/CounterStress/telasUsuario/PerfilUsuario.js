@@ -7,10 +7,13 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
+  Alert
 } from "react-native";
 
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth";
+
+import Axios from 'axios';
 
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
@@ -27,6 +30,36 @@ export default function Perfil({ navigation }) {
   
   const {user} = useContext(AuthContext);
   
+  const DeletarConta = () => {
+      Axios.post("https://counterstress.glitch.me/delete", {id: user.data[0].id}).then((response)=>{
+        if(response.data.message == 'Erro encontrado'){
+          alert('Não foi possível excluir a conta');
+        }
+        else{
+          alert('Conta excluída com sucesso');
+          navigation.navigate('Login');
+        }
+      });
+      
+    
+    
+  }
+
+  const MostrarPopUp = ()=>{
+    return Alert.alert (
+      "Deletar Conta",
+      "Tem certeza que deseja deletar a sua conta ?",
+      [
+        {
+          text: 'yes',
+          onPress: () => {DeletarConta}
+        },
+        {text: 'Nao'}
+      ]
+
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
@@ -88,7 +121,7 @@ export default function Perfil({ navigation }) {
 
       <View style={styles.links}>
         <Text style={styles.escritaLink}>Deseja excluir sua conta?</Text>
-        <Pressable>
+        <Pressable onPress={DeletarConta}>
         
           <Text style={styles.link}>Excluir</Text>
         </Pressable>
