@@ -3,13 +3,20 @@ import {
   Text,
   View,
   StyleSheet,
-  Pressable
+  Pressable,
+  FlatList
 } from 'react-native';
+
+import { useState,useEffect,useContext} from 'react';
+import {AuthContext} from '../contexts/auth';
+
+import Axios from 'axios';
 
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import axios from 'axios';
 
 var escritaDiario = "É puro espetáculo: comida, compras e diversão fora do campo ";
 
@@ -17,7 +24,26 @@ var escritaDiario1 = "Dois dias se passaram e eu ainda não descobri, estou estu
 
 var escritaDiario2 = "Se você gosta do esporte, acaba se identificando com os times do lugar para onde você viaja.";
 
+
+
+
 export default function Diario({navigation}) {
+
+  const {user} = useContext(AuthContext);
+  const [entradas,setEntradas] = useState({});
+
+  useEffect (() => {
+     Axios.post("https://counterstress.glitch.me/diario", {id: user.data[0].id
+        }).then((response) => {
+        if(response.data.message == 'Nao encontrado'){
+            alert('Email ou Senha incorretos!!');
+        }
+        else{
+            setEntradas(response);
+        }
+  });
+
+  },[]);
 
     return (
       <>
@@ -42,7 +68,20 @@ export default function Diario({navigation}) {
        <View style = {styles.barrinha}></View>
 
 {/*======================== Parte superior de ADD entrada ===================== */}
+      
+      <FlatList
+      
+      data = {entradas.data}
+      keyExtractor={({id}, index) => id}
+      renderItem = {({item}) => {
 
+        <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
+        
+      }}
+      
+      />
+
+      
       <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
       <EntradaDiario data = {"23/05/2022"} escrita = {escritaDiario1}/>
       <EntradaDiario data = {"30/05/2022"} escrita = {escritaDiario2}/>

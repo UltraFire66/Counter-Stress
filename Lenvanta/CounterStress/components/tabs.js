@@ -14,6 +14,7 @@ import Catalogo from "../telasUsuario/CatalogoPsi";
 import Home from "../telasUsuario/Home";
 import Quest from "../telasUsuario/EntrarQuest"
 import BotaoQuest from "./botaoQuest";
+import BotaoQuestClicado from "./botaoQuestClicado";
 
 import {vh,vw} from 'react-native-expo-viewport-units';
 
@@ -77,10 +78,10 @@ const Tabs = () =>{
       options = {{
         tabBarLabel: '',
     
-        tabBarIcon : ({size,color}) => (
+        tabBarIcon : ({size,color,focused}) => (
           
-
-          <BotaoQuest clicado = {clicado}/>
+          focused ?
+          <BotaoQuestClicado /> : <BotaoQuest/>
 
         )
       }}

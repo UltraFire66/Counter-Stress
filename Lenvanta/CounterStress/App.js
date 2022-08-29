@@ -40,7 +40,7 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
-          initialRouteName = "CadastroUsuario">
+          initialRouteName = "Login">
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>
           <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>

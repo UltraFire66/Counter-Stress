@@ -13,7 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Torii from '../assets/torii.png';
 
 
-export default function BotaoQuest({props}) {
+export default function BotaoQuestClicado({props}) {
 
    
 
@@ -22,16 +22,11 @@ export default function BotaoQuest({props}) {
       return (
 
       
-        <LinearGradient
-        colors={['#C4BFE7', '#78ABC6']}
-        start={{x: 0, y: 0.5}}
-        end={{x: 1, y: 1}}
-        style={styles.container}
-      >
+        <View style={styles.container}>
   
            <Image source={Torii} style={styles.torii}></Image>
   
-        </LinearGradient>
+        </View>
   
       )
 
@@ -50,7 +45,7 @@ const styles = StyleSheet.create({
     borderRadius:  vh(6.5),
     marginBottom:  vh(12),
     borderWidth: 3,
-    backgroundColor: '#C4BFE7',
+    backgroundColor: '#8E4FCD',
     borderColor: 'white',
     display: 'flex',
     alignItems: 'center',
