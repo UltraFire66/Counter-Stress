@@ -56,7 +56,7 @@ export default function Login({navigation}) {
       <View style={styles.links}>
         <Text style={styles.escrita}>Esqueceu sua senha?</Text>
         <Pressable >
-            <Text style={styles.link}>Alterar senha</Text>
+          <Text style={styles.link}>Alterar senha</Text>
         </Pressable>
       </View>
 

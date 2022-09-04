@@ -88,11 +88,9 @@ export default function EditarPerfil({navigation}) {
           onChangeText = {(value) => setNome(value)}/>
         </View>
 
-         <Pressable style = {styles.btn} onPress = {handleEdit}>
-      
-        <Text style = {styles.txtBtn}>Editar Dados</Text>
-      
-      </Pressable>
+        <Pressable style = {styles.btn} onPress = {handleEdit}>
+          <Text style = {styles.txtBtn}>Editar Dados</Text>
+        </Pressable>
 
       </View>
 

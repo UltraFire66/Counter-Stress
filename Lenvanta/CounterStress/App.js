@@ -26,6 +26,7 @@ import SubMEs from './telasUsuario/SubMEs';
 import CategoriasMEs from './components/CategoriasMEs';
 import Planejamento from './telasUsuario/Planejamento';
 import EntrarQuest from './telasUsuario/EntrarQuest';
+import CriarDiario from './telasUsuario/CriarDiario';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -40,7 +41,7 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
-          initialRouteName = "CadastroUsuario">
+          initialRouteName = "Tab">
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>
           <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
@@ -51,6 +52,7 @@ export default function App() {
           <Stack.Screen name = "CategoriasMEs" component={CategoriasMEs}/>
           <Stack.Screen name = "Planejamento" component={Planejamento}/>
           <Stack.Screen name = "PerfilPsico" component = {PerfilPsico}/>
+          <Stack.Screen name = "CriarDiario" component = {CriarDiario}/>
         
         </Stack.Navigator>
 

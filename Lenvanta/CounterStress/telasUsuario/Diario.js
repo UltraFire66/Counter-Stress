@@ -6,6 +6,7 @@ import {
   Pressable
 } from 'react-native';
 
+
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
@@ -28,17 +29,19 @@ export default function Diario({navigation}) {
         <AntDesign name = "user" size = {35} />
 
       </Pressable>
-      <View style = {styles.container}>
-         
-       <View style = {styles.divAddNovaEntrada}>
-        <View style = {styles.divMais}>
-          <View style = {styles.barraVertical}></View>
-          <View style = {styles.barraHorizontal}></View>
-        </View>
+        <View style = {styles.container}>
+          
+        <Pressable onPress = {() => {navigation.navigate("CriarDiario")}}>
+          <View style = {styles.divAddNovaEntrada}>
+          <View style = {styles.divMais}>
+            <View style = {styles.barraVertical}></View>
+            <View style = {styles.barraHorizontal}></View>
+          </View>
 
-        <Text style = {styles.escritaAdd}>Adicionar novas entradas no diário</Text>
-
-       </View>
+          <Text style = {styles.escritaAdd}>Adicionar novas entradas no diário</Text>
+          </View>
+        </Pressable>
+        
        <View style = {styles.barrinha}></View>
 
 {/*======================== Parte superior de ADD entrada ===================== */}
