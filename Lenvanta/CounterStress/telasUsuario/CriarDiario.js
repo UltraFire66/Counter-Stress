@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 
 import {
   Text,
@@ -10,16 +10,34 @@ import {
   Pressable,
 } from 'react-native';
 
+import { AuthContext } from '../contexts/auth';
+
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { vh, vw } from 'react-native-expo-viewport-units';
-import { text } from 'express';
+import Axios from 'axios';
 
 
 export default function CriarDiario({navigation}) {
 
+  const {user} = useContext(AuthContext)
+
+  let currentDate = new Date();
+  let cDate = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + '/' +  currentDate.getFullYear();
+  
+
+  
+
   const [titulo, setTitulo] = useState("");
   const [anota, setAnota] = useState("");
+
+ 
+
+    const RegistrarDiario = () => {
+      Axios.post("https://counterstress.glitch.me/RegistrarDiario",{idUser: user.data[0].id,
+      data: cDate, titulo: titulo, escrita: anota});
+      navigation.navigate('Tab');
+    }
 
     return (
         <>
@@ -32,23 +50,19 @@ export default function CriarDiario({navigation}) {
 
         <View style = {styles.container}>
           <TextInput style={styles.escreverT} placeholder="Título"
-          onChangeText = {(value) => {
-            setTitulo(value);
-          }} value = {titulo}/>
+          onChangeText = {(value) => setTitulo(value)} value = {titulo}/>
         </View>
 
         <Text style = {styles.topico}>Anotação:</Text>
-        <View style = {styles.botao}>
-          <View style={styles.botaoCinza}>
+        <View style = {styles.anota}>
+          
             <TextInput style={styles.escrever} 
-            onChangeText = {(value) => {
-              setAnota(value);
-            }} value = {anota}/>
-          </View>
+            onChangeText = {(value) => setAnota(value)} value = {anota}/>
+          
         </View>
 
         <View style = {styles.botaoConfirm}>
-          <Pressable style = {styles.btn}>
+          <Pressable style = {styles.btn} onPress = {RegistrarDiario}>
             <Text style = {styles.txtBtn}>Confirmar</Text>
           </Pressable>
         </View>
@@ -59,97 +73,75 @@ export default function CriarDiario({navigation}) {
 }
 
 const styles = StyleSheet.create({
+  
+  perfil: {
+    position: 'absolute',
+    marginTop: 25,
+    marginLeft: vw(85),
+  },
 
    container: {
-    height: vh(20),
+    height: vh(15),
     width: vw(100),
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
     backgroundColor: "purple",
+  },
+
+  escreverT: {
+   
+    height: vh(9),
+    minWidth: vw(20),
+    fontSize: vw(7.5),
+    textAlign: 'left',
+    marginLeft: vw(5),
+    fontWeight: 'bold',
+    color: 'black',
+    display: 'flex',
+    alignItems: 'center',
   },
 
   topico: {
     fontSize: vw(5),
-    marginLeft: vw(13),
-    marginTop: vh(5),
+    marginLeft: vw(4),
+    marginTop: vh(3),
   },
 
-  botao:{
-    alignItems: 'center',
-    marginTop: vh(-3),
-  },
-
+  
   botaoConfirm:{
     alignItems: 'center',
     marginRight: vw(8),
   },
 
-  botaoCinza: {
-    backgroundColor: '#E5E5E5',
-    width: vw(79),
-    height: vh(7),
+  divTexto: {
+    
+    
+    
     marginTop: vh(4),
-    borderRadius: vw(6),
+    
     display: 'flex',
     border: 'solid 1px black',
+
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  perfil: {
-    position: 'absolute',
-    marginTop: 25,
-    marginLeft: vw(85),
-  },  
-
-  titulo: {
-    marginBottom: vh(2),
-    fontSize: vw(5),
-    color: '#225ED2',
-  },
-
-  escrita:{
-   fontSize: vw(4.5),
-   width: vw(90),
-   marginBottom: vh(2)
- },
-
-  barrinha: {
-    backgroundColor: 'black',
-    height: vh(0.3),
-    opacity: 0.4,
-    width: vw(89)
-
-  },
-
-  escreverT: {
-    width: vw(60),
-    height: vh(9),
-    marginTop: vh(10),
-    marginLeft: vw(-18),
-    fontSize: vw(7.5),
-    textAlign: 'left',
-    fontWeight: 'bold',
-    color: 'black',
-    display: 'flex',
-    alignItems: 'center',
-  },
-
   escrever: {
-    width: vw(62),
-    height: vh(9),
+    backgroundColor: '#E5E5E5',
+    borderRadius: vw(6),
+    marginLeft: vw(11),
+    width: vw(79),
+    height: vh(45),
     fontSize: vw(4.5),
-    textAlign: 'left',
+    textAlign: 'justify',
     fontWeight: 'bold',
     color: 'black',
     display: 'flex',
+    justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
-
-  txtBtn: {
-    fontSize: 18
-  },
-
+    
   btn:{
     marginTop: vh(5),
     width: vw(60),
@@ -161,6 +153,17 @@ const styles = StyleSheet.create({
     borderRadius: vw(8),
     backgroundColor: '#D9D9D9',
   },
+
+
+  
+
+  
+
+  txtBtn: {
+    fontSize: 18
+  },
+
+  
    
 });
 

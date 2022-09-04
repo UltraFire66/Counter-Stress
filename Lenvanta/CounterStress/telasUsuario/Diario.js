@@ -7,14 +7,12 @@ import {
   FlatList
 } from 'react-native';
 
-<<<<<<< HEAD
-=======
+
+
 import { useState,useEffect,useContext} from 'react';
 import {AuthContext} from '../contexts/auth';
 
 import Axios from 'axios';
->>>>>>> a116bb33ce9385e99207b2e08b2e30e0b168e1e2
-
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
@@ -36,7 +34,7 @@ export default function Diario({navigation}) {
   const [entradas,setEntradas] = useState({});
 
   useEffect (() => {
-     Axios.post("https://counterstress.glitch.me/diario", {id: user.data[0].id
+     Axios.post("https://counterstress.glitch.me/EntradasDiario", {id: user.data[0].id
         }).then((response) => {
         if(response.data.message == 'Nao encontrado'){
             alert('Email ou Senha incorretos!!');
@@ -64,10 +62,12 @@ export default function Diario({navigation}) {
         <View style = {styles.container}>
           
         <Pressable onPress = {() => {navigation.navigate("CriarDiario")}}>
+          
           <View style = {styles.divAddNovaEntrada}>
           <View style = {styles.divMais}>
             <View style = {styles.barraVertical}></View>
             <View style = {styles.barraHorizontal}></View>
+            
           </View>
 
           <Text style = {styles.escritaAdd}>Adicionar novas entradas no diário</Text>
@@ -75,7 +75,7 @@ export default function Diario({navigation}) {
         </Pressable>
         
        <View style = {styles.barrinha}></View>
-
+       
 {/*======================== Parte superior de ADD entrada ===================== */}
       
       <FlatList

@@ -42,11 +42,8 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
-<<<<<<< HEAD
-          initialRouteName = "Tab">
-=======
           initialRouteName = "Login">
->>>>>>> a116bb33ce9385e99207b2e08b2e30e0b168e1e2
+
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>
           <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
@@ -57,11 +54,10 @@ export default function App() {
           <Stack.Screen name = "CategoriasMEs" component={CategoriasMEs}/>
           <Stack.Screen name = "Planejamento" component={Planejamento}/>
           <Stack.Screen name = "PerfilPsico" component = {PerfilPsico}/>
-<<<<<<< HEAD
           <Stack.Screen name = "CriarDiario" component = {CriarDiario}/>
-=======
+
           
->>>>>>> a116bb33ce9385e99207b2e08b2e30e0b168e1e2
+
         
         </Stack.Navigator>
 
