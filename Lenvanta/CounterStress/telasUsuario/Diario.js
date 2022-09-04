@@ -3,14 +3,23 @@ import {
   Text,
   View,
   StyleSheet,
-  Pressable
+  Pressable,
+  FlatList
 } from 'react-native';
 
+<<<<<<< HEAD
+=======
+import { useState,useEffect,useContext} from 'react';
+import {AuthContext} from '../contexts/auth';
+
+import Axios from 'axios';
+>>>>>>> a116bb33ce9385e99207b2e08b2e30e0b168e1e2
 
 import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import axios from 'axios';
 
 var escritaDiario = "É puro espetáculo: comida, compras e diversão fora do campo ";
 
@@ -18,7 +27,30 @@ var escritaDiario1 = "Dois dias se passaram e eu ainda não descobri, estou estu
 
 var escritaDiario2 = "Se você gosta do esporte, acaba se identificando com os times do lugar para onde você viaja.";
 
+
+
+
 export default function Diario({navigation}) {
+
+  const {user} = useContext(AuthContext);
+  const [entradas,setEntradas] = useState({});
+
+  useEffect (() => {
+     Axios.post("https://counterstress.glitch.me/diario", {id: user.data[0].id
+        }).then((response) => {
+        if(response.data.message == 'Nao encontrado'){
+            alert('Email ou Senha incorretos!!');
+        }
+        else{
+            setEntradas(response);
+        }
+  });
+
+  },[]);
+
+  const renderItem = ({ item }) => (
+    <EntradaDiario data = {item.data} escrita = {item.escrita}/>
+  );
 
     return (
       <>
@@ -45,10 +77,17 @@ export default function Diario({navigation}) {
        <View style = {styles.barrinha}></View>
 
 {/*======================== Parte superior de ADD entrada ===================== */}
+      
+      <FlatList
+      
+      data = {entradas.data}
+      keyExtractor={item => item.id}
+      renderItem = {renderItem}
+      
+      />
 
-      <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
-      <EntradaDiario data = {"23/05/2022"} escrita = {escritaDiario1}/>
-      <EntradaDiario data = {"30/05/2022"} escrita = {escritaDiario2}/>
+      
+      
       </View>
       </>
     )
