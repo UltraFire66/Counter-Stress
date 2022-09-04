@@ -1,6 +1,9 @@
 import React , {useState,useEffect} from 'react';
 import { SafeAreaView, View, FlatList, StyleSheet, Text, StatusBar } from 'react-native';
 import EntradaDiario from '../components/EntradaDiario';
+import Axios from 'axios';
+
+
 
 
 const DATA = [
@@ -21,6 +24,23 @@ const DATA = [
 
 
 export default function testeFlatList () {
+
+
+  const [entradas,setEntradas] = useState({});
+
+  useEffect (() => {
+    Axios.post("https://counterstress.glitch.me/diario", {id: 1
+       }).then((response) => {
+       if(response.data.message == 'Nao encontrado'){
+           alert('Email ou Senha incorretos!!');
+       }
+       else{
+           setEntradas(response);
+       }
+  });
+  
+  },[]);
+
   const renderItem = ({ item }) => (
     <EntradaDiario data = {item.data} escrita = {item.escrita}/>
   );
@@ -28,7 +48,7 @@ export default function testeFlatList () {
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
-        data={DATA}
+        data={entradas.data}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />

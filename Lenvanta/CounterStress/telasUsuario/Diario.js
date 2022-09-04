@@ -45,6 +45,10 @@ export default function Diario({navigation}) {
 
   },[]);
 
+  const renderItem = ({ item }) => (
+    <EntradaDiario data = {item.data} escrita = {item.escrita}/>
+  );
+
     return (
       <>
       <TopBar/>
@@ -72,19 +76,13 @@ export default function Diario({navigation}) {
       <FlatList
       
       data = {entradas.data}
-      keyExtractor={({id}, index) => id}
-      renderItem = {({item}) => {
-
-        <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
-        
-      }}
+      keyExtractor={item => item.id}
+      renderItem = {renderItem}
       
       />
 
       
-      <EntradaDiario data = {"21/05/2022"} escrita = {escritaDiario}/>
-      <EntradaDiario data = {"23/05/2022"} escrita = {escritaDiario1}/>
-      <EntradaDiario data = {"30/05/2022"} escrita = {escritaDiario2}/>
+      
       </View>
       </>
     )
