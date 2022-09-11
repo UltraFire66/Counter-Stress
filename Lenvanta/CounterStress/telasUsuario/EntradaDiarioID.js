@@ -15,7 +15,7 @@ import {vh,vw} from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-
+const apidata = "https://counterstress.glitch.me/diarioUsuario/1";
 
 
 export default function EntradaDiarioID({navigation,route}) {
@@ -26,12 +26,9 @@ export default function EntradaDiarioID({navigation,route}) {
 
     const fetchData = async () =>  {
 
-        const response = await Axios.get("https://counterstress.glitch.me/diarioUsuario/" + 1)
-
-          if(response.data.message != 'Erro encontrado'){
-            setEntrada(response)
-            console.log(entrada.data)
-          }
+        const response = await Axios.get("https://counterstress.glitch.me/diarioUsuario/1");
+        setEntrada(response);
+        console.log(entrada.data); 
 
          
               
@@ -40,10 +37,12 @@ export default function EntradaDiarioID({navigation,route}) {
 
     }
 
-    fetchData()
+    fetchData();
 
     
- },[]);
+ },[entrada]);
+
+ 
 
     return (
         <>
