@@ -46,8 +46,22 @@ export default function Diario({navigation}) {
 
   },[]);
 
+  useEffect (() => {
+    Axios.get("https://counterstress.glitch.me/diarioUsuario/" + 1).then((response) => {
+       if(response.data.message == 'Nao encontrado'){
+           alert('Email ou Senha incorretos!!');
+       }
+       else{
+           console.log(response)
+       }
+ });
+
+ },[]);
+
   const renderItem = ({ item }) => (
+    <Pressable onPress = {() => {navigation.navigate('EntradaDiario',{id: item.id})}}>
     <EntradaDiario data = {item.data} escrita = {item.escrita}/>
+    </Pressable>
   );
 
     return (
@@ -59,6 +73,7 @@ export default function Diario({navigation}) {
         <AntDesign name = "user" size = {35} />
 
       </Pressable>
+
         <View style = {styles.container}>
           
         <Pressable onPress = {() => {navigation.navigate("CriarDiario")}}>

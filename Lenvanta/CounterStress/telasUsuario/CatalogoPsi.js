@@ -17,6 +17,7 @@ import TopBar from '../components/TopBar';
 export default function CatalogoPsi({navigation}) {
 
     return (
+
       <LinearGradient
       style={styles.container}
       start={{x: 0,y: 0}}
@@ -33,9 +34,11 @@ export default function CatalogoPsi({navigation}) {
       
 
         <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" cidade = "Cataguases" estrelas = '1'></Cat_Psico>
+
         <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" cidade = "Leopoldina" estrelas = '1'></Cat_Psico>
 
       </LinearGradient>
+      
     )
 
 }
