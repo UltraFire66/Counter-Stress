@@ -16,21 +16,33 @@ import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { vh, vw } from 'react-native-expo-viewport-units';
 
-
+const pensador = require('pensador-api')
 import { createClient } from 'pexels';
 
 
 
 export default function Home({navigation}) {
+
+
   
-  
+ 
   const [foto,setFoto] = useState('https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800');
+  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!');
+  const [autor,setAutor] = useState('');
 
   const client = createClient('563492ad6f91700001000001b6804ae3f9b34c36b123675631140391');
   const query = 'landscape';
   const orientation = 'landscape';
   const size = 'medium';
 
+  async function pegaFrase() {
+
+    const array = await pensador({ term: "Elon Musk", max: 5 })
+    setFrase(array.phrase[0]);
+    setAutor('Elon Musk');
+    return array;
+
+  }
 
   const pegaFoto = () => {
     const page = Math.random() * (15000 - 1 + 1) + 1;
@@ -38,6 +50,13 @@ export default function Home({navigation}) {
       setFoto(photos.photos[0].src.portrait);
       console.log(foto)
     });
+
+  }
+
+  const Mensagem = () => {
+    pegaFoto;
+ 
+
 
   }
 
@@ -57,8 +76,9 @@ export default function Home({navigation}) {
       
           
           <Image source={{uri:foto}}  style={styles.foto} />
-          <Text style = {styles.mensagem}> O Caio é Lindo Meu Deus que Cara Maravilhoso E Lindo</Text>
-          <Pressable style={styles.botao} onPress = {pegaFoto}>
+          <Text style = {styles.mensagem}>{frase}</Text>
+          <Text style = {styles.autor}>{autor}</Text>
+          <Pressable style={styles.botao} onPress = {Mensagem}>
             <Text style={styles.escritaBotao}>Mensagem</Text>
           </Pressable>
         
@@ -128,7 +148,18 @@ const styles = StyleSheet.create({
     
       textAlign: 'center',
       color: 'white'
-   }
+   },
+
+   autor: {
+    position: 'absolute',
+    top: vh(55),
+    left: vw(7),
+    fontSize: vw(8),
+    maxWidth: vw(80),
+  
+    textAlign: 'center',
+    color: 'white'
+ }
    
 
   

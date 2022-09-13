@@ -46,20 +46,21 @@ export default function Diario({navigation}) {
 
   },[]);
 
-  useEffect (() => {
+  /*useEffect (() => {
     Axios.get("https://counterstress.glitch.me/diarioUsuario/" + 1).then((response) => {
        if(response.data.message == 'Nao encontrado'){
            alert('Email ou Senha incorretos!!');
        }
        else{
-           console.log(response)
+           //console.log(response)
        }
  });
 
- },[]);
+ },[]);*/
 
   const renderItem = ({ item }) => (
-    <Pressable onPress = {() => {navigation.navigate('EntradaDiario',{id: item.id})}}>
+    <Pressable onPress = {() => {navigation.navigate('EntradaDiario',{
+      id: item.id, titulo: item.titulo , data: item.data, escrita: item.escrita })}}>
     <EntradaDiario data = {item.data} escrita = {item.escrita}/>
     </Pressable>
   );
@@ -76,9 +77,9 @@ export default function Diario({navigation}) {
 
         <View style = {styles.container}>
           
-        <Pressable onPress = {() => {navigation.navigate("CriarDiario")}}>
+        <Pressable style = {styles.divAddNovaEntrada} onPress = {() => {navigation.navigate("CriarDiario")}}>
           
-          <View style = {styles.divAddNovaEntrada}>
+         
           <View style = {styles.divMais}>
             <View style = {styles.barraVertical}></View>
             <View style = {styles.barraHorizontal}></View>
@@ -86,7 +87,7 @@ export default function Diario({navigation}) {
           </View>
 
           <Text style = {styles.escritaAdd}>Adicionar novas entradas no diário</Text>
-          </View>
+          
         </Pressable>
         
        <View style = {styles.barrinha}></View>

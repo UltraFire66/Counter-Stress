@@ -22,7 +22,7 @@ export default function EntradaDiarioID({navigation,route}) {
   const [entrada,setEntrada] = useState({});
   
 
-  useEffect (()  => {
+  /*useEffect (()  => {
 
     const fetchData = async () =>  {
 
@@ -40,8 +40,7 @@ export default function EntradaDiarioID({navigation,route}) {
     fetchData();
 
     
- },[entrada]);
-
+ },[entrada]);*/
  
 
     return (
@@ -65,15 +64,15 @@ export default function EntradaDiarioID({navigation,route}) {
                 
                 <View style = {styles.divData}>
 
-                  <Text style = {styles.data}></Text>
+                  <Text style = {styles.data}>{route.params.data}</Text>
 
                 </View>
 
                 <View style = {styles.divTitulo}>
-                  <Text style = {styles.titulo}></Text>
+                  <Text style = {styles.titulo}>{route.params.titulo}</Text>
                 </View>
 
-                <Text style = {styles.escrita}></Text>
+                <Text style = {styles.escrita}>{route.params.escrita}</Text>
 
                 
 

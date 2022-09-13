@@ -46,7 +46,13 @@ export default function CriarDiario({navigation}) {
   
           <AntDesign name = "user" size = {35} />
   
-        </Pressable>     
+        </Pressable> 
+
+        <Pressable style = {styles.voltar} onPress = {() => {navigation.goBack()}}>
+
+            <AntDesign name = "arrowleft" size = {35} />
+            
+        </Pressable>
 
         <View style = {styles.container}>
           <TextInput style={styles.escreverT} placeholder="Título"
@@ -78,6 +84,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop: 25,
     marginLeft: vw(85),
+  },
+
+  voltar: {
+    position: 'absolute',
+    marginTop: 27,
+    marginLeft: vw(3),
   },
 
    container: {
