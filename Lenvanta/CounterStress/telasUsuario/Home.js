@@ -35,6 +35,7 @@ export default function Home({navigation}) {
   const orientation = 'landscape';
   const size = 'medium';
 
+  
   async function pegaFrase() {
 
     const array = await pensador({ term: "Elon Musk", max: 5 })
@@ -78,7 +79,7 @@ export default function Home({navigation}) {
           <Image source={{uri:foto}}  style={styles.foto} />
           <Text style = {styles.mensagem}>{frase}</Text>
           <Text style = {styles.autor}>{autor}</Text>
-          <Pressable style={styles.botao} onPress = {Mensagem}>
+          <Pressable style={styles.botao} onPress = {pegaFoto}>
             <Text style={styles.escritaBotao}>Mensagem</Text>
           </Pressable>
         

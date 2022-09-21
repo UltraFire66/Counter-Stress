@@ -20,67 +20,70 @@ const apidata = "https://counterstress.glitch.me/diarioUsuario/1";
 
 export default function EntradaDiarioID({navigation,route}) {
   const [entrada,setEntrada] = useState({});
-  
 
-  /*useEffect (()  => {
+  async function fetchData({navigation,route}){
 
-    const fetchData = async () =>  {
-
-        const response = await Axios.get("https://counterstress.glitch.me/diarioUsuario/1");
-        setEntrada(response);
-        console.log(entrada.data); 
-
-         
-              
+    const response = await fetch("https://counterstress.glitch.me/diarioUsuario/1");
+    const resultado = await response.json();
+    
+    return (
+      <>
+       <TopBar/>
+    
+          <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("PerfilUsuario")}}>
+    
+          <AntDesign name = "user" size = {35} />
           
- 
+          </Pressable>
+    
+          <Pressable style = {styles.voltar} onPress = {() => {navigation.goBack()}}>
+    
+          <AntDesign name = "arrowleft" size = {35} />
+          
+          </Pressable>
+    
+          <View style = {styles.container}>
+              
+              
+              <View style = {styles.divData}>
+    
+                <Text style = {styles.data}>{route.params.data}</Text>
+    
+              </View>
+    
+              <View style = {styles.divTitulo}>
+                <Text style = {styles.titulo}>{route.params.titulo}</Text>
+              </View>
+    
+              <Text style = {styles.escrita}>{route.params.escrita}</Text>
+    
+              
+    
+    
+          </View>
+      </>
+    )}
 
-    }
-
-    fetchData();
+  useEffect (()  => {
 
     
- },[entrada]);*/
+
+  
+    setTimeout(() => {
+      fetchData().then((res) => {
+        setEntrada(res);
+        console.log(entrada.data);
+      });
+  }, 2000);
+
  
+  
 
-    return (
-        <>
-         <TopBar/>
-
-            <Pressable style = {styles.perfil} onPress = {() => {navigation.navigate("PerfilUsuario")}}>
-
-            <AntDesign name = "user" size = {35} />
-            
-            </Pressable>
-
-            <Pressable style = {styles.voltar} onPress = {() => {navigation.goBack()}}>
-
-            <AntDesign name = "arrowleft" size = {35} />
-            
-            </Pressable>
-
-            <View style = {styles.container}>
-                
-                
-                <View style = {styles.divData}>
-
-                  <Text style = {styles.data}>{route.params.data}</Text>
-
-                </View>
-
-                <View style = {styles.divTitulo}>
-                  <Text style = {styles.titulo}>{route.params.titulo}</Text>
-                </View>
-
-                <Text style = {styles.escrita}>{route.params.escrita}</Text>
-
-                
-
-
-            </View>
-        </>
-    )
-
+    
+ },[]);
+ 
+ return null;
+   
 }
 
 const styles = StyleSheet.create({
