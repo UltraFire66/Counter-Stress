@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState,useContext} from 'react';
+import {useState,useContext,useEffect} from 'react';
 import { AuthContext } from '../contexts/auth';
 import {
   Text,
@@ -21,6 +21,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 
+
+
+
 export default function Login({navigation}) {
 
   const [email, setEmail] = useState('');
@@ -33,6 +36,9 @@ export default function Login({navigation}) {
   const handleLogin = () => {
     Login(email,senha);
   }
+
+  
+
 
   return (
 

@@ -11,21 +11,22 @@ import {
 import {useState,useEffect} from 'react';
 import Axios from 'axios';
 
+
+
 import {vh,vw} from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
-const apidata = "https://counterstress.glitch.me/diarioUsuario/1";
+
+
+
 
 
 export default function EntradaDiarioID({navigation,route}) {
-  const [entrada,setEntrada] = useState({});
+  
 
-  async function fetchData({navigation,route}){
-
-    const response = await fetch("https://counterstress.glitch.me/diarioUsuario/1");
-    const resultado = await response.json();
-    
+  
+ 
     return (
       <>
        <TopBar/>
@@ -62,27 +63,7 @@ export default function EntradaDiarioID({navigation,route}) {
     
           </View>
       </>
-    )}
-
-  useEffect (()  => {
-
-    
-
-  
-    setTimeout(() => {
-      fetchData().then((res) => {
-        setEntrada(res);
-        console.log(entrada.data);
-      });
-  }, 2000);
-
- 
-  
-
-    
- },[]);
- 
- return null;
+    )
    
 }
 

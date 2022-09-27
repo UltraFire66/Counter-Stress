@@ -27,7 +27,7 @@ export default function Home({navigation}) {
   
  
   const [foto,setFoto] = useState('https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800');
-  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!');
+  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!bfjbghjfbjgbdfjg');
   const [autor,setAutor] = useState('');
 
   const client = createClient('563492ad6f91700001000001b6804ae3f9b34c36b123675631140391');
@@ -45,12 +45,16 @@ export default function Home({navigation}) {
 
   }
 
-  const pegaFoto = () => {
-    const page = Math.random() * (15000 - 1 + 1) + 1;
-    client.photos.search({ query,orientation,size,page, per_page: 1 }).then(photos => {
-      setFoto(photos.photos[0].src.portrait);
-      console.log(foto)
-    });
+  const pegaFoto = async () => {
+    try{
+      const page = Math.random() * (15000 - 1 + 1) + 1;
+      await client.photos.search({ query,orientation,size,page, per_page: 1 }).then(photos => {
+        setFoto(photos.photos[0].src.portrait);
+      });
+    }catch{
+      pegaFoto();
+    }
+    
 
   }
 
