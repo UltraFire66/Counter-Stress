@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Pressable,
   Text,
-  Image
+  Image,
+  ImageBackground,
 } from 'react-native';
 
 import {useState,useEffect} from 'react'
@@ -18,6 +19,7 @@ import { vh, vw } from 'react-native-expo-viewport-units';
 
 const pensador = require('pensador-api')
 import { createClient } from 'pexels';
+import  Axios  from 'axios';
 
 
 
@@ -27,7 +29,7 @@ export default function Home({navigation}) {
   
  
   const [foto,setFoto] = useState('https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800');
-  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!bfjbghjfbjgbdfjg');
+  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!');
   const [autor,setAutor] = useState('');
 
   const client = createClient('563492ad6f91700001000001b6804ae3f9b34c36b123675631140391');
@@ -36,13 +38,11 @@ export default function Home({navigation}) {
   const size = 'medium';
 
   
-  async function pegaFrase() {
+   const pegaFrase = async() => {
 
-    const array = await pensador({ term: "Elon Musk", max: 5 })
-    setFrase(array.phrase[0]);
-    setAutor('Elon Musk');
-    return array;
-
+    const frase = await Axios.get("https://testefunctionsbeto.azurewebsites.net/api/frases-api");
+    setFrase(frase.data.texto);
+    setAutor(frase.data.autor);
   }
 
   const pegaFoto = async () => {
@@ -53,17 +53,14 @@ export default function Home({navigation}) {
       });
     }catch{
       pegaFoto();
+     
     }
     
 
   }
 
-  const Mensagem = () => {
-    pegaFoto;
- 
+  
 
-
-  }
 
 
 
@@ -80,12 +77,19 @@ export default function Home({navigation}) {
 
       
           
-          <Image source={{uri:foto}}  style={styles.foto} />
-          <Text style = {styles.mensagem}>{frase}</Text>
-          <Text style = {styles.autor}>{autor}</Text>
-          <Pressable style={styles.botao} onPress = {pegaFoto}>
-            <Text style={styles.escritaBotao}>Mensagem</Text>
-          </Pressable>
+          
+          <ImageBackground source={{uri:foto}}  style={styles.foto}>
+            <Text style = {styles.mensagem}>{frase}</Text>
+            <Text style = {styles.mensagem}>{autor}</Text>
+            <Pressable style={styles.botao} onPress = {() => {pegaFoto(); pegaFrase();}}>
+              <Text style={styles.escritaBotao}>Mensagem</Text>
+            </Pressable>
+          </ImageBackground>
+        
+           
+         
+        
+        
         
 
        
@@ -122,11 +126,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E5E5',
     width: vw(52),
     height: vh(9),
-    marginTop: vh(4),
+    marginTop: vh(0),
     borderRadius: vw(8),
     display: 'flex',
     position: 'absolute',
-    top: vh(63),
+    top: vh(58),
     left: vw(25),
     border: 'solid 1px black',
     alignItems: 'center',
@@ -142,17 +146,21 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     backgroundColor: 'red',
+    display: 'flex',
+    alignItems: 'center',
+    
    },
 
    mensagem: {
-      position: 'absolute',
-      top: vh(35),
-      left: vw(7),
+     
+      top: vh(20),
+      padding: 10,
       fontSize: vw(8),
-      maxWidth: vw(80),
-    
+      maxWidth: vw(100),
+      maxHeight: vh(100),
       textAlign: 'center',
       color: 'white'
+      
    },
 
    autor: {
