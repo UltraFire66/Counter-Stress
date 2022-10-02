@@ -7,6 +7,7 @@ import {
   Text,
   Image,
   ImageBackground,
+  ActivityIndicator
 } from 'react-native';
 
 import {useState,useEffect} from 'react'
@@ -16,6 +17,7 @@ import { AuthContext } from '../contexts/auth';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { vh, vw } from 'react-native-expo-viewport-units';
+import LoadingIcon from '../components/Loading';
 
 const pensador = require('pensador-api')
 import { createClient } from 'pexels';
@@ -27,6 +29,7 @@ export default function Home({navigation}) {
 
 
   
+  const [carregando,setCarregando] = useState(false);
  
   const [foto,setFoto] = useState('https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800');
   const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!');
@@ -40,9 +43,25 @@ export default function Home({navigation}) {
   
    const pegaFrase = async() => {
 
+    setCarregando(true);
+    
+
     const frase = await Axios.get("https://testefunctionsbeto.azurewebsites.net/api/frases-api");
     setFrase(frase.data.texto);
     setAutor(frase.data.autor);
+
+    try{
+      const page = Math.random() * (15000 - 1 + 1) + 1;
+      await client.photos.search({ query,orientation,size,page, per_page: 1 }).then(photos => {
+        setFoto(photos.photos[0].src.portrait);
+        
+      });
+    }catch{
+      pegaFoto();
+      
+     
+    }
+    setCarregando(false)
   }
 
   const pegaFoto = async () => {
@@ -76,21 +95,27 @@ export default function Home({navigation}) {
         </Pressable>
 
       
-          
-          
-          <ImageBackground source={{uri:foto}}  style={styles.foto}>
-            <Text style = {styles.mensagem}>{frase}</Text>
-            <Text style = {styles.mensagem}>{autor}</Text>
-            <Pressable style={styles.botao} onPress = {() => {pegaFoto(); pegaFrase();}}>
+          {carregando ?
+           (<View style = {styles.ViewLoading}>
+              <ActivityIndicator size="large" color="#C4BFE7" />
+            </View>
+            )
+          :
+           (<ImageBackground source={{uri:foto}} style={styles.foto}>
+              <Text style = {styles.mensagem}>{frase}</Text>
+              <Text style = {styles.mensagem}>{autor}</Text>
+            <Pressable style={styles.botao} onPress = {() => {pegaFrase();}}>
               <Text style={styles.escritaBotao}>Mensagem</Text>
             </Pressable>
-          </ImageBackground>
+        </ImageBackground>)}
+          
+          
         
-           
+          
          
         
         
-        
+          
 
        
 
@@ -122,6 +147,14 @@ const styles = StyleSheet.create({
     
    },
 
+   ViewLoading: {
+    height: vh(80),
+    width: vw(100),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+   },
+
    botao: {
     backgroundColor: '#E5E5E5',
     width: vw(52),
@@ -145,7 +178,6 @@ const styles = StyleSheet.create({
    foto: {
     height: '100%',
     width: '100%',
-    backgroundColor: 'red',
     display: 'flex',
     alignItems: 'center',
     
