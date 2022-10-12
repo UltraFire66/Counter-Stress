@@ -24,26 +24,31 @@ export default function CadastroUsuario({navigation}) {
   const [emailres,setEmail] = useState('');
   const [senhares,setSenha] = useState('');
   const [senhaNovamente,setSenhaNovamente] = useState('');
-  const [idadeUsu,setIdadeUsu] = useState('');
+  const [crp,setCrp] = useState('');
+  const [rua,setRua] = useState('');
+  const [bairro,setBairro] = useState('');
+  const [numC,setNumC] = useState('');
   const [cidade,setCidade] = useState('');
   const [estado,setEstado] = useState('');
   const [pais,setPais] = useState('');
+  const [cep,setCep] = useState('');
 
-  // falta colocar a variável booleana
+
+  //falta atualizar no banco pra receber o crp e mandar a variável booleana
   const registro = () =>{
     Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu});
     navigation.navigate('Login');
   }
   
 
-  return(   
+  return(
     <>
       <ScrollView>
         <LinearGradient
         style={styles.fundo}
         start={{x: 0,y: 0}}
         end={{x: 0, y: 1}}
-        colors={["#8E4FCD", "#C4BFE7"]}>
+        colors={["#225ED2", "#B4D4E5"]}>
 
           <Text style = {styles.titulo}>Cadastro</Text>
 
@@ -68,23 +73,40 @@ export default function CadastroUsuario({navigation}) {
           onChangeText={(value)=>setSenhaNovamente(value)}/>
 
           <TextInput style={styles.escrever}
-          placeholder="Digite sua idade"
-          onChangeText={(value)=>setIdadeUsu(value)} />
+          placeholder="Digite o CRP"
+          onChangeText={(value)=>setCrp(value)} />
 
           <TextInput style={styles.escrever}
-          placeholder="Digite sua cidade"
+          placeholder="Digite o seu CEP do consultorio"
+          onChangeText={(value)=>setCep(value)} />
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite o número do consultorio"
+          onChangeText={(value)=>setNumC(value)} />
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite a rua do consultorio"
+          onChangeText={(value)=>setRua(value)} />
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite o bairro do consultorio"
+          onChangeText={(value)=>setBairro(value)} />
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite a cidade do consultorio"
           onChangeText={(value)=>setCidade(value)} />
 
           <TextInput style={styles.escrever}
-          placeholder="Digite seu estado"
+          placeholder="Digite o estado do consultorio"
           onChangeText={(value)=>setEstado(value)} />
 
           <TextInput style={styles.escrever}
-          placeholder="Digite seu país"
+          placeholder="Digite o país do consultorio"
           onChangeText={(value)=>setPais(value)} />
 
-          {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' || idadeUsu == '' ||
-          cidade == '' || estado == '' || pais == '' ? 
+          {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' || crp == '' ||
+          cep == '' || numC == '' || rua == '' || bairro == '' || cidade == '' || estado == '' ||
+          pais == '' ? 
             <View style={styles.botaoCinza}>
               <Text style={styles.escritaBotao}>Cadastrar</Text>
             </View>:

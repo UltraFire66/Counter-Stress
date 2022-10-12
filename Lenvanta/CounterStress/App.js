@@ -17,6 +17,7 @@ import PerfilPsico from './telasPsico/PerfilPsico';
 import Login from './telasUsuario/login';
 import Cadastro from './telasUsuario/Cadastro';
 import CadastroUsuario from './telasUsuario/CadastroUsuario';
+import CadastroPsicologo from './telasPsico/CadastroPsicologo';
 import Diario from './telasUsuario/Diario';
 import MEs from './telasUsuario/MEs'
 import CatalogoPsi from './telasUsuario/CatalogoPsi';//catálogo de psicologos
@@ -44,11 +45,12 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
-          initialRouteName = "MeEspecifica">
+          initialRouteName = "Cadastro">
 
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>
           <Stack.Screen name = "CadastroUsuario" component = {CadastroUsuario}/>
+          <Stack.Screen name = "CadastroPsicologo" component = {CadastroPsicologo}/>
           <Stack.Screen name = "Cadastro" component = {Cadastro}/>
           <Stack.Screen name = "PerfilUsuario" component = {PerfilUsuario}/>
           <Stack.Screen name = "editarPerfil" component = {EditarPerfil}/>

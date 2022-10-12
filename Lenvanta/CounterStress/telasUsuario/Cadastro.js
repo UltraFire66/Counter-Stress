@@ -39,7 +39,9 @@ export default function Cadastro({ navigation }) {
         </Text>
       </Pressable>
 
-      <Pressable style={styles.botao}>
+      <Pressable 
+      style={styles.botao}
+      onPress={() => navigation.navigate('CadastroPsicologo')}>
         <Text style={styles.escritaBotao}>
           Ajudar pessoas com estresse, ansiedade e dificuldade de organização
           como Psicólogo
