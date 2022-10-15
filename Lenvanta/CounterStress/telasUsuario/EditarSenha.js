@@ -15,6 +15,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from '../contexts/auth';
 
 import Wallpaper from '../assets/wallpaper.jpg';
+import AntDesign from "react-native-vector-icons/AntDesign";
 import Icone from '../assets/dantePerfil.jpg';
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import Feather from "react-native-vector-icons/Feather";
@@ -41,6 +42,12 @@ export default function EditarPerfil({navigation}) {
           resizeMode="cover"
           style={styles.fundo}
           blurRadius={1.5}>
+
+            <Pressable style = {styles.fechar} onPress = {() => navigation.goBack()} >
+
+                <AntDesign name = "close" size = {30}/>
+
+            </Pressable>
           
           <ImageBackground
             style={styles.circulo}
@@ -71,21 +78,18 @@ export default function EditarPerfil({navigation}) {
       <View style = {styles.parteDeBaixo}>
       
         <View >
-          <Text style = {styles.escrita}>Usuário: </Text>
-          <TextInput style = {styles.campoEditar} value = {nomeUsu}
-          onChangeText = {(value) => setNomeUsu(value)}/>
+          <Text style = {styles.escrita}>Senha Antiga: </Text>
+          <TextInput style = {styles.campoEditar} onChangeText = {(value) => setNomeUsu(value)}/>
         </View>
 
         <View >
-          <Text style = {styles.escrita}>E-mail: </Text>
-          <TextInput style = {styles.campoEditar} value = {email}
-          onChangeText = {(value) => setEmail(value)}/>
+          <Text style = {styles.escrita}>Nova Senha: </Text>
+          <TextInput style = {styles.campoEditar} onChangeText = {(value) => setEmail(value)}/>
         </View>
 
         <View >
-          <Text style = {styles.escrita}>Nome: </Text>
-          <TextInput style = {styles.campoEditar} value = {nome}
-          onChangeText = {(value) => setNome(value)}/>
+          <Text style = {styles.escrita}>Nova Senha Novamente: </Text>
+          <TextInput style = {styles.campoEditar} onChangeText = {(value) => setNome(value)}/>
         </View>
 
         <Pressable style = {styles.btn} onPress = {handleEdit}>
@@ -93,9 +97,6 @@ export default function EditarPerfil({navigation}) {
         </Pressable>
 
       </View>
-
-     
-
       
       </View>
 
@@ -109,6 +110,14 @@ const styles = StyleSheet.create({
    height: vh(100),
    width: vw(100),
  },
+
+ fechar: {
+
+    position: 'absolute',
+    right: vw(4),
+    top: vh(3)
+
+  },
 
  telaPerfil: {
     width: vw(100),

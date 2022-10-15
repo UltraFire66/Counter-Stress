@@ -14,6 +14,7 @@ import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons"
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Foundation from "react-native-vector-icons/Foundation";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { vh, vw } from "react-native-expo-viewport-units";
 
@@ -31,7 +32,7 @@ export default function Perfil({ navigation }) {
       <View style={styles.telaPerfil}>
         <ImageBackground source={Wallpaper} resizeMode="cover" style={styles.fundo} blurRadius={1.5}>
 
-        <Pressable style = {styles.fechar} onPress = {() => navigation.navigate("Tab")} >
+        <Pressable style = {styles.fechar} onPress = {() => navigation.goBack()} >
 
             <AntDesign name = "close" size = {30}/>
 
@@ -48,6 +49,15 @@ export default function Perfil({ navigation }) {
         <Pressable style={styles.btnEditar}  onPress = {() => navigation.navigate("editarPerfil")}>
           <MaterialCommunity name = "pencil" size={25} />
         </Pressable>
+      </View>
+
+      <View style={styles.escritaPerfil2}>
+        <View style={styles.topo}>
+          <MaterialCommunityIcons name="notebook-edit" size={28}></MaterialCommunityIcons>
+          <Text style={styles.titulo}>Bio:</Text>
+        </View>
+        <Text style={styles.escrita}> Olá sou o Wall-e da Silva e sou um psicologo
+        amo todos e ainda mais as pessoas que estão a minha volta rsrsrsasassaas</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -152,7 +162,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 
-
   escritaPerfil: {
     display: "flex",
     flexDirection: 'row',
@@ -160,6 +169,16 @@ const styles = StyleSheet.create({
     marginBottom: vh(5),
     justifyContent: "flex-start",
   },
+
+  escritaPerfil2: {
+    display: "flex",
+    flexDirection: 'column',
+    marginLeft: vw(5),
+    marginRight: vw(10),
+    marginBottom: vh(5),
+    justifyContent: "flex-start",
+  },
+
   topo: {
     display: "flex",
     flexDirection: "row",

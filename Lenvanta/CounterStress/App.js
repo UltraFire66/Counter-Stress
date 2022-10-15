@@ -30,7 +30,8 @@ import Planejamento from './telasUsuario/Planejamento';
 import EntrarQuest from './telasUsuario/EntrarQuest';
 import CriarDiario from './telasUsuario/CriarDiario';
 import EntradaDiarioID from './telasUsuario/EntradaDiarioID';
-
+import EditarSenha from './telasUsuario/EditarSenha';
+import VerPsico from './telasUsuario/VerPsico';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -45,7 +46,11 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
+<<<<<<< Updated upstream
           initialRouteName = "CadastroUsuario">
+=======
+          initialRouteName = "Login">
+>>>>>>> Stashed changes
 
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>
@@ -61,6 +66,9 @@ export default function App() {
           <Stack.Screen name = "PerfilPsico" component = {PerfilPsico}/>
           <Stack.Screen name = "CriarDiario" component = {CriarDiario}/>
           <Stack.Screen name = "EntradaDiario" component = {EntradaDiarioID}/>
+          <Stack.Screen name = "EditarSenha" component = {EditarSenha}/>
+          <Stack.Screen name = "VerPsico" component = {VerPsico}/>
+
 
           
 

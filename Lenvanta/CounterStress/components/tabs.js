@@ -17,12 +17,21 @@ import BotaoQuest from "./botaoQuest";
 import BotaoQuestClicado from "./botaoQuestClicado";
 
 import {vh,vw} from 'react-native-expo-viewport-units';
+import { Axios } from 'axios';
 
 const Tab = createBottomTabNavigator();
+
+/*const [cor, setCor] = useState('');
+//aqui
+const barra = () =>{
+  Axios.post("https://counterstress.glitch.me/login", {flag});
+}*/
 
 const Tabs = () =>{
 
   const [clicado,setClicado] = useState(false);
+
+  //{flag == 0 ? setCor = '#C4BFE7': setCor = '#78ABC6'}
 
   return(
 

@@ -17,7 +17,7 @@ import EntradaDiario from '../components/EntradaDiario';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import TopBar from '../components/TopBar';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import axios from 'axios';
+
 
 var escritaDiario = "É puro espetáculo: comida, compras e diversão fora do campo ";
 

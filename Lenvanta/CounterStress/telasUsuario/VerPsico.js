@@ -7,59 +7,26 @@ import {
   TextInput,
   Pressable,
   ImageBackground,
-  Alert
 } from "react-native";
-
-import { useContext } from "react";
-import { AuthContext } from "../contexts/auth";
-
-import Axios from 'axios';
 
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
-import Fontisto from "react-native-vector-icons/Fontisto";
+import Foundation from "react-native-vector-icons/Foundation";
+import FontAwesome from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { vh, vw } from "react-native-expo-viewport-units";
 
-import Wallpaper from "../assets/standardWallpaper.png";
-import Icone from "../assets/standardProfileIcon.png";
-import Lapis from "../assets/iconeLapis.png";
+import Wallpaper from "../assets/wallpaper2.jpg";
+import Icone from "../assets/Wall-e.jpg";
+import EscritaPerfil from "../components/EscritaPerfil";
+import Usuario from "../assets/iconePerfil.png";
+import Carta from "../assets/iconeCarta.png";
+import Cartao from "../assets/iconeNome.png";
+import Cadeado from "../assets/iconeCadeado.png";
 
 export default function Perfil({ navigation }) {
-  
-  const {user,temFoto,temWallpp} = useContext(AuthContext);
-  
-  const DeletarConta = () => {
-      Axios.post("https://counterstress.glitch.me/delete", {id: user.data[0].idUser}).then((response)=>{
-        if(response.data.message == 'Erro encontrado'){
-          alert('Não foi possível excluir a conta');
-        }
-        else{
-          alert('Conta excluída com sucesso');
-          navigation.navigate('Login');
-        }
-      });
-      
-    
-    
-  }
-
-  const MostrarPopUp = ()=>{
-    return Alert.alert (
-      "Deletar Conta",
-      "Tem certeza que deseja deletar a sua conta ?",
-      [
-        {
-          text: 'yes',
-          onPress: () => {DeletarConta}
-        },
-        {text: 'Nao'}
-      ]
-
-    );
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
@@ -78,10 +45,13 @@ export default function Perfil({ navigation }) {
         </ImageBackground>
       </View>
 
-      <View style={styles.jogarDireita}>
-        <Pressable style={styles.btnEditar}  onPress = {() => navigation.navigate("editarPerfil")}>
-          <MaterialCommunity name = "pencil" size={25} />
-        </Pressable>
+      <View style={styles.escritaPerfil2}>
+        <View style={styles.topo}>
+          <MaterialCommunityIcons name="notebook-edit" size={28}></MaterialCommunityIcons>
+          <Text style={styles.titulo}>Bio:</Text>
+        </View>
+        <Text style={styles.escrita}> Olá sou o Wall-e da Silva e sou um psicologo que
+        ama a todos e ainda mais as pessoas que estão a minha volta rsrsrsasassaas</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -89,7 +59,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}>{user.data[0].nameUser}</Text>
+        <Text style={styles.escrita}> Wall-e da silva</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -97,35 +67,26 @@ export default function Perfil({ navigation }) {
           <MaterialCommunity name="email-outline" size={32} />
           <Text style={styles.titulo}>Email:</Text>
         </View>
-        <Text style={styles.escrita}> {user.data[0].email} </Text>
+        <Text style={styles.escrita}> SilvaWall@gmail.com</Text>
       </View>
-
-      {/*<View style={styles.escritaPerfil}>
+    
+      <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <AntDesign name="idcard" size={30} />
-          <Text style={styles.titulo}>Nome:</Text>
+          <Foundation name="telephone" size={30} />
+          <Text style={styles.titulo}>Telefone:</Text>
         </View>
-        <Text style={styles.escrita}> {user.data[0].nome}</Text>
-      </View>*/}
+        <Text style={styles.escrita}> (32) 912345-6789</Text>
+      </View>
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
-          <EvilIcons name="lock" size={40}/>
+          <FontAwesome name="map-marker" size={30}/>
           <Text style={styles.titulo}>Senha:</Text>
-          <Pressable style={styles.botaoEditarSenha} onPress = {() => navigation.navigate("EditarSenha")}>
-            <Image source={Lapis} style={styles.lapisSenha} />
-          </Pressable>
         </View>
-        <Text style={styles.senha}> {user.data[0].senha}</Text>
+        <Text style={styles.escrita}> Cataguases - MG</Text>
       </View>
 
-      <View style={styles.links}>
-        <Text style={styles.escritaLink}>Deseja excluir sua conta?</Text>
-        <Pressable onPress={DeletarConta}>
-        
-          <Text style={styles.link}>Excluir</Text>
-        </Pressable>
-      </View>
+      
     </View>
   );
 }
@@ -135,6 +96,7 @@ const styles = StyleSheet.create({
   telaPerfil: {
     width: vw(100),
     height: vh(33),
+    marginBottom: vh(5),
   },
 
   fundo: {
@@ -172,6 +134,7 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     alignItems: "flex-end",
+    marginBottom: vh(4),
   },
 
   btnEditar: {
@@ -188,14 +151,23 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 
-
   escritaPerfil: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    flexDirection: 'row',
     marginLeft: vw(5),
     marginBottom: vh(5),
+    justifyContent: "flex-start",
   },
+
+  escritaPerfil2: {
+    display: "flex",
+    flexDirection: 'column',
+    marginLeft: vw(5),
+    marginRight: vw(10),
+    marginBottom: vh(5),
+    justifyContent: "flex-start",
+  },
+
   topo: {
     display: "flex",
     flexDirection: "row",
@@ -210,13 +182,8 @@ const styles = StyleSheet.create({
 
   escrita: {
     fontSize: vw(5),
-    marginLeft: vw(10),
-  },
-
-  senha: {
-    fontSize: vw(7),
-    fontWeight: "bold",
-    marginLeft: vw(10),
+    marginLeft: vw(2),
+    marginTop: vh(0.4),
   },
 
   botaoEditarSenha: {
