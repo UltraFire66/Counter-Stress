@@ -12,7 +12,7 @@ import {
 
 
 import Axios from 'axios';
-
+import Form from 'react-native-form'
 import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -27,11 +27,24 @@ export default function CadastroUsuario({navigation}) {
   const [idadeUsu,setIdadeUsu] = useState('');
   const [cidade,setCidade] = useState('');
   const [estado,setEstado] = useState('');
-  const [pais,setPais] = useState('');
 
   // falta colocar a variável booleana
   const registro = () =>{
-    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu});
+    
+    Axios.post("https://counterstress.glitch.me/registerUser", 
+    {
+      nameUser: nomeres,
+      pass: senhares,
+      email: emailres,
+      nick: 5,
+      profilepic: null,
+      wallppPic: null,
+      flag: 0,
+      born: null,
+      city: cidade,
+      state: estado
+    }
+    );
     navigation.navigate('Login');
   }
   
@@ -47,51 +60,54 @@ export default function CadastroUsuario({navigation}) {
 
           <Text style = {styles.titulo}>Cadastro</Text>
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite seu Nome de Usuario"
-          onChangeText={(value)=>setNomeUsu(value)} />
+        
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite seu email"
-          onChangeText={(value)=>setEmail(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite seu Nome de Usuario"
+            onChangeText={(value)=>setNomeUsu(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite seu nome Completo"
-          onChangeText={(value)=>setNome(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite seu email"
+            onChangeText={(value)=>setEmail(value)} />
 
-          <TextInput style={styles.escrever} 
-          placeholder="Digite sua senha" 
-          onChangeText={(value)=>setSenha(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite seu nome Completo"
+            onChangeText={(value)=>setNome(value)} />
 
-          <TextInput style={styles.escrever} 
-          placeholder="Digite sua senha novamente" 
-          onChangeText={(value)=>setSenhaNovamente(value)}/>
+            <TextInput style={styles.escrever} 
+            placeholder="Digite sua senha" 
+            onChangeText={(value)=>setSenha(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite sua idade"
-          onChangeText={(value)=>setIdadeUsu(value)} />
+            <TextInput style={styles.escrever} 
+            placeholder="Digite sua senha novamente" 
+            onChangeText={(value)=>setSenhaNovamente(value)}/>
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite sua cidade"
-          onChangeText={(value)=>setCidade(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite sua idade"
+            onChangeText={(value)=>setIdadeUsu(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite seu estado"
-          onChangeText={(value)=>setEstado(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite sua cidade"
+            onChangeText={(value)=>setCidade(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite seu país"
-          onChangeText={(value)=>setPais(value)} />
+            <TextInput style={styles.escrever}
+            placeholder="Digite seu estado"
+            onChangeText={(value)=>setEstado(value)} />
 
-          {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' || idadeUsu == '' ||
-          cidade == '' || estado == '' || pais == '' ? 
-            <View style={styles.botaoCinza}>
-              <Text style={styles.escritaBotao}>Cadastrar</Text>
-            </View>:
+            
 
-            <Pressable style={styles.botao} onPress = {registro}>
-              <Text style={styles.escritaBotao}>Cadastrar</Text>
-            </Pressable>}
+            {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' || idadeUsu == '' ||
+            cidade == '' || estado == '' ? 
+              <View style={styles.botaoCinza}>
+                <Text style={styles.escritaBotao}>Cadastrar</Text>
+              </View>:
+
+              <Pressable style={styles.botao} onPress = {registro}>
+                <Text style={styles.escritaBotao}>Cadastrar</Text>
+              </Pressable>}
+
+          
+          
 
         
 

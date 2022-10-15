@@ -26,17 +26,38 @@ export default function CadastroUsuario({navigation}) {
   const [senhaNovamente,setSenhaNovamente] = useState('');
   const [crp,setCrp] = useState('');
   const [rua,setRua] = useState('');
-  const [bairro,setBairro] = useState('');
   const [numC,setNumC] = useState('');
   const [cidade,setCidade] = useState('');
   const [estado,setEstado] = useState('');
-  const [pais,setPais] = useState('');
+  const [contactNum,setContactNum] = useState('');
+  const [txtBio,setTxtBio] = useState('');
+
   const [cep,setCep] = useState('');
 
 
   //falta atualizar no banco pra receber o crp e mandar a variável booleana
   const registro = () =>{
-    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu});
+    
+    Axios.post("https://counterstress.glitch.me/registerPsy", 
+    {
+      nameUser: nomeres,
+      pass: senhares,
+      email: emailres,
+      nick: 5,
+      profilepic: null,
+      wallppPic: null,
+      flag: 1,
+      born: null,
+      city: cidade,
+      state: estado,
+      crp: crp,
+      street: rua,
+      number: numC,
+      cep: cep,
+      contactNum: contactNum,
+      txtBio: txtBio
+    }
+    );
     navigation.navigate('Login');
   }
   
@@ -77,6 +98,14 @@ export default function CadastroUsuario({navigation}) {
           onChangeText={(value)=>setCrp(value)} />
 
           <TextInput style={styles.escrever}
+          placeholder="Digite o seu numero de contato"
+          onChangeText={(value)=>setContactNum(value)} />
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite um texto para aparecer em seu perfil"
+          onChangeText={(value)=>setTxtBio(value)} />
+
+          <TextInput style={styles.escrever}
           placeholder="Digite o seu CEP do consultorio"
           onChangeText={(value)=>setCep(value)} />
 
@@ -88,9 +117,6 @@ export default function CadastroUsuario({navigation}) {
           placeholder="Digite a rua do consultorio"
           onChangeText={(value)=>setRua(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite o bairro do consultorio"
-          onChangeText={(value)=>setBairro(value)} />
 
           <TextInput style={styles.escrever}
           placeholder="Digite a cidade do consultorio"
@@ -100,13 +126,11 @@ export default function CadastroUsuario({navigation}) {
           placeholder="Digite o estado do consultorio"
           onChangeText={(value)=>setEstado(value)} />
 
-          <TextInput style={styles.escrever}
-          placeholder="Digite o país do consultorio"
-          onChangeText={(value)=>setPais(value)} />
+         
 
           {emailres == '' || nomeres == '' || senhares == '' || nomeUsu == '' || crp == '' ||
-          cep == '' || numC == '' || rua == '' || bairro == '' || cidade == '' || estado == '' ||
-          pais == '' ? 
+          cep == '' || numC == '' || rua == '' ||  cidade == '' || estado == ''
+          ? 
             <View style={styles.botaoCinza}>
               <Text style={styles.escritaBotao}>Cadastrar</Text>
             </View>:
