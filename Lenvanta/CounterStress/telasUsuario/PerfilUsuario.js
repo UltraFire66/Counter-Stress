@@ -22,16 +22,16 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 
 import { vh, vw } from "react-native-expo-viewport-units";
 
-import Wallpaper from "../assets/wallpaper.jpg";
-import Icone from "../assets/dantePerfil.jpg";
+import Wallpaper from "../assets/standardWallpaper.png";
+import Icone from "../assets/standardProfileIcon.png";
 import Lapis from "../assets/iconeLapis.png";
 
 export default function Perfil({ navigation }) {
   
-  const {user} = useContext(AuthContext);
+  const {user,temFoto,temWallpp} = useContext(AuthContext);
   
   const DeletarConta = () => {
-      Axios.post("https://counterstress.glitch.me/delete", {id: user.data[0].id}).then((response)=>{
+      Axios.post("https://counterstress.glitch.me/delete", {id: user.data[0].idUser}).then((response)=>{
         if(response.data.message == 'Erro encontrado'){
           alert('Não foi possível excluir a conta');
         }
@@ -89,7 +89,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}>{user.data[0].nomeUsuario}</Text>
+        <Text style={styles.escrita}>{user.data[0].nameUser}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -100,13 +100,13 @@ export default function Perfil({ navigation }) {
         <Text style={styles.escrita}> {user.data[0].email} </Text>
       </View>
 
-      <View style={styles.escritaPerfil}>
+      {/*<View style={styles.escritaPerfil}>
         <View style={styles.topo}>
           <AntDesign name="idcard" size={30} />
           <Text style={styles.titulo}>Nome:</Text>
         </View>
         <Text style={styles.escrita}> {user.data[0].nome}</Text>
-      </View>
+      </View>*/}
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>

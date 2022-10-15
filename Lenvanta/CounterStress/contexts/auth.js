@@ -7,6 +7,8 @@ export const AuthContext = createContext({});
 function AuthProvider ({children}){
 
     const [user,setUser] = useState({});
+    const [temFoto,setTemFoto] = useState(false);
+    const [temWallpp,setTemWallpp] = useState(false);
     const navigation = useNavigation();
 
     function Login(email,senha){
@@ -17,7 +19,14 @@ function AuthProvider ({children}){
         }
         else{
             setUser(response);
-         
+            if(response.profilePic != null){
+                setTemFoto(true);
+            }
+
+            if(response.wallppPic != null){
+                setTemWallpp(true);
+            }
+
             navigation.navigate('Tab');
         }
   });
@@ -40,7 +49,7 @@ function AuthProvider ({children}){
     }
 
     return (
-        <AuthContext.Provider value={{user, Login,Edit}}>
+        <AuthContext.Provider value={{user, Login,Edit,temFoto,temWallpp}}>
             {children}
         </AuthContext.Provider>
     )
