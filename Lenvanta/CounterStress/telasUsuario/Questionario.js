@@ -9,30 +9,19 @@ import {
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
-
 import Torii from '../assets/torii.png';
-
 import { LinearGradient } from 'expo-linear-gradient';
+import Perguntas from '../components/Perguntas';
 
 
 
 
-export default function EntrarQuest({navigation}) {
+export default function Questionario({navigation}) {
   return (
-
-    <LinearGradient
-    style={styles.container}
-    start={{x: 0,y: 0}}
-    end={{x: 0, y: 1}}
-    colors={["#8E4FCD", "#5694fa"]}>
-
-      <Text style={styles.escrever}>Deseja fazer o teste para avaliar seu nivel de stress?</Text>
-      <Image source={Torii} style={styles.icone}></Image>
-      <Pressable style={styles.botao}  onPress = {() => navigation.navigate("Questionario")}>
-        <Text style={styles.escritaBotao} >Fazer o Teste</Text>
-      </Pressable>
-
-    </LinearGradient>
+    <View>
+      <Perguntas pergunt = "vc olha pro céu estrelado?"></Perguntas>
+    
+    </View>
     
     
 

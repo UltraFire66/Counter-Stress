@@ -32,6 +32,7 @@ import CriarDiario from './telasUsuario/CriarDiario';
 import EntradaDiarioID from './telasUsuario/EntradaDiarioID';
 import EditarSenha from './telasUsuario/EditarSenha';
 import VerPsico from './telasUsuario/VerPsico';
+import Questionario from './telasUsuario/Questionario';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -66,6 +67,7 @@ export default function App() {
           <Stack.Screen name = "EntradaDiario" component = {EntradaDiarioID}/>
           <Stack.Screen name = "EditarSenha" component = {EditarSenha}/>
           <Stack.Screen name = "VerPsico" component = {VerPsico}/>
+          <Stack.Screen name = "Questionario" component = {Questionario}/>
 
 
           

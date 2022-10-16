@@ -12,7 +12,8 @@ import Diario from "../telasUsuario/Diario";
 import MEs from "../telasUsuario/MEs";
 import Catalogo from "../telasUsuario/CatalogoPsi";
 import Home from "../telasUsuario/Home";
-import Quest from "../telasUsuario/EntrarQuest"
+import Quest from "../telasUsuario/EntrarQuest";
+import Questionario from "../telasUsuario/Questionario";
 import BotaoQuest from "./botaoQuest";
 import BotaoQuestClicado from "./botaoQuestClicado";
 
@@ -119,6 +120,10 @@ const Tabs = () =>{
         )
       }}
       />
+
+      
+
+
 
     </Tab.Navigator>
 

@@ -12,7 +12,7 @@ import {
 
 
 import Axios from 'axios';
-import Form from 'react-native-form'
+import Form from 'react-native-form';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
