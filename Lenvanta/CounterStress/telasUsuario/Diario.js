@@ -34,7 +34,7 @@ export default function Diario({navigation}) {
   const [entradas,setEntradas] = useState({});
 
   useEffect (() => {
-     Axios.post("https://counterstress.glitch.me/EntradasDiario", {id: user.data[0].id
+     Axios.post("https://counterstress.glitch.me/EntradasDiario", {id: user.data[0].idUser
         }).then((response) => {
         if(response.data.message == 'Nao encontrado'){
             alert('Email ou Senha incorretos!!');
@@ -60,7 +60,7 @@ export default function Diario({navigation}) {
 
   const renderItem = ({ item }) => (
     <Pressable onPress = {() => {navigation.navigate('EntradaDiario',{
-      id: item.id, titulo: item.titulo , data: item.data, escrita: item.escrita })}}>
+      id: item.idDiary, titulo: item.title , data: item.dateEntry, escrita: item.txtEntry })}}>
     <EntradaDiario data = {item.data} escrita = {item.escrita}/>
     </Pressable>
   );
@@ -97,7 +97,7 @@ export default function Diario({navigation}) {
       <FlatList
       
       data = {entradas.data}
-      keyExtractor={item => item.id}
+      keyExtractor={item => item.idDiary}
       renderItem = {renderItem}
       
       />

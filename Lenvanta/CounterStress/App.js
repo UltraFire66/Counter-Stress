@@ -46,11 +46,9 @@ export default function App() {
       <AuthProvider>
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
-<<<<<<< Updated upstream
-          initialRouteName = "CadastroUsuario">
-=======
+
           initialRouteName = "Login">
->>>>>>> Stashed changes
+
 
           <Stack.Screen name = "Tab" component = {Tabs}/>
           <Stack.Screen name = "Login" component = {Login}/>

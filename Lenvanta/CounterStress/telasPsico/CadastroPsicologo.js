@@ -37,7 +37,6 @@ export default function CadastroUsuario({navigation}) {
 
   //falta atualizar no banco pra receber o crp e mandar a variável booleana
   const registro = () =>{
-<<<<<<< Updated upstream
     
     Axios.post("https://counterstress.glitch.me/registerPsy", 
     {
@@ -59,11 +58,7 @@ export default function CadastroUsuario({navigation}) {
       txtBio: txtBio
     }
     );
-=======
-    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu,
-    flag: 1});
->>>>>>> Stashed changes
-    navigation.navigate('Login');
+
   }
   
 

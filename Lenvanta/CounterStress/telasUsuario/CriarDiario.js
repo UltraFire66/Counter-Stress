@@ -23,8 +23,8 @@ export default function CriarDiario({navigation}) {
   const {user} = useContext(AuthContext)
 
   let currentDate = new Date();
-  let cDate = currentDate.getDate() + '/' + (currentDate.getMonth() + 1) + '/' +  currentDate.getFullYear();
-  
+  let cDate =   currentDate.getFullYear() +  '-' + (currentDate.getMonth() + 1)  + '-' + currentDate.getDate() + '-'  + currentDate.getHours() + '.' + currentDate.getMinutes() + '.' + currentDate.getSeconds() ;
+
 
   
 
@@ -34,7 +34,7 @@ export default function CriarDiario({navigation}) {
  
 
     const RegistrarDiario = () => {
-      Axios.post("https://counterstress.glitch.me/RegistrarDiario",{idUser: user.data[0].id,
+      Axios.post("https://counterstress.glitch.me/RegistrarDiario",{idUser: user.data[0].idUser,
       data: cDate, titulo: titulo, escrita: anota});
       navigation.navigate('Tab');
     }

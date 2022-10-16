@@ -30,7 +30,7 @@ export default function CadastroUsuario({navigation}) {
 
   // falta colocar a variável booleana
   const registro = () =>{
-<<<<<<< Updated upstream
+
     
     Axios.post("https://counterstress.glitch.me/registerUser", 
     {
@@ -46,11 +46,8 @@ export default function CadastroUsuario({navigation}) {
       state: estado
     }
     );
-=======
-    Axios.post("https://counterstress.glitch.me/register", {nome: nomeres , senha: senhares, email: emailres, nomeUsu: nomeUsu,
-    flag: 0});
->>>>>>> Stashed changes
-    navigation.navigate('Login');
+
+    
   }
   
 
@@ -83,19 +80,14 @@ export default function CadastroUsuario({navigation}) {
             placeholder="Digite sua senha" 
             onChangeText={(value)=>setSenha(value)} />
 
-<<<<<<< Updated upstream
             <TextInput style={styles.escrever} 
             placeholder="Digite sua senha novamente" 
             onChangeText={(value)=>setSenhaNovamente(value)}/>
-=======
-          <TextInput style={styles.escrever}
-          placeholder="Digite sua data de nascimento"
-          onChangeText={(value)=>setIdadeUsu(value)} />
->>>>>>> Stashed changes
 
             <TextInput style={styles.escrever}
-            placeholder="Digite sua idade"
+            placeholder="Digite sua data de nascimento"
             onChangeText={(value)=>setIdadeUsu(value)} />
+
 
             <TextInput style={styles.escrever}
             placeholder="Digite sua cidade"
