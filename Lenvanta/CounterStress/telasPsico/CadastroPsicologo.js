@@ -59,6 +59,8 @@ export default function CadastroUsuario({navigation}) {
     }
     );
 
+    navigation.navigate('Login');
+
   }
   
 

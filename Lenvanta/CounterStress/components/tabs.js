@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState,useContext,useEffect } from 'react';
+import { AuthContext } from '../contexts/auth';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { useRoute } from '@react-navigation/native';
@@ -21,25 +22,30 @@ import { Axios } from 'axios';
 
 const Tab = createBottomTabNavigator();
 
-/*const [cor, setCor] = useState('');
-//aqui
-const barra = () =>{
-  Axios.post("https://counterstress.glitch.me/login", {flag});
-}*/
-
 const Tabs = () =>{
 
   const [clicado,setClicado] = useState(false);
+  const [cor,setCor] = useState('#C4BFE7')
+  const {user} = useContext(AuthContext);
+  useEffect(()=>{
+
+    if(user.data[0].flag.data[0] == 1){
+      setCor('#78ABC6');
+    }
+
+
+  },[])
 
   //{flag == 0 ? setCor = '#C4BFE7': setCor = '#78ABC6'}
 
   return(
-
+    <>
+    
     <Tab.Navigator  screenOptions={{headerShown: false,
     
       tabBarStyle: { 
       borderTopColor:'white',
-      backgroundColor: '#C4BFE7',
+      backgroundColor: cor,
       paddingTop:  vh(2),
       height: vh(10),
      
@@ -121,7 +127,7 @@ const Tabs = () =>{
       />
 
     </Tab.Navigator>
-
+    </>
   );
 }
 

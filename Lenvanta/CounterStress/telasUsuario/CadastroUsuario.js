@@ -37,7 +37,7 @@ export default function CadastroUsuario({navigation}) {
       nameUser: nomeres,
       pass: senhares,
       email: emailres,
-      nick: 5,
+      nick: nomeUsu,
       profilepic: null,
       wallppPic: null,
       flag: 0,
@@ -47,7 +47,7 @@ export default function CadastroUsuario({navigation}) {
     }
     );
 
-    
+    navigation.navigate('Login');
   }
   
 
