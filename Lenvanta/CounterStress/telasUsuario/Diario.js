@@ -37,7 +37,7 @@ export default function Diario({navigation}) {
      Axios.post("https://counterstress.glitch.me/EntradasDiario", {id: user.data[0].idUser
         }).then((response) => {
         if(response.data.message == 'Nao encontrado'){
-            alert('Email ou Senha incorretos!!');
+            alert('Sem dados encontrados');
         }
         else{
             setEntradas(response);
@@ -61,7 +61,7 @@ export default function Diario({navigation}) {
   const renderItem = ({ item }) => (
     <Pressable onPress = {() => {navigation.navigate('EntradaDiario',{
       id: item.idDiary, titulo: item.title , data: item.dateEntry, escrita: item.txtEntry })}}>
-    <EntradaDiario data = {item.data} escrita = {item.escrita}/>
+    <EntradaDiario titulo = {item.title} escrita = {item.txtEntry}/>
     </Pressable>
   );
 

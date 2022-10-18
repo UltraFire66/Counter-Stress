@@ -23,8 +23,16 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 export default function EntradaDiarioID({navigation,route}) {
-  
 
+  const [data,setData] = useState('');
+
+  useEffect(()=>{
+
+    const dataAntiga = route.params.data;
+    const dataNova = dataAntiga.substring(0,10);
+    setData(dataNova);
+
+  },[])
   
  
     return (
@@ -48,7 +56,7 @@ export default function EntradaDiarioID({navigation,route}) {
               
               <View style = {styles.divData}>
     
-                <Text style = {styles.data}>{route.params.data}</Text>
+                <Text style = {styles.data}>{data}</Text>
     
               </View>
     

@@ -2,10 +2,15 @@ import * as React from 'react';
 import {
   View,
   StyleSheet,
-  Pressable
+  Pressable,
+  FlatList
 } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
+
+
+import { useState,useEffect,useContext} from 'react';
+import {AuthContext} from '../contexts/auth';
 
 import Cat_Psico from '../components/Cat_Psico';
 import FotoPsi from '../assets/Wall-e.jpg';
@@ -14,7 +19,33 @@ import { vh , vw} from 'react-native-expo-viewport-units';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import TopBar from '../components/TopBar';
 
+import Axios from 'axios';
+
 export default function CatalogoPsi({navigation}) {
+
+  const [entradas,setEntradas] = useState({});
+  const {user} = useContext(AuthContext);
+
+  useEffect (() => {
+    Axios.post("https://counterstress.glitch.me/MostrarPsyCidade", {id: user.data[0].idUser
+       }).then((response) => {
+       if(response.data.message == 'Nao encontrado'){
+           alert('Sem dados encontrados');
+       }
+       else{
+           setEntradas(response);
+       }
+ });
+
+ },[]);
+ //colocar os dados do psicologo no route pra mostrar na prox tela, até amanhã :)
+    const renderItem = ({ item }) => (
+      <Pressable onPress = {() => {navigation.navigate("VerPsico",{
+        id: item.idDiary, titulo: item.title , data: item.dateEntry, escrita: item.txtEntry })}}>
+      <Cat_Psico fotoPsi = {FotoPsi} nome = {item.nameUser} cidade = {item.city} estrelas = '1'></Cat_Psico>
+      </Pressable>
+    );
+
 
     return (
       <>
@@ -31,15 +62,18 @@ export default function CatalogoPsi({navigation}) {
 
       </Pressable>
 
+       
       
-        <Pressable onPress = {() => navigation.navigate("VerPsico")}>
-          <Cat_Psico fotoPsi = {FotoPsi} nome = "Wall-le" cidade = "Cataguases" estrelas = '1'></Cat_Psico>
-        </Pressable>
-        
-        <Pressable onPress = {() => navigation.navigate("VerPsico")}>
-          <Cat_Psico fotoPsi = {FotoPsi2} nome = "Fabão da VM" cidade = "Leopoldina" estrelas = '1'></Cat_Psico>
-        </Pressable>
 
+          <FlatList
+        
+          data = {entradas.data}
+          keyExtractor={item => item.idUser}
+          renderItem = {renderItem}
+          
+          />
+   
+        
       </LinearGradient>
 
       </>

@@ -20,7 +20,7 @@ export default function EntradaDiario(props) {
 
       <View style = {styles.container}>
         
-          <Text style = {styles.titulo}>Dia {props.data}</Text>
+          <Text style = {styles.titulo}>Dia {props.titulo}</Text>
         
 
         <Text style = {styles.escrita}>{props.escrita}</Text>
