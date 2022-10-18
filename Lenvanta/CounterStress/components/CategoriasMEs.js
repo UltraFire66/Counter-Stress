@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 
   escrita:{
 
-    color: 'white',
+    color: 'black',
     fontSize: vw(7)
 
   }

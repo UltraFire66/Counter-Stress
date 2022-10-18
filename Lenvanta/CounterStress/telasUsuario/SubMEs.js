@@ -63,7 +63,6 @@ export default function SubMEs({navigation}) {
                   <View style = {styles.espacinho}/>
                 <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 8" corBorda = '#8E4FCD' />
               </View>
-              
 
             </ScrollView>
           
@@ -79,8 +78,8 @@ export default function SubMEs({navigation}) {
 }
 
 const styles = StyleSheet.create({
- 
 
+  
   perfil: {
     position: 'absolute',
     marginTop: 30,

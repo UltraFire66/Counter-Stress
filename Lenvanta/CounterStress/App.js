@@ -33,6 +33,7 @@ import EntradaDiarioID from './telasUsuario/EntradaDiarioID';
 import EditarSenha from './telasUsuario/EditarSenha';
 import VerPsico from './telasUsuario/VerPsico';
 import Questionario from './telasUsuario/Questionario';
+import CriarME from './telasPsico/CriarME';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -68,6 +69,7 @@ export default function App() {
           <Stack.Screen name = "EditarSenha" component = {EditarSenha}/>
           <Stack.Screen name = "VerPsico" component = {VerPsico}/>
           <Stack.Screen name = "Questionario" component = {Questionario}/>
+          <Stack.Screen name = "CriarME" component = {CriarME}/>
 
 
           
