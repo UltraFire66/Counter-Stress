@@ -3,83 +3,88 @@ import {
   Text,
   View,
   StyleSheet,
-
-  ImageBackground
+  Pressable,
 } from 'react-native';
 import { vh, vw } from 'react-native-expo-viewport-units';
 
 
-
 export default function Perguntas(props) {
-  
-  {var pergunt = props.pergunt}
 
     return (
-      <View style = {styles.fundo}>
-        <View style={styles.container}>
-          <View style = {styles.frente}>
-            <Text>{props.pergunt}</Text>
+      <>
+        <View style = {{marginTop: vh(2), marginBottom: vh(2),}}>
+          <View style = {styles.fundo}>
+            <Text style = {styles.escrita}>{props.pergunt}</Text>
           </View>
 
-          <View style = {styles.circulo}></View>
+          <View style = {styles.botao}>
+            <Pressable style = {styles.circulo}></Pressable>
+            <Text style = {styles.escrita2}>Nunca</Text>
+          </View>
 
-          
+          <View style = {styles.botao1}>
+            <Pressable style = {styles.circulo}></Pressable>
+            <Text style = {styles.escrita2}>Ás vezes</Text>
+          </View>
+
+          <View style = {styles.botao1}>
+            <Pressable style = {styles.circulo}></Pressable>
+            <Text style = {styles.escrita2}>Frequentemente</Text>
+          </View>
+
+          <View style = {styles.botao1}>
+            <Pressable style = {styles.circulo}></Pressable>
+            <Text style = {styles.escrita2}>Quase sempre</Text>
+          </View>
         </View>
-      </View>
+
+        
+      </>
     )
 
 }
 
 const styles = StyleSheet.create({
-   fundo:{
-        
-    display: 'flex',
-    marginTop: vw(10)
+
+  escrita: {
+    fontSize: vh(3.5),
+    textAlign: 'justify',
   },
 
-  container:{
-    display: 'flex',
-    flexDirection: 'row',
+  escrita2: {
+    fontSize: vh(2.8),
+    left: vw(3),
+    marginTop: vh(-0.6)
+  },
+
+   fundo:{ 
+    marginTop: vh(2),
     alignItems: 'center',
-    border: 'none',
-    borderRadius:  vw(7), 
-    marginLeft:  vw(-6),
-    marginRight:  vw(15),
-    backgroundColor: '#D9D9D9'
+    marginLeft: vw(6),
+    marginRight: vw(6),
   },
 
-  info:{
-    marginLeft:  vw(18),
-    alignItems: 'center',
-    marginBottom:  vw(14)
+  botao: {
+    alignItems: 'flex-start',
+    left: vw(10),
+    marginTop: vh(5),
+    display: "flex",
+    flexDirection: "row",
   },
 
-  nomepsi: {
-    fontSize:  vw(6),
-    marginBottom:  vw(1),
-    marginRight:  vw(2)
+  botao1: {
+    alignItems: 'flex-start',
+    left: vw(10),
+    marginTop: vh(2),
+    display: "flex",
+    flexDirection: "row",
   },
-
-  cidade: {
-    fontSize: vw(3.7),
-  },
-
-  frente:{
-    display: 'flex',
-    justifyContent: 'center',
-    marginLeft:  vw(8.5)
-    },
 
   circulo: {
-    height:  vh(12),
-    width:  vh(12),
-    
-  },
-
-  usuario: {
+    height:  vh(3),
+    width:  vh(3),
     borderRadius:  vh(6),
-    display: 'flex',
     borderWidth: 2,
-  } 
+  },
 
 });

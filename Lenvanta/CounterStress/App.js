@@ -34,6 +34,7 @@ import EditarSenha from './telasUsuario/EditarSenha';
 import VerPsico from './telasUsuario/VerPsico';
 import Questionario from './telasUsuario/Questionario';
 import CriarME from './telasPsico/CriarME';
+import EntrarQuest2 from './telasUsuario/EntrarQuest2';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -70,6 +71,7 @@ export default function App() {
           <Stack.Screen name = "VerPsico" component = {VerPsico}/>
           <Stack.Screen name = "Questionario" component = {Questionario}/>
           <Stack.Screen name = "CriarME" component = {CriarME}/>
+          <Stack.Screen name = "EntrarQuest2" component = {EntrarQuest2}/>
 
 
           

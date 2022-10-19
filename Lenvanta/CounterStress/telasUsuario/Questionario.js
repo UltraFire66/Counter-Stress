@@ -1,11 +1,8 @@
 import * as React from 'react';
 import {
-  Text,
   View,
   StyleSheet,
-  Image,
-  TextInput,
-  Pressable,
+  ScrollView
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
@@ -19,8 +16,12 @@ import Perguntas from '../components/Perguntas';
 export default function Questionario({navigation}) {
   return (
     <View>
-      <Perguntas pergunt = "vc olha pro céu estrelado?"></Perguntas>
-    
+      <ScrollView>
+        <Perguntas pergunt = "vc olha pro céu estrelado?"></Perguntas>
+        <Perguntas pergunt = "ta tudo bem meu lindo?"></Perguntas>
+        <Perguntas pergunt = "dormiu bem princesa?"></Perguntas>
+        <Perguntas pergunt = "o mundo é lindo, não?"></Perguntas>
+      </ScrollView>
     </View>
     
     
