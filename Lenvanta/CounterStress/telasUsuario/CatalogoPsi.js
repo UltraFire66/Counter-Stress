@@ -29,6 +29,7 @@ export default function CatalogoPsi({navigation}) {
   useEffect (() => {
     Axios.post("https://counterstress.glitch.me/MostrarPsyCidade", {id: user.data[0].idUser
        }).then((response) => {
+        
        if(response.data.message == 'Nao encontrado'){
            alert('Sem dados encontrados');
        }
@@ -41,7 +42,8 @@ export default function CatalogoPsi({navigation}) {
  //colocar os dados do psicologo no route pra mostrar na prox tela, até amanhã :)
     const renderItem = ({ item }) => (
       <Pressable onPress = {() => {navigation.navigate("VerPsico",{
-        id: item.idDiary, titulo: item.title , data: item.dateEntry, escrita: item.txtEntry })}}>
+       txtBio: item.txtBio, nameUser: item.nameUser, email: item.email, contactNum: item.contactNum,
+       city: item.city, state: item.state   })}}>
       <Cat_Psico fotoPsi = {FotoPsi} nome = {item.nameUser} cidade = {item.city} estrelas = '1'></Cat_Psico>
       </Pressable>
     );
@@ -66,7 +68,7 @@ export default function CatalogoPsi({navigation}) {
       
 
           <FlatList
-        
+
           data = {entradas.data}
           keyExtractor={item => item.idUser}
           renderItem = {renderItem}

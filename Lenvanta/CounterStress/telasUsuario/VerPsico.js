@@ -26,7 +26,7 @@ import Carta from "../assets/iconeCarta.png";
 import Cartao from "../assets/iconeNome.png";
 import Cadeado from "../assets/iconeCadeado.png";
 
-export default function Perfil({ navigation }) {
+export default function Perfil({ navigation,route }) {
   return (
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
@@ -50,8 +50,7 @@ export default function Perfil({ navigation }) {
           <MaterialCommunityIcons name="notebook-edit" size={28}></MaterialCommunityIcons>
           <Text style={styles.titulo}>Bio:</Text>
         </View>
-        <Text style={styles.escrita}> Olá sou o Wall-e da Silva e sou um psicologo que
-        ama a todos e ainda mais as pessoas que estão a minha volta rsrsrsasassaas</Text>
+        <Text style={styles.escrita}>{route.params.txtBio}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -59,7 +58,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}> Wall-e da silva</Text>
+        <Text style={styles.escrita}> {route.params.nameUser}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -67,7 +66,7 @@ export default function Perfil({ navigation }) {
           <MaterialCommunity name="email-outline" size={32} />
           <Text style={styles.titulo}>Email:</Text>
         </View>
-        <Text style={styles.escrita}> SilvaWall@gmail.com</Text>
+        <Text style={styles.escrita}>{route.params.email}</Text>
       </View>
     
       <View style={styles.escritaPerfil}>
@@ -75,15 +74,15 @@ export default function Perfil({ navigation }) {
           <Foundation name="telephone" size={30} />
           <Text style={styles.titulo}>Telefone:</Text>
         </View>
-        <Text style={styles.escrita}> (32) 912345-6789</Text>
+        <Text style={styles.escrita}>{route.params.contactNum}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
         <View style={styles.topo}>
           <FontAwesome name="map-marker" size={30}/>
-          <Text style={styles.titulo}>Senha:</Text>
+          <Text style={styles.titulo}>Cidade e estado:</Text>
         </View>
-        <Text style={styles.escrita}> Cataguases - MG</Text>
+        <Text style={styles.escrita}> {route.params.city} - {route.params.state}</Text>
       </View>
 
       
