@@ -9,6 +9,8 @@ import {
   ImageBackground,
 } from "react-native";
 
+
+
 import EvilIcons from "react-native-vector-icons/EvilIcons";
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import AntDesign from "react-native-vector-icons/AntDesign";
@@ -27,6 +29,8 @@ import Cartao from "../assets/iconeNome.png";
 import Cadeado from "../assets/iconeCadeado.png";
 
 export default function Perfil({ navigation,route }) {
+  
+
   return (
     <View style={styles.container}>
       <View style={styles.telaPerfil}>
