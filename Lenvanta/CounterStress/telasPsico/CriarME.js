@@ -31,6 +31,31 @@ export default function CriarDiario({navigation}) {
   const [titulo, setTitulo] = useState("");
   const [anota, setAnota] = useState("");
 
+  const [ref1,setRef1] = useState('');
+  const [ref2,setRef2] = useState(null);
+  const [ref3,setRef3] = useState(null);
+  const [ref4,setRef4] = useState(null);
+  const [ref5,setRef5] = useState(null);
+
+
+    const CriarME = () => {
+        Axios.post("https://counterstress.glitch.me/RegistrarME",
+        {
+
+          idUser: user.data[0].idUser,
+          title: null,
+          txt: anota,
+          ref1: ref1,
+          ref2: ref2,
+          ref3: ref3,
+          ref4: ref4,
+          ref5: ref5, 
+
+        });
+        navigation.navigate('Login');
+    }
+
+
     return (
         <>
         <TopBar/>
@@ -77,16 +102,150 @@ export default function CriarDiario({navigation}) {
           
         </View>
 
-        <Text style = {styles.topico}>Referêcia:</Text>
+        <Text style = {styles.topico}>Referêcias:</Text>
+        
         <View style = {styles.anota}>
           
-            <TextInput style={styles.escrever} 
-            onChangeText = {(value) => setAnota(value)} value = {anota}/>
+            <TextInput style={styles.escreverRef} 
+            onChangeText = {(value) => setRef1(value)} value = {anota}/>
           
         </View>
 
+        
+        
+
+
+        {ref2 != null ?
+        
+        (<View style = {styles.anota}>
+          
+          <TextInput style={styles.escreverRef} 
+          onChangeText = {(value) => setRef2(value)} value = {anota}/>
+        
+         </View>
+         
+         )
+         
+          
+        : null}
+
+        {ref3 != null ?
+        
+        (<View style = {styles.anota}>
+          
+          <TextInput style={styles.escreverRef} 
+          onChangeText = {(value) => setRef3(value)} value = {anota}/>
+        
+         </View>)
+        
+        : null}
+
+        {ref4 != null ?
+        
+        (<View style = {styles.anota}>
+          
+          <TextInput style={styles.escreverRef} 
+          onChangeText = {(value) => setRef4(value)} value = {anota}/>
+        
+         </View>)
+        
+        : null}
+
+        {ref5 != null ?
+        
+        (<View style = {styles.anota}>
+          
+          <TextInput style={styles.escreverRef} 
+          onChangeText = {(value) => setRef5(value)} value = {anota}/>
+        
+         </View>)
+        
+        : null}
+
+        {ref2 == null ?
+        
+        (
+       
+        
+         <Pressable style = {styles.btnRef} onPress = {()=>{setRef2('')}}>
+           <Text style = {styles.txtBtn}>adicionar referência</Text>
+         </Pressable>
+         
+         
+
+         
+         )
+
+        :null}
+
+        {ref3 == null && ref2 != null ?
+        
+        (
+        <View style ={styles.botoes}>
+        <Pressable style = {styles.btnRef} onPress = {()=>{setRef3('')}}>
+           <Text style = {styles.txtBtn}>adicionar referência</Text>
+         </Pressable>
+         
+         <Pressable style = {styles.btnRef} onPress = {()=>{setRef2(null)}}>
+           <Text style = {styles.txtBtn}>remover</Text>
+         </Pressable>
+
+         </View>
+
+         )
+
+        :null}
+
+        {ref4 == null && ref2 != null && ref3 != null ?
+        
+        (
+         <View style = {styles.botoes}>
+
+          <Pressable style = {styles.btnRef} onPress = {()=>{setRef4('')}}>
+            <Text style = {styles.txtBtn}>adicionar referência</Text>
+          </Pressable>
+
+          <Pressable style = {styles.btnRef} onPress = {()=>{setRef3(null)}}>
+            <Text style = {styles.txtBtn}>remover</Text>
+          </Pressable>
+
+         </View>)
+
+        :null}
+
+        {ref5 == null && ref2 != null && ref3 != null && ref4 != null ?
+        
+        (
+          <View style = {styles.botoes}>
+        <Pressable style = {styles.btnRef} onPress = {()=>{setRef5('')}}>
+           <Text style = {styles.txtBtn}>adicionar referência</Text>
+         </Pressable>
+         
+         <Pressable style = {styles.btnRef} onPress = {()=>{setRef4(null)}}>
+            <Text style = {styles.txtBtn}>remover</Text>
+          </Pressable>
+
+         </View>
+         )
+
+        :null}
+
+      {ref5 != null && ref2 != null && ref3 != null && ref4 != null ?
+        
+        (
+          
+        
+         <Pressable style = {styles.btnRef} onPress = {()=>{setRef5(null)}}>
+            <Text style = {styles.txtBtn}>remover</Text>
+          </Pressable>
+
+         
+         )
+
+        :null}
+
         <View style = {styles.botaoConfirm}>
-          <Pressable style = {styles.btn} onPress = {() => {navigation.goBack()}}>
+          <Pressable style = {styles.btn} onPress = {CriarME}>
             <Text style = {styles.txtBtn}>Confirmar</Text>
           </Pressable>
         </View>
@@ -191,6 +350,22 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
   },
+
+  escreverRef: {
+    backgroundColor: '#E5E5E5',
+    borderRadius: vw(6),
+    marginLeft: vw(11),
+    marginVertical: vh(2),
+    width: vw(79),
+    height: vh(15),
+    fontSize: vw(4.5),
+    textAlign: 'justify',
+    fontWeight: 'bold',
+    color: 'black',
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+  },
     
   btn:{
     marginTop: vh(5),
@@ -222,5 +397,22 @@ const styles = StyleSheet.create({
     marginTop: vh(19)
 
   },
+
+  botoes: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+
+  btnRef: {
+    marginTop: vh(5),
+    width: vw(32),
+    height: vh(10),
+    marginLeft: vw(10),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: vw(8),
+    backgroundColor: '#D9D9D9',
+  }
 });
 
