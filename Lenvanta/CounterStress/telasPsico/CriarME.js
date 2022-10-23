@@ -14,6 +14,7 @@ import {
 
 import { AuthContext } from '../contexts/auth';
 import { LinearGradient } from 'expo-linear-gradient';
+import { RadioButton } from 'react-native-paper';
 
 import Feather from "react-native-vector-icons/Feather";
 import TopBar from '../components/TopBar';
@@ -37,13 +38,16 @@ export default function CriarDiario({navigation}) {
   const [ref4,setRef4] = useState(null);
   const [ref5,setRef5] = useState(null);
 
+  const [checked, setChecked] = React.useState('');
+
 
     const CriarME = () => {
         Axios.post("https://counterstress.glitch.me/RegistrarME",
         {
 
           idUser: user.data[0].idUser,
-          title: null,
+          title: titulo,
+          apertado: checked,
           txt: anota,
           ref1: ref1,
           ref2: ref2,
@@ -71,20 +75,9 @@ export default function CriarDiario({navigation}) {
         end={{x: 0, y: 1}}
         colors={["#225ED2", "#78ABC6"]}>
 
-        <View style={styles.telaPerfil}>
-
-          <ImageBackground
-            style={styles.circulo}
-            imageStyle={styles.usuario}
-            source={Icone}
-          />
-        </View>
-
-        
-        <View style = {styles.trocarFotoPerfil}>
-          <Pressable>
-            <Feather name = 'camera' size = {20}/>
-          </Pressable>
+        <View style = {styles.container2}>
+          <TextInput style={styles.escreverT} placeholder="Título"
+          onChangeText = {(value) => setTitulo(value)} value = {titulo}/>
         </View>
         
             
@@ -94,7 +87,45 @@ export default function CriarDiario({navigation}) {
 
         
         <ScrollView>
-        <Text style = {styles.topico}>Texto da ME:</Text>
+
+        <View style = {styles.frente}>
+          <RadioButton
+          value="first"
+          status={ checked === 'primeiro' ? 'checked' : 'unchecked' }
+          onPress={() => setChecked('primeiro')}
+          />
+          <Text style = {styles.escrita}>Meditação</Text>
+        </View>
+
+        <View style = {styles.frente}>
+          <RadioButton
+          value="first"
+          status={ checked === 'segundo' ? 'checked' : 'unchecked' }
+          onPress={() => setChecked('segundo')}
+          />
+          <Text style = {styles.escrita}>Planejamento</Text>
+        </View>
+
+        <View style = {styles.frente}>
+          <RadioButton
+          value="first"
+          status={ checked === 'terceiro' ? 'checked' : 'unchecked' }
+          onPress={() => setChecked('terceiro')}
+          />
+          <Text style = {styles.escrita}>Autoconhecimento</Text>
+        </View>
+
+        <View style = {styles.frente}>
+          <RadioButton
+          value="first"
+          status={ checked === 'quarto' ? 'checked' : 'unchecked' }
+          onPress={() => setChecked('quarto')}
+          />
+          <Text style = {styles.escrita}>Respiração</Text>
+        </View>
+
+
+        <Text style = {styles.topico2}>Texto da ME:</Text>
         <View>
           
             <TextInput style={styles.escrever} 
@@ -258,6 +289,24 @@ export default function CriarDiario({navigation}) {
 
 const styles = StyleSheet.create({
 
+  fundo:{
+    marginBottom: vh(2),
+  },
+
+  escrita:{
+    fontSize: vh(2.8),
+    left: vw(3),
+    marginTop: vh(0.4)
+  
+  },
+
+    frente:{
+      flexDirection: "row",
+      display: "flex",
+      alignItems: 'flex-start',
+      marginLeft: vw(3),
+    },
+
     telaPerfil:{
         alignItems: 'center',
     },
@@ -297,6 +346,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
+  container2: {
+    height: vh(15),
+    width: vw(100),
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+
   escreverT: {
    
     height: vh(9),
@@ -311,9 +368,15 @@ const styles = StyleSheet.create({
   },
 
   topico: {
-    fontSize: vw(4),
+    fontSize: vw(5),
     marginLeft: vw(12.5),
     marginTop: vh(3),
+  },
+
+  topico2: {
+    fontSize: vw(5),
+    marginLeft: vw(12.5),
+    marginTop: vh(9),
   },
 
   
