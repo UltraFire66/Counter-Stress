@@ -90,7 +90,7 @@ export default function CriarDiario({navigation}) {
 
         <View style = {styles.frente}>
           <RadioButton
-          value="first"
+          value="primeiro"
           status={ checked === 'primeiro' ? 'checked' : 'unchecked' }
           onPress={() => setChecked('primeiro')}
           />
@@ -99,7 +99,7 @@ export default function CriarDiario({navigation}) {
 
         <View style = {styles.frente}>
           <RadioButton
-          value="first"
+          value="segundo"
           status={ checked === 'segundo' ? 'checked' : 'unchecked' }
           onPress={() => setChecked('segundo')}
           />
@@ -108,7 +108,7 @@ export default function CriarDiario({navigation}) {
 
         <View style = {styles.frente}>
           <RadioButton
-          value="first"
+          value="terceiro"
           status={ checked === 'terceiro' ? 'checked' : 'unchecked' }
           onPress={() => setChecked('terceiro')}
           />
@@ -117,7 +117,7 @@ export default function CriarDiario({navigation}) {
 
         <View style = {styles.frente}>
           <RadioButton
-          value="first"
+          value="quarto"
           status={ checked === 'quarto' ? 'checked' : 'unchecked' }
           onPress={() => setChecked('quarto')}
           />

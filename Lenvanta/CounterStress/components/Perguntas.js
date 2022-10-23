@@ -7,8 +7,12 @@ import {
 } from 'react-native';
 import { vh, vw } from 'react-native-expo-viewport-units';
 
+import { RadioButton } from 'react-native-paper';
+
 
 export default function Perguntas(props) {
+
+  const [checked, setChecked] = React.useState('');
 
     return (
       <>
@@ -18,24 +22,43 @@ export default function Perguntas(props) {
           </View>
 
           <View style = {styles.botao}>
-            <Pressable style = {styles.circulo}></Pressable>
+            <RadioButton
+            value="nunca"
+            status={ checked === 'nunca' ? 'checked' : 'unchecked' }
+            onPress={() => setChecked('nunca')}
+            />
             <Text style = {styles.escrita2}>Nunca</Text>
           </View>
 
           <View style = {styles.botao1}>
-            <Pressable style = {styles.circulo}></Pressable>
+            <RadioButton
+            value="asvezes"
+            status={ checked === 'asvezes' ? 'checked' : 'unchecked' }
+            onPress={() => setChecked('asvezes')}
+            />
             <Text style = {styles.escrita2}>Ás vezes</Text>
           </View>
 
           <View style = {styles.botao1}>
-            <Pressable style = {styles.circulo}></Pressable>
+            <RadioButton
+            value="frequent"
+            status={ checked === 'frequent' ? 'checked' : 'unchecked' }
+            onPress={() => setChecked('frequent')}
+            />
             <Text style = {styles.escrita2}>Frequentemente</Text>
           </View>
 
           <View style = {styles.botao1}>
-            <Pressable style = {styles.circulo}></Pressable>
+            <RadioButton
+            value="quasesempre"
+            status={ checked === 'quasesempre' ? 'checked' : 'unchecked' }
+            onPress={() => setChecked('quasesempre')}
+            />
             <Text style = {styles.escrita2}>Quase sempre</Text>
           </View>
+
+          
+
         </View>
 
         
@@ -49,6 +72,7 @@ const styles = StyleSheet.create({
   escrita: {
     fontSize: vh(3.5),
     textAlign: 'justify',
+    fontWeight: "bold",
   },
 
   escrita2: {
@@ -66,7 +90,7 @@ const styles = StyleSheet.create({
 
   botao: {
     alignItems: 'flex-start',
-    left: vw(10),
+    left: vw(8),
     marginTop: vh(5),
     display: "flex",
     flexDirection: "row",
@@ -74,17 +98,10 @@ const styles = StyleSheet.create({
 
   botao1: {
     alignItems: 'flex-start',
-    left: vw(10),
+    left: vw(8),
     marginTop: vh(2),
     display: "flex",
     flexDirection: "row",
-  },
-
-  circulo: {
-    height:  vh(3),
-    width:  vh(3),
-    borderRadius:  vh(6),
-    borderWidth: 2,
   },
 
 });

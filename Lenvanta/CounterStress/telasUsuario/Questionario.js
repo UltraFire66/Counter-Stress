@@ -2,7 +2,9 @@ import * as React from 'react';
 import {
   View,
   StyleSheet,
-  ScrollView
+  ScrollView,
+  Pressable,
+  Text,
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
@@ -21,6 +23,12 @@ export default function Questionario({navigation}) {
         <Perguntas pergunt = "ta tudo bem meu lindo?"></Perguntas>
         <Perguntas pergunt = "dormiu bem princesa?"></Perguntas>
         <Perguntas pergunt = "o mundo é lindo, não?"></Perguntas>
+
+        <View style = {styles.centro}>
+          <Pressable style = {styles.btn} onPress = {() => {navigation.goBack()}}>
+              <Text style = {styles.txtBtn}>Finalizar Teste</Text>
+          </Pressable> 
+        </View>
       </ScrollView>
     </View>
     
@@ -74,6 +82,27 @@ const styles = StyleSheet.create({
 
   escritaBotao: {
     fontSize: vh(4),
+  },
+
+  btn:{
+    marginTop: vh(5),
+    width: vw(60),
+    height: vh(10),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: vw(8),
+    backgroundColor: '#D9D9D9',
+  },
+
+  txtBtn: {
+    fontSize: 18
+  },
+
+  centro:{
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: vh(3),
   },
 
 });
