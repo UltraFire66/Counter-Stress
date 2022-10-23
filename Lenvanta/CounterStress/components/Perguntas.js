@@ -73,12 +73,13 @@ const styles = StyleSheet.create({
     fontSize: vh(3.5),
     textAlign: 'justify',
     fontWeight: "bold",
+    
   },
 
   escrita2: {
     fontSize: vh(2.8),
-    left: vw(3),
-    marginTop: vh(-0.6)
+    left: vw(3)
+    
   },
 
    fundo:{ 

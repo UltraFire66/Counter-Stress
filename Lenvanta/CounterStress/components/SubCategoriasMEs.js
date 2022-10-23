@@ -23,7 +23,7 @@ export default function SubCategoriasMEs(props) {
          style = {{
 
           height: vh(16),
-          width: vw(45),
+          width: vw(75),
           backgroundColor: props.cor,
           borderRadius: vw(5),
           display: 'flex',
@@ -33,6 +33,7 @@ export default function SubCategoriasMEs(props) {
           shadowOffset: {width: 0, height: 4},
           shadowOpacity: 0.5,
           borderWidth: 3,
+          marginLeft: vw(3),
           borderColor: props.corBorda,
           }}>
           <Text style = {styles.escrita}>{props.escrita}</Text>

@@ -42,6 +42,7 @@ export default function CriarDiario({navigation}) {
 
 
     const CriarME = () => {
+        
         Axios.post("https://counterstress.glitch.me/RegistrarME",
         {
 
@@ -54,9 +55,9 @@ export default function CriarDiario({navigation}) {
           ref3: ref3,
           ref4: ref4,
           ref5: ref5, 
-
+          categoria: checked
         });
-        navigation.navigate('Login');
+        navigation.navigate('Tab');
     }
 
 
@@ -138,7 +139,7 @@ export default function CriarDiario({navigation}) {
         <View style = {styles.anota}>
           
             <TextInput style={styles.escreverRef} 
-            onChangeText = {(value) => setRef1(value)} value = {anota}/>
+            onChangeText = {(value) => setRef1(value)} value = {ref1}/>
           
         </View>
 
@@ -151,7 +152,7 @@ export default function CriarDiario({navigation}) {
         (<View style = {styles.anota}>
           
           <TextInput style={styles.escreverRef} 
-          onChangeText = {(value) => setRef2(value)} value = {anota}/>
+          onChangeText = {(value) => setRef2(value)} value = {ref2}/>
         
          </View>
          
@@ -165,7 +166,7 @@ export default function CriarDiario({navigation}) {
         (<View style = {styles.anota}>
           
           <TextInput style={styles.escreverRef} 
-          onChangeText = {(value) => setRef3(value)} value = {anota}/>
+          onChangeText = {(value) => setRef3(value)} value = {ref3}/>
         
          </View>)
         
@@ -176,7 +177,7 @@ export default function CriarDiario({navigation}) {
         (<View style = {styles.anota}>
           
           <TextInput style={styles.escreverRef} 
-          onChangeText = {(value) => setRef4(value)} value = {anota}/>
+          onChangeText = {(value) => setRef4(value)} value = {ref4}/>
         
          </View>)
         
@@ -187,7 +188,7 @@ export default function CriarDiario({navigation}) {
         (<View style = {styles.anota}>
           
           <TextInput style={styles.escreverRef} 
-          onChangeText = {(value) => setRef5(value)} value = {anota}/>
+          onChangeText = {(value) => setRef5(value)} value = {ref5}/>
         
          </View>)
         

@@ -3,9 +3,14 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Pressable
+  Pressable,
+  FlatList
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+
+import { useState,useEffect,useContext} from 'react';
+import {AuthContext} from '../contexts/auth';
+
 
 import { vh, vw } from 'react-native-expo-viewport-units';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -14,7 +19,31 @@ import SubCategoriasMEs from '../components/SubCategoriasMEs';
 import TopBar from '../components/TopBar';
 import Tabs from '../components/tabs'
 
-export default function SubMEs({navigation}) {
+import Axios from 'axios';
+
+export default function SubMEs({navigation,route}) {
+
+    const [entradas,setEntradas] = useState({});
+
+    useEffect(()=>{
+     
+      
+      
+      Axios.get("https://counterstress.glitch.me/BuscarMEs/"+route.params.categoria).
+      then((response) => {
+       
+        setEntradas(response);
+        
+      });
+
+
+    },[]);
+
+    const renderItem = ({ item }) => (<>
+      <SubCategoriasMEs cor = '#C4BFE7' escrita = {item.tittleME} corBorda = '#8E4FCD' />
+      </>
+    );
+
 
     return (
         
@@ -41,30 +70,21 @@ export default function SubMEs({navigation}) {
        
             <MaterialCommunityIcons name = "meditation" size = {200} style = {styles.icone} />
           <View style = {styles.fundo}>
-            <ScrollView style = {styles.componentes} showsVerticalScrollIndicator={false}>
+            
+              <View style = {styles.componentes}>    
+                
+                
+                
+                <FlatList
+                
+                data = {entradas.data}
+                keyExtractor={item => item.idME}
+                renderItem = {renderItem}
+                
+                />
 
-              <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 1" corBorda = '#8E4FCD' />
-                  <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 2" corBorda = '#8E4FCD' />
               </View>
-              <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 3" corBorda = '#8E4FCD' />
-                  <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 4" corBorda = '#8E4FCD' />
-              </View>
-              <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 5" corBorda = '#8E4FCD' />
-                  <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 6" corBorda = '#8E4FCD' />
-              </View>
-              <View style = {styles.conjunto}>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 7" corBorda = '#8E4FCD' />
-                  <View style = {styles.espacinho}/>
-                <SubCategoriasMEs cor = '#C4BFE7' escrita = "Meditação 8" corBorda = '#8E4FCD' />
-              </View>
-
-            </ScrollView>
+              
           
           </View>
           </LinearGradient>
@@ -105,14 +125,7 @@ const styles = StyleSheet.create({
    opacity: 0.5
   },
  
-  mes:{
-    flexDirection: 'row',
-    position: 'absolute'
-  },
-
-  espacinho: {
-    width: 20
-  },
+  
 
   conjunto: {
 
@@ -128,7 +141,14 @@ const styles = StyleSheet.create({
     position: 'absolute',
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    
 
+  },
+  componentes:{
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginBottom: vh(20)
   }
 });

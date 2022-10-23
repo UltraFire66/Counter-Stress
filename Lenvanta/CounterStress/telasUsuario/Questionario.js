@@ -5,6 +5,7 @@ import {
   ScrollView,
   Pressable,
   Text,
+  FlatList
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
@@ -12,24 +13,52 @@ import Torii from '../assets/torii.png';
 import { LinearGradient } from 'expo-linear-gradient';
 import Perguntas from '../components/Perguntas';
 
+import { useState,useEffect,useContext} from 'react';
+import {AuthContext} from '../contexts/auth';
 
-
+import Axios from 'axios';
 
 export default function Questionario({navigation}) {
+  const [entradas,setEntradas] = useState({});
+
+  useEffect(()=>{
+     
+      
+      
+    Axios.get("https://counterstress.glitch.me/BuscaQuestoes").
+    then((response) => {
+     
+      setEntradas(response);
+      console.log(response.data);
+    });
+
+
+  },[]);
+
+
+  const renderItem = ({ item }) => (
+     <Perguntas pergunt = {item.question}></Perguntas>
+  
+  );
+
   return (
     <View>
-      <ScrollView>
-        <Perguntas pergunt = "vc olha pro céu estrelado?"></Perguntas>
-        <Perguntas pergunt = "ta tudo bem meu lindo?"></Perguntas>
-        <Perguntas pergunt = "dormiu bem princesa?"></Perguntas>
-        <Perguntas pergunt = "o mundo é lindo, não?"></Perguntas>
+      
+
+        <FlatList
+
+        data = {entradas.data}
+        keyExtractor={item => item.idQuestion}
+        renderItem = {renderItem}
+        
+        />
 
         <View style = {styles.centro}>
           <Pressable style = {styles.btn} onPress = {() => {navigation.goBack()}}>
               <Text style = {styles.txtBtn}>Finalizar Teste</Text>
           </Pressable> 
         </View>
-      </ScrollView>
+      
     </View>
     
     
