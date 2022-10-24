@@ -19,7 +19,11 @@ import {AuthContext} from '../contexts/auth';
 import Axios from 'axios';
 
 export default function Questionario({navigation}) {
+  
+  const {user} = useContext(AuthContext);
   const [entradas,setEntradas] = useState({});
+  const [nmrResp,setNmrResp] = useState();
+  const [loading,setLoading] = useState(false);
 
   useEffect(()=>{
      
@@ -29,15 +33,54 @@ export default function Questionario({navigation}) {
     then((response) => {
      
       setEntradas(response);
-      console.log(response.data);
     });
 
 
   },[]);
 
 
+  async function enviaResult(){
+
+    
+    let nmr,menor;
+
+    await Axios.get("https://counterstress.glitch.me/BuscarNmr/"+user.data[0].idUser).
+    then((response)=>{
+        
+        nmr = response.data.result[0].contagem;
+        menor = response.data.result[0].menor;
+
+    })
+
+    Axios.post("https://counterstress.glitch.me/EnviaResult",{
+      idUser: user.data[0].idUser,
+      quantidade: nmr,
+      menor: menor
+    });
+
+  } 
+
+
+
+
+
+
+
+  const enviaResul = () => {
+    Axios.post("https://counterstress.glitch.me/EnviaResult",{
+      idUser: user.data[0].idUser
+    });
+  }
+
+  const buscaNmr = () => {
+    Axios.post("https://counterstress.glitch.me/BuscaNmr/"+user.data[0].idUser).
+    then((response)=>{
+        setNmrResp(response.data.contagem);
+    })
+  }
+
   const renderItem = ({ item }) => (
-     <Perguntas pergunt = {item.question}></Perguntas>
+     <Perguntas pergunt = {item.question} categoria = {item.category} peso = {item.weight}></Perguntas>
   
   );
 
@@ -45,19 +88,24 @@ export default function Questionario({navigation}) {
     <View>
       
 
-        <FlatList
+      <FlatList
 
         data = {entradas.data}
         keyExtractor={item => item.idQuestion}
         renderItem = {renderItem}
-        
-        />
+        ListFooterComponent = {
+          <View style = {styles.centro}>
+            <Pressable style = {styles.btn} onPress = {() => enviaResult()}>
+                <Text style = {styles.txtBtn}>Finalizar Teste</Text>
+            </Pressable> 
+          </View>}
+/>
 
-        <View style = {styles.centro}>
-          <Pressable style = {styles.btn} onPress = {() => {navigation.goBack()}}>
-              <Text style = {styles.txtBtn}>Finalizar Teste</Text>
-          </Pressable> 
-        </View>
+          
+
+        
+
+        
       
     </View>
     
@@ -96,25 +144,12 @@ const styles = StyleSheet.create({
     
   },
 
-  botao: {
-    backgroundColor: '#D9D9D9',
-    width: vw(65),
-    height: vh(13),
-    borderRadius: vw(8),
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 40, 
-    borderWidth: vw(0.4),
-    position: 'absolute',
-  },
+ 
 
-  escritaBotao: {
-    fontSize: vh(4),
-  },
+  
 
   btn:{
-    marginTop: vh(5),
+    marginBottom: vh(10),
     width: vw(60),
     height: vh(10),
     display: 'flex',
@@ -131,7 +166,7 @@ const styles = StyleSheet.create({
   centro:{
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: vh(3),
+    marginTop: vh(10),
   },
 
 });
