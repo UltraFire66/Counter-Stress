@@ -5,7 +5,8 @@ import {
   ScrollView,
   Pressable,
   Text,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
@@ -23,7 +24,9 @@ export default function Questionario({navigation}) {
   const {user} = useContext(AuthContext);
   const [entradas,setEntradas] = useState({});
   const [nmrResp,setNmrResp] = useState();
-  const [loading,setLoading] = useState(false);
+  const [carregando,setCarregando] = useState(false);
+
+  const [resultado,setResultado] = useState();
 
   useEffect(()=>{
      
@@ -40,22 +43,27 @@ export default function Questionario({navigation}) {
 
 
   async function enviaResult(){
-
-    
+    let currentDate = new Date();
+    let cDate =   currentDate.getFullYear() +  '-' + (currentDate.getMonth() + 1)  + '-' + currentDate.getDate() + '-'  + currentDate.getHours() + '.' + currentDate.getMinutes() + '.' + currentDate.getSeconds() ;
+  
     let nmr,menor;
+    
+    setCarregando(true);
 
     await Axios.get("https://counterstress.glitch.me/BuscarNmr/"+user.data[0].idUser).
     then((response)=>{
         
         nmr = response.data.result[0].contagem;
         menor = response.data.result[0].menor;
-
+        data = cDate
     })
 
     Axios.post("https://counterstress.glitch.me/EnviaResult",{
       idUser: user.data[0].idUser,
       quantidade: nmr,
       menor: menor
+    }).then((response)=> {
+      setResultado(response.data.result[0].total);
     });
 
   } 
@@ -86,9 +94,16 @@ export default function Questionario({navigation}) {
 
   return (
     <View>
+      {carregando?
       
+      (<View style = {styles.ViewLoading}>
+        <ActivityIndicator size="large" color="#C4BFE7" />
+      </View>
+      )
+      
+      :(
 
-      <FlatList
+        <FlatList
 
         data = {entradas.data}
         keyExtractor={item => item.idQuestion}
@@ -99,7 +114,11 @@ export default function Questionario({navigation}) {
                 <Text style = {styles.txtBtn}>Finalizar Teste</Text>
             </Pressable> 
           </View>}
-/>
+        />
+
+      )}
+
+      
 
           
 
@@ -145,7 +164,13 @@ const styles = StyleSheet.create({
   },
 
  
-
+  ViewLoading: {
+    height: vh(80),
+    width: vw(100),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+   },
   
 
   btn:{
