@@ -6,7 +6,8 @@ import {
   Pressable,
   Text,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert
 } from 'react-native';
 
 import { vh, vw } from 'react-native-expo-viewport-units';
@@ -66,6 +67,15 @@ export default function Questionario({navigation}) {
       setResultado(response.data.result[0].total);
     });
 
+    //não testado
+    /*Alert.alert(
+      "Questionário feito com sucesso!",
+      "Clique em OK para continuar",
+      [
+        { text: "OK", onPress: () => {navigation.navigate("ResultQuest")} }
+      ]
+    );*/
+
   } 
 
 
@@ -110,7 +120,7 @@ export default function Questionario({navigation}) {
         renderItem = {renderItem}
         ListFooterComponent = {
           <View style = {styles.centro}>
-            <Pressable style = {styles.btn} onPress = {() => enviaResult()}>
+            <Pressable style = {styles.btn} onPress = {() => enviaResult()} >
                 <Text style = {styles.txtBtn}>Finalizar Teste</Text>
             </Pressable> 
           </View>}

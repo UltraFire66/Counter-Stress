@@ -35,6 +35,7 @@ import VerPsico from './telasUsuario/VerPsico';
 import Questionario from './telasUsuario/Questionario';
 import CriarME from './telasPsico/CriarME';
 import EntrarQuest2 from './telasUsuario/EntrarQuest2';
+import ResultQuest from './telasUsuario/ResultQuest';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -50,7 +51,7 @@ export default function App() {
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
 
-          initialRouteName = "Login">
+          initialRouteName = "ResultQuest">
 
 
           <Stack.Screen name = "Tab" component = {Tabs}/>
@@ -72,6 +73,8 @@ export default function App() {
           <Stack.Screen name = "Questionario" component = {Questionario}/>
           <Stack.Screen name = "CriarME" component = {CriarME}/>
           <Stack.Screen name = "EntrarQuest2" component = {EntrarQuest2}/>
+          <Stack.Screen name = "EntrarQuest" component = {EntrarQuest}/>
+          <Stack.Screen name = "ResultQuest" component = {ResultQuest}/>
 
 
           
