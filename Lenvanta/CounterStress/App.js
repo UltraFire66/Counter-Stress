@@ -51,7 +51,7 @@ export default function App() {
         
         <Stack.Navigator screenOptions= { {headerShown: false}}
 
-          initialRouteName = "ResultQuest">
+          initialRouteName = "Login">
 
 
           <Stack.Screen name = "Tab" component = {Tabs}/>
