@@ -39,10 +39,10 @@ export default function CatalogoPsi({navigation}) {
  });
 
  },[]);
- //colocar os dados do psicologo no route pra mostrar na prox tela, até amanhã :)
+
     const renderItem = ({ item }) => (
       <Pressable onPress = {() => {navigation.navigate("VerPsico",{
-       txtBio: item.txtBio, nameUser: item.nameUser, email: item.email, contactNum: item.contactNum,
+       id:item.idUser,txtBio: item.txtBio, nameUser: item.nameUser, email: item.email, contactNum: item.contactNum,
        city: item.city, state: item.state   })}}>
       <Cat_Psico fotoPsi = {FotoPsi} nome = {item.nameUser} cidade = {item.city} estrelas = '1'></Cat_Psico>
       </Pressable>

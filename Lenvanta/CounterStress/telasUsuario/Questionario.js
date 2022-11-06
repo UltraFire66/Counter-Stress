@@ -46,35 +46,48 @@ export default function Questionario({navigation}) {
   async function enviaResult(){
     let currentDate = new Date();
     let cDate =   currentDate.getFullYear() +  '-' + (currentDate.getMonth() + 1)  + '-' + currentDate.getDate() + '-'  + currentDate.getHours() + '.' + currentDate.getMinutes() + '.' + currentDate.getSeconds() ;
-  
+   
     let nmr,menor;
     
     setCarregando(true);
+ 
 
     await Axios.get("https://counterstress.glitch.me/BuscarNmr/"+user.data[0].idUser).
     then((response)=>{
-        
+        console.log(response);
         nmr = response.data.result[0].contagem;
         menor = response.data.result[0].menor;
-        data = cDate
+        
     })
 
-    Axios.post("https://counterstress.glitch.me/EnviaResult",{
+    await Axios.post("https://counterstress.glitch.me/EnviaResult",{
       idUser: user.data[0].idUser,
       quantidade: nmr,
-      menor: menor
+      menor: menor,
+      data: cDate
     }).then((response)=> {
-      setResultado(response.data.result[0].total);
+      console.log(response.data.result[0]);
+      setResultado(response);
+      
+      setCarregando(false);
+
+      Alert.alert(
+        "Questionário feito com sucesso!",
+        "Clique em OK para continuar",
+        [
+          { text: "OK", onPress: () => {navigation.navigate("ResultQuest",{
+            total: response.data.result[0].total,
+            estresse: response.data.result[0].totalStress,
+            ansiedade: response.data.result[0].totalAnxiety,
+            depressao: response.data.result[0].totalDepression,
+          })} }
+        ]
+      );
+
     });
 
     //não testado
-    /*Alert.alert(
-      "Questionário feito com sucesso!",
-      "Clique em OK para continuar",
-      [
-        { text: "OK", onPress: () => {navigation.navigate("ResultQuest")} }
-      ]
-    );*/
+    
 
   } 
 
@@ -97,9 +110,10 @@ export default function Questionario({navigation}) {
     })
   }
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }) => (<>
+     
      <Perguntas pergunt = {item.question} categoria = {item.category} peso = {item.weight}></Perguntas>
-  
+     </>
   );
 
   return (

@@ -34,7 +34,7 @@ import EditarSenha from './telasUsuario/EditarSenha';
 import VerPsico from './telasUsuario/VerPsico';
 import Questionario from './telasUsuario/Questionario';
 import CriarME from './telasPsico/CriarME';
-import EntrarQuest2 from './telasUsuario/EntrarQuest2';
+import VisualizarResultados from './telasUsuario/VisualizarResultados';
 import ResultQuest from './telasUsuario/ResultQuest';
 
 const Tab = createBottomTabNavigator();
@@ -72,7 +72,7 @@ export default function App() {
           <Stack.Screen name = "VerPsico" component = {VerPsico}/>
           <Stack.Screen name = "Questionario" component = {Questionario}/>
           <Stack.Screen name = "CriarME" component = {CriarME}/>
-          <Stack.Screen name = "EntrarQuest2" component = {EntrarQuest2}/>
+          <Stack.Screen name = "VisualizarResultados" component = {VisualizarResultados}/>
           <Stack.Screen name = "EntrarQuest" component = {EntrarQuest}/>
           <Stack.Screen name = "ResultQuest" component = {ResultQuest}/>
 

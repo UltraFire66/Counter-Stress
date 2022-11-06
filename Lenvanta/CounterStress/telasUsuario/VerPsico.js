@@ -28,8 +28,32 @@ import Carta from "../assets/iconeCarta.png";
 import Cartao from "../assets/iconeNome.png";
 import Cadeado from "../assets/iconeCadeado.png";
 
+import { useState,useEffect,useContext} from 'react';
+import Axios from 'axios';
+
 export default function Perfil({ navigation,route }) {
   
+  const [psy,setPsy] = useState(null);
+
+  useEffect(()=>{
+
+    async function handle() {
+
+      Axios.get("https://counterstress.glitch.me/BuscarPsy/"+route.params.id)
+      .then((response)=>{
+
+       
+        setPsy(response.data[0]);
+
+      })
+
+    }
+
+
+    handle()
+
+  },[])
+
 
   return (
     <View style={styles.container}>
@@ -54,7 +78,9 @@ export default function Perfil({ navigation,route }) {
           <MaterialCommunityIcons name="notebook-edit" size={28}></MaterialCommunityIcons>
           <Text style={styles.titulo}>Bio:</Text>
         </View>
-        <Text style={styles.escrita}>{route.params.txtBio}</Text>
+         {psy != null ? (<Text style={styles.escrita}>{psy.txtBio}</Text>) : null}
+          
+
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -62,7 +88,10 @@ export default function Perfil({ navigation,route }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}> {route.params.nameUser}</Text>
+
+        {psy != null ? (<Text style={styles.escrita}> {psy.nameUser}</Text>):null}
+          
+      
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -70,7 +99,7 @@ export default function Perfil({ navigation,route }) {
           <MaterialCommunity name="email-outline" size={32} />
           <Text style={styles.titulo}>Email:</Text>
         </View>
-        <Text style={styles.escrita}>{route.params.email}</Text>
+        {psy != null ? (<Text style={styles.escrita}> {psy.email}</Text>):null}
       </View>
     
       <View style={styles.escritaPerfil}>
@@ -78,7 +107,7 @@ export default function Perfil({ navigation,route }) {
           <Foundation name="telephone" size={30} />
           <Text style={styles.titulo}>Telefone:</Text>
         </View>
-        <Text style={styles.escrita}>{route.params.contactNum}</Text>
+        {psy != null ? (<Text style={styles.escrita}> {psy.contactNum}</Text>):null}
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -86,7 +115,9 @@ export default function Perfil({ navigation,route }) {
           <FontAwesome name="map-marker" size={30}/>
           <Text style={styles.titulo}>Cidade e estado:</Text>
         </View>
-        <Text style={styles.escrita}> {route.params.city} - {route.params.state}</Text>
+        {psy != null ?( <Text style={styles.escrita}> {psy.city} - {psy.state}</Text>):null}
+         
+      
       </View>
 
       

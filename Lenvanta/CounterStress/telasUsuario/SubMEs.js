@@ -39,9 +39,12 @@ export default function SubMEs({navigation,route}) {
 
     },[]);
 
-    const renderItem = ({ item }) => (<>
-      <SubCategoriasMEs cor = '#C4BFE7' escrita = {item.tittleME} corBorda = '#8E4FCD' />
-      </>
+    const renderItem = ({ item }) => (
+      <Pressable onPress = {() => {navigation.navigate('MeEspecifica',{
+      id: item.idME })}}> 
+        <SubCategoriasMEs cor = '#C4BFE7' escrita = {item.tittleME} corBorda = '#8E4FCD' />
+      </Pressable>
+   
     );
 
 

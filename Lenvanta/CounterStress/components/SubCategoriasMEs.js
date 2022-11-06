@@ -19,7 +19,7 @@ export default function SubCategoriasMEs(props) {
     return (
 
       <View style = {styles.container}>
-        <Pressable
+        <View
          style = {{
 
           height: vh(16),
@@ -35,9 +35,12 @@ export default function SubCategoriasMEs(props) {
           borderWidth: 3,
           marginLeft: vw(3),
           borderColor: props.corBorda,
-          }}>
+          }}
+         
+
+          >
           <Text style = {styles.escrita}>{props.escrita}</Text>
-        </Pressable>
+        </View>
       </View>
 
     )

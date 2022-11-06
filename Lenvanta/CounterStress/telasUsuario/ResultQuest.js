@@ -12,40 +12,40 @@ import {AuthContext} from '../contexts/auth';
 
 import Axios from 'axios';
 
-export default function ResultQuest({props,navigation}) {
-
+export default function ResultQuest({route,navigation}) {
+    
     return (
         <View style = {{marginTop: vh(6),}}>
           <View style = {styles.fundo}>
             <Text style = {styles.escrita}>Nota da categoria Ansiedade:</Text>
           </View>
           <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>9</Text>
+            <Text style = {styles.escritaV}>{route.params.ansiedade}</Text>
           </View>
 
           <View style = {styles.fundo}>
             <Text style = {styles.escrita}>Nota da categoria Depressão:</Text>
           </View>
           <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>30</Text>
+            <Text style = {styles.escritaV}>{route.params.depressao}</Text>
           </View>
 
           <View style = {styles.fundo}>
             <Text style = {styles.escrita}>Nota da categoria Estresse:</Text>
           </View>
           <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>75</Text>
+            <Text style = {styles.escritaV}>{route.params.estresse}</Text>
           </View>
 
           <View style = {styles.fundo}>
             <Text style = {styles.escrita}>Sua nota total no teste:</Text>
           </View>
           <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>95</Text>
+            <Text style = {styles.escritaV}>{route.params.total}</Text>
           </View>
 
           <View style = {styles.fundo2}> 
-            <Pressable style={styles.botao}  onPress = {() => navigation.navigate("EntrarQuest")}>
+            <Pressable style={styles.botao}  onPress = {() => navigation.navigate('Tab')}>
                 <Text style={styles.escritaBotao}>Sair do resultado</Text>
             </Pressable>
           </View>

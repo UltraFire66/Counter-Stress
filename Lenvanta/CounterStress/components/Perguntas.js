@@ -20,12 +20,14 @@ export default function Perguntas(props) {
   const [checked, setChecked] = useState('');
 
   const enviaQuest = () => {
+   
     Axios.post("https://counterstress.glitch.me/EnviaQuest",{
-      categoria: props.params.categoria,
-      peso: props.params.peso,
+      categoria: props.categoria,
+      peso: props.peso,
       resposta: checked,
       idUser: user.data[0].idUser 
     });
+    
   }
 
     return (
@@ -39,7 +41,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="nunca"
             status={ checked === 'nunca' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('nunca'),enviaQuest}}
+            onPress={() => {setChecked('nunca'),enviaQuest()}}
             />
             <Text style = {styles.escrita2}>Nunca</Text>
           </View>
@@ -48,7 +50,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="asvezes"
             status={ checked === 'asvezes' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('asvezes'),enviaQuest}}
+            onPress={() => {setChecked('asvezes'),enviaQuest()}}
             />
             <Text style = {styles.escrita2}>Ás vezes</Text>
           </View>
@@ -57,7 +59,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="frequent"
             status={ checked === 'frequent' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('frequent'),enviaQuest}}
+            onPress={() => {setChecked('frequent'),enviaQuest()}}
             />
             <Text style = {styles.escrita2}>Frequentemente</Text>
           </View>
@@ -66,7 +68,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="quasesempre"
             status={ checked === 'quasesempre' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('quasesempre'),enviaQuest}}
+            onPress={() => {setChecked('quasesempre'),enviaQuest()}}
             />
             <Text style = {styles.escrita2}>Quase sempre</Text>
           </View>
