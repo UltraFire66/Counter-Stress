@@ -24,9 +24,9 @@ export default function EditarPerfil({navigation}) {
 
   const {Edit,user} = useContext(AuthContext);
 
-  const [nomeUsu,setNomeUsu] = useState('');
-  const [nome,setNome] = useState('');
-  const [email,setEmail] = useState('');
+  const [nomeUsu,setNomeUsu] = useState(user.data[0].nick);
+  const [nome,setNome] = useState(user.data[0].nameUser);
+  const [email,setEmail] = useState(user.data[0].email);
 
   const handleEdit = () =>{
     Edit(email,nome,nomeUsu,user.data[0].id)

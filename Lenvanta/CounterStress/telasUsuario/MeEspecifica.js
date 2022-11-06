@@ -16,7 +16,8 @@ import { useState,useEffect,useContext} from 'react';
 import {AuthContext} from '../contexts/auth';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import Planejamento from '../assets/planejamento.png';
+import Respiracao from '../assets/IconeRespiracao.png';
 
 import {vh,vw} from 'react-native-expo-viewport-units';
 
@@ -33,7 +34,29 @@ export default function MeEspecifica({navigation,route}) {
   const [fontes,setFontes] = useState(null);
   const [psy,setPsy] = useState(null);
 
+  const [meditacao,setMeditacao] = useState(false);
+  const [planejamento,setPlanejamento] = useState(false);
+  const [autoconhecimento,setAutoconhecimento] = useState(false);
+  const [respiracao,setRespiracao] = useState(false);
+
   useEffect(()=>{
+
+    if(route.params.categoria == 'Meditação'){
+      setMeditacao(true);
+    }
+
+    if(route.params.categoria == 'Planejamento'){
+      setPlanejamento(true);
+    }
+
+    if(route.params.categoria == 'Autoconhecimento'){
+      setAutoconhecimento(true);
+    }
+
+    if(route.params.categoria == 'Respiração'){
+      setRespiracao(true);
+    }
+
 
     async function pegaME(){
 
@@ -98,10 +121,13 @@ export default function MeEspecifica({navigation,route}) {
         style={styles.parteSuperior}
         start={{x: 0,y: 0}}
         end={{x: 0, y: 1}}
-        colors={["#8E4FCD", "#C4BFE7"]}>
+        colors={[route.params.corEscura, route.params.corClara]}>
 
 
-           <MaterialCommunityIcons name = "meditation" size = {140} style = {styles.icone} /> 
+          {meditacao ? (<MaterialCommunityIcons name = "meditation" size = {140} style = {styles.icone} />) :null}
+          {planejamento ? (<Image source={Planejamento} style = {styles.icone2} />) : null}
+          {autoconhecimento ? (<MaterialCommunityIcons name = "head-heart-outline" size = {140} style = {styles.icone3} />) :null}
+          {respiracao ? (<Image source={Respiracao} style = {styles.icone4} />) : null}
 
            {me != null?
            (<Text style = {styles.Titulo}>{me.tittleME}</Text>): null}
@@ -111,7 +137,9 @@ export default function MeEspecifica({navigation,route}) {
         </LinearGradient>
 
 
-        <View style = {styles.parteInferior}>
+        <View style = {{width: vw(100),
+                        minHeight: vh(70),
+                        backgroundColor: route.params.corClara}}>
           
           {me != null? 
           ( <Text style = {styles.texto}>{me.txt}</Text>) : null}
@@ -119,7 +147,7 @@ export default function MeEspecifica({navigation,route}) {
 
 
             <View style = {styles.Fontes}>
-              <Text style = {styles.Fonte}>Fontes</Text>
+              <Text style = {{ fontSize: vw(7), color: route.params.corEscura}}>Fontes</Text>
 
               
 
@@ -164,7 +192,7 @@ export default function MeEspecifica({navigation,route}) {
                   <Text style = {{ fontSize: vw(8),marginTop: vh(2)}}>Mecanismo postado por</Text>
 
                   <Pressable onPress = {()=>{navigation.navigate('VerPsico',{id: psy.idUser})}}>
-                    <Text style = {{ fontSize: vw(7),marginTop: vh(2), color: "#8E4FCD" }}>{psy.psyName}</Text>
+                    <Text style = {{ fontSize: vw(7),marginTop: vh(2), color: route.params.corEscura }}>{psy.psyName}</Text>
                   </Pressable>
 
                 </>
@@ -211,19 +239,30 @@ const styles = StyleSheet.create({
     icone: {
       marginTop: vh(1)
     },
+    icone2: {
+      marginTop: vh(1)
+    },
+
+    icone3: {
+      marginTop: vh(1)
+    },
+
+    icone4: {
+      marginTop: vh(1)
+    },
 
     Titulo: {
 
       fontSize: vw(8),
-
+      marginTop: vh(2)
     },
 
 
-    parteInferior: {
+    /*parteInferior: {
       width: vw(100),
       minHeight: vh(70),
-      backgroundColor: '#C4BFE7'
-    },
+      backgroundColor: route.params.corClara
+    },*/
 
     texto: {
       fontSize: vw(7),
@@ -239,12 +278,12 @@ const styles = StyleSheet.create({
       marginBottom: vh(15),
       marginLeft: vw(5.5),
     },
-
+    /*
     Fonte: {
       fontSize: vw(7),
       
-      color: '#8E4FCD'
-    },
+      color: route.params.corEscura
+    },*/
 
     Link: {
       fontSize: vw(7),

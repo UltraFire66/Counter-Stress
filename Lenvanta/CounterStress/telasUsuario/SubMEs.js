@@ -4,14 +4,16 @@ import {
   StyleSheet,
   ScrollView,
   Pressable,
-  FlatList
+  FlatList,
+  Image
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { useState,useEffect,useContext} from 'react';
 import {AuthContext} from '../contexts/auth';
 
-
+import Planejamento from '../assets/planejamento.png';
+import Respiracao from '../assets/IconeRespiracao.png';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,11 +24,31 @@ import Tabs from '../components/tabs'
 import Axios from 'axios';
 
 export default function SubMEs({navigation,route}) {
-
+    
     const [entradas,setEntradas] = useState({});
+    const [meditacao,setMeditacao] = useState(false);
+    const [planejamento,setPlanejamento] = useState(false);
+    const [autoconhecimento,setAutoconhecimento] = useState(false);
+    const [respiracao,setRespiracao] = useState(false);
+
 
     useEffect(()=>{
-     
+
+      if(route.params.categoria == 'Meditação'){
+          setMeditacao(true);
+      }
+
+      if(route.params.categoria == 'Planejamento'){
+          setPlanejamento(true);
+      }
+
+      if(route.params.categoria == 'Autoconhecimento'){
+          setAutoconhecimento(true);
+      }
+
+      if(route.params.categoria == 'Respiração'){
+          setRespiracao(true);
+      }
       
       
       Axios.get("https://counterstress.glitch.me/BuscarMEs/"+route.params.categoria).
@@ -41,8 +63,12 @@ export default function SubMEs({navigation,route}) {
 
     const renderItem = ({ item }) => (
       <Pressable onPress = {() => {navigation.navigate('MeEspecifica',{
-      id: item.idME })}}> 
-        <SubCategoriasMEs cor = '#C4BFE7' escrita = {item.tittleME} corBorda = '#8E4FCD' />
+      id: item.idME,
+      corClara: route.params.corClara,
+      corEscura: route.params.corEscura,
+      categoria: route.params.categoria
+      })}}> 
+        <SubCategoriasMEs cor = {route.params.corClara} escrita = {item.tittleME} corBorda = {route.params.corEscura} />
       </Pressable>
    
     );
@@ -66,12 +92,15 @@ export default function SubMEs({navigation,route}) {
           style={styles.background}
           start={{x: 0,y: 0}}
           end={{x: 0, y: 1}}
-          colors={["#8E4FCD", "#C4BFE7"]}>
+          colors={[route.params.corEscura, route.params.corClara]}>
 
         
 
-       
-            <MaterialCommunityIcons name = "meditation" size = {200} style = {styles.icone} />
+          {meditacao ? (<MaterialCommunityIcons name = "meditation" size = {200} style = {styles.icone} />) :null}
+          {planejamento ? (<Image source={Planejamento} style = {styles.icone2} />) : null}
+          {autoconhecimento ? (<MaterialCommunityIcons name = "head-heart-outline" size = {200} style = {styles.icone3} />) :null}
+          {respiracao ? (<Image source={Respiracao} style = {styles.icone4} />) : null}
+
           <View style = {styles.fundo}>
             
               <View style = {styles.componentes}>    
@@ -126,6 +155,25 @@ const styles = StyleSheet.create({
   icone:{
    marginBottom: vh(20),
    opacity: 0.5
+  },
+
+  icone2:{
+    marginBottom: vh(20),
+    opacity: 0.4,
+    width: vh(40),
+    height: vh(40),
+  },
+
+  icone3:{
+    marginBottom: vh(20),
+    opacity: 0.5
+  },
+  
+  icone4:{
+    marginBottom: vh(20),
+    opacity: 0.4,
+    width: vh(40),
+    height: vh(40),
   },
  
   

@@ -34,7 +34,11 @@ export default function CategoriasMEs(props) {
           shadowOpacity: 0.5,
           borderWidth: 3,
           borderColor: props.corBorda,
-          }} onPress = {() => navigation.navigate(props.navegarPara,{categoria: props.escrita})}>
+          }} onPress = {() => navigation.navigate(props.navegarPara,
+          { categoria: props.escrita,
+            corEscura: props.corBorda,
+            corClara: props.cor
+          })}>
           <Text style = {styles.escrita} >{props.escrita}</Text>
         </Pressable>
       </View>

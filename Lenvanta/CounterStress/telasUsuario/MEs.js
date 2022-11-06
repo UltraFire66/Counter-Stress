@@ -31,8 +31,9 @@ export default function MEs({navigation}) {
         <ScrollView showsVerticalScrollIndicator={false}>
 
         <CategoriasMEs cor = '#C4BFE7' escrita = "Meditação" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
-        <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15' navegarPara = "Planejamento"></CategoriasMEs>
+        <CategoriasMEs cor = '#ABD79E' escrita = "Planejamento" corBorda = '#308A15' navegarPara = "SubMEs"></CategoriasMEs>
         <CategoriasMEs cor = '#78ABC6' escrita = "Autoconhecimento" corBorda = '#225ED2' navegarPara = "SubMEs"></CategoriasMEs>
+        <CategoriasMEs cor = '#C4BFE7' escrita = "Respiração" corBorda = '#8E4FCD' navegarPara = "SubMEs"></CategoriasMEs>
         
         {user.data[0].flag.data[0] == 1 ?
         
@@ -60,7 +61,7 @@ export default function MEs({navigation}) {
         :
         null}
         
-              
+         <View style = {styles.espaco}/>     
         </ScrollView>
         
       </View>
@@ -95,7 +96,9 @@ const styles = StyleSheet.create({
     marginLeft: vw(85),
  },
 
- 
+ espaco:{
+    marginVertical: vh(20)
+ }
 
 
   
