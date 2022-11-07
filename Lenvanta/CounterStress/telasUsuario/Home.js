@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
+
    },
 
    botao: {
@@ -168,6 +169,7 @@ const styles = StyleSheet.create({
     border: 'solid 1px black',
     alignItems: 'center',
     justifyContent: 'center',
+    
   },
 
   escritaBotao: {
@@ -191,7 +193,8 @@ const styles = StyleSheet.create({
       maxWidth: vw(100),
       maxHeight: vh(100),
       textAlign: 'center',
-      color: 'white'
+      fontWeight: 'bold',
+      color: 'black'
       
    },
 

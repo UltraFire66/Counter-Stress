@@ -59,12 +59,7 @@ export default function Login({navigation}) {
       <Pressable style={styles.botao}  onPress = {handleLogin}>
         <Text style={styles.escritaBotao} >Login</Text>
       </Pressable>
-      <View style={styles.links}>
-        <Text style={styles.escrita}>Esqueceu sua senha?</Text>
-        <Pressable >
-          <Text style={styles.link}>Alterar senha</Text>
-        </Pressable>
-      </View>
+      
 
        <View style={styles.links}>
         <Text style={styles.escrita} >Não tem uma conta?</Text>

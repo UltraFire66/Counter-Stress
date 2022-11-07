@@ -28,10 +28,13 @@ const Tabs = () =>{
   const [clicado,setClicado] = useState(false);
   const [cor,setCor] = useState('#C4BFE7')
   const {user} = useContext(AuthContext);
+  const [psy,setPsy] = useState(false);
+
   useEffect(()=>{
 
     if(user.data[0].flag.data[0] == 1){
       setCor('#78ABC6');
+      setPsy(true);
     }
 
 
@@ -73,8 +76,10 @@ const Tabs = () =>{
         )
       }}
       />
-      
-      <Tab.Screen 
+
+      {psy? null :
+      (
+        <Tab.Screen 
       name = "Diario" 
       component = {Diario}
       options = {{
@@ -86,23 +91,28 @@ const Tabs = () =>{
         )
       }}
       />
-
-      <Tab.Screen 
-      name = "Quest"
-      component = {Quest}
+      )}
       
-      options = {{
-        tabBarLabel: '',
-    
-        tabBarIcon : ({size,color,focused}) => (
-          
-          focused ?
-          <BotaoQuestClicado /> : <BotaoQuest/>
+      {psy?null:
+      (
+      <Tab.Screen 
+        name = "Quest"
+        component = {Quest}
+        
+        options = {{
+          tabBarLabel: '',
+      
+          tabBarIcon : ({size,color,focused}) => (
+            
+            focused ?
+            <BotaoQuestClicado /> : <BotaoQuest/>
 
-        )
-      }}
+          )
+        }}
       
       />
+      )}
+      
 
       <Tab.Screen 
       name = "MEs" 
@@ -115,17 +125,22 @@ const Tabs = () =>{
         )
       }}
       />
-      <Tab.Screen 
-      name = "Catalogo" 
-      component = {Catalogo}
 
-      options = {{
-        tabBarLabel: '',
-        tabBarIcon: ({size,color}) => (
-          <FontAwesome5 name = "user-graduate" size = {32} color = {color}/>
-        )
-      }}
+      {psy?null:
+      (
+      <Tab.Screen 
+        name = "Catalogo" 
+        component = {Catalogo}
+
+        options = {{
+          tabBarLabel: '',
+          tabBarIcon: ({size,color}) => (
+            <FontAwesome5 name = "user-graduate" size = {32} color = {color}/>
+          )
+        }}
       />
+      )}
+      
 
       
 

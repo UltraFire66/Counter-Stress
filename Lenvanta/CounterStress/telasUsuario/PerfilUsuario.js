@@ -89,7 +89,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}>{user.data[0].nameUser}</Text>
+        <Text style={styles.escrita}>{user.data[0].nick}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>

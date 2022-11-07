@@ -54,7 +54,7 @@ export default function Questionario({navigation}) {
 
     await Axios.get("https://counterstress.glitch.me/BuscarNmr/"+user.data[0].idUser).
     then((response)=>{
-        console.log(response);
+      
         nmr = response.data.result[0].contagem;
         menor = response.data.result[0].menor;
         
@@ -121,6 +121,7 @@ export default function Questionario({navigation}) {
       {carregando?
       
       (<View style = {styles.ViewLoading}>
+        <Text style = {{fontSize: vw(5.5),textAlign: 'center',marginVertical: vh(8)}}>Essa operação pode demorar alguns segundos</Text>
         <ActivityIndicator size="large" color="#C4BFE7" />
       </View>
       )

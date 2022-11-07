@@ -17,14 +17,19 @@ import Axios from 'axios';
 export default function Perguntas(props) {
 
   const {user} = useContext(AuthContext);
-  const [checked, setChecked] = useState('');
+  const [checked, setChecked] = useState('fjbd');
 
-  const enviaQuest = () => {
+   function checa (valor){
+  
+    enviaQuest(valor);
+  }
+
+  const enviaQuest = (resposta) => {
    
     Axios.post("https://counterstress.glitch.me/EnviaQuest",{
       categoria: props.categoria,
       peso: props.peso,
-      resposta: checked,
+      resposta: resposta,
       idUser: user.data[0].idUser 
     });
     
@@ -41,7 +46,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="nunca"
             status={ checked === 'nunca' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('nunca'),enviaQuest()}}
+            onPress={() => {setChecked('nunca'),checa('nunca')}}
             />
             <Text style = {styles.escrita2}>Nunca</Text>
           </View>
@@ -50,7 +55,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="asvezes"
             status={ checked === 'asvezes' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('asvezes'),enviaQuest()}}
+            onPress={() => {setChecked('asvezes'),checa('asvezes')}}
             />
             <Text style = {styles.escrita2}>Ás vezes</Text>
           </View>
@@ -59,7 +64,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="frequent"
             status={ checked === 'frequent' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('frequent'),enviaQuest()}}
+            onPress={() => {setChecked('frequent'),checa('frequent')}}
             />
             <Text style = {styles.escrita2}>Frequentemente</Text>
           </View>
@@ -68,7 +73,7 @@ export default function Perguntas(props) {
             <RadioButton
             value="quasesempre"
             status={ checked === 'quasesempre' ? 'checked' : 'unchecked' }
-            onPress={() => {setChecked('quasesempre'),enviaQuest()}}
+            onPress={() => {setChecked('quasesempre'),checa('quasesempre')}}
             />
             <Text style = {styles.escrita2}>Quase sempre</Text>
           </View>

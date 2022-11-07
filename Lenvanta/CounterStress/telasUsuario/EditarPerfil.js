@@ -14,8 +14,9 @@ import { useState, useContext } from 'react';
 
 import { AuthContext } from '../contexts/auth';
 
-import Wallpaper from '../assets/wallpaper.jpg';
-import Icone from '../assets/dantePerfil.jpg';
+import Wallpaper from "../assets/standardWallpaper.png";
+import Icone from "../assets/standardProfileIcon.png";
+
 import MaterialCommunity from "react-native-vector-icons/MaterialCommunityIcons";
 import Feather from "react-native-vector-icons/Feather";
 import { vh, vw } from 'react-native-expo-viewport-units';
