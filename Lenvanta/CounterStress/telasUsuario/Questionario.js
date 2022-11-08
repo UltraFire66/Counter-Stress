@@ -26,17 +26,19 @@ export default function Questionario({navigation}) {
   const [entradas,setEntradas] = useState({});
   const [nmrResp,setNmrResp] = useState();
   const [carregando,setCarregando] = useState(false);
+  const [carregando2,setCarregando2] = useState(false);
 
   const [resultado,setResultado] = useState();
 
   useEffect(()=>{
      
-      
+    setCarregando(true);  
       
     Axios.get("https://counterstress.glitch.me/BuscaQuestoes").
     then((response) => {
      
       setEntradas(response);
+      setCarregando(false);
     });
 
 
@@ -60,7 +62,7 @@ export default function Questionario({navigation}) {
         
     })
 
-    await Axios.post("https://counterstress.glitch.me/EnviaResult",{
+   Axios.post("https://counterstress.glitch.me/EnviaResult",{
       idUser: user.data[0].idUser,
       quantidade: nmr,
       menor: menor,

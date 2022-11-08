@@ -17,7 +17,7 @@ import Axios from 'axios';
 export default function Perguntas(props) {
 
   const {user} = useContext(AuthContext);
-  const [checked, setChecked] = useState('fjbd');
+  const [checked, setChecked] = useState('');
 
    function checa (valor){
   
@@ -37,7 +37,59 @@ export default function Perguntas(props) {
 
     return (
       <>
-        <View style = {{marginTop: vh(2), marginBottom: vh(2),}}>
+      {checked != '' ? 
+      
+      (<View style = {{marginTop: vh(2), marginBottom: vh(2),backgroundColor: '#b4b3b4'}}>
+      <View style = {styles.fundo}>
+        <Text style = {styles.escrita}>{props.pergunt}</Text>
+      </View>
+
+      <View style = {styles.botao}>
+        <RadioButton
+        value="nunca"
+        status={ checked === 'nunca' ? 'checked' : 'unchecked' }
+        
+        />
+        <Text style = {styles.escrita2}>Nunca</Text>
+      </View>
+
+      <View style = {styles.botao1}>
+        <RadioButton
+        value="asvezes"
+        status={ checked === 'asvezes' ? 'checked' : 'unchecked' }
+        
+        />
+        <Text style = {styles.escrita2}>Ás vezes</Text>
+      </View>
+
+      <View style = {styles.botao1}>
+        <RadioButton
+        value="frequent"
+        status={ checked === 'frequent' ? 'checked' : 'unchecked' }
+       
+        />
+        <Text style = {styles.escrita2}>Frequentemente</Text>
+      </View>
+
+      <View style = {styles.botao1}>
+        <RadioButton
+        value="quasesempre"
+        status={ checked === 'quasesempre' ? 'checked' : 'unchecked' }
+  
+        />
+        <Text style = {styles.escrita2}>Quase sempre</Text>
+      </View>
+
+      
+
+    </View>)
+
+
+
+      :
+      
+      
+      (<View style = {{marginTop: vh(2), marginBottom: vh(2),}}>
           <View style = {styles.fundo}>
             <Text style = {styles.escrita}>{props.pergunt}</Text>
           </View>
@@ -80,7 +132,8 @@ export default function Perguntas(props) {
 
           
 
-        </View>
+        </View>) }
+        
 
         
       </>
