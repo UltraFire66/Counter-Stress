@@ -36,7 +36,7 @@ export default function EditarPerfil({navigation}) {
     return (
 
       <View style = {styles.container}>
-       <View style={styles.telaPerfil}>
+       {/*<View style={styles.telaPerfil}>
         <ImageBackground
           source={Wallpaper}
           resizeMode="cover"
@@ -65,7 +65,7 @@ export default function EditarPerfil({navigation}) {
 
           
           
-      </View>
+      </View>*/}
 
 {/*===============Topo do perfil=========================*/}
 
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     width: vw(90),
     height: '64%',
     marginLeft: vw(10),
-    marginTop: vh(3),
+    marginTop: vh(20),
   },
 
   escrita: {

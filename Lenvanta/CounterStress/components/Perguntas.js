@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   Pressable,
+  ActivityIndicator,
 } from 'react-native';
 import { vh, vw } from 'react-native-expo-viewport-units';
 
@@ -18,25 +19,43 @@ export default function Perguntas(props) {
 
   const {user} = useContext(AuthContext);
   const [checked, setChecked] = useState('');
+  const [loading,setLoading] = useState(false);
 
    function checa (valor){
   
     enviaQuest(valor);
   }
 
-  const enviaQuest = (resposta) => {
-   
-    Axios.post("https://counterstress.glitch.me/EnviaQuest",{
+  async function enviaQuest (resposta)  {
+    setLoading(true);
+    
+    await Axios.post("https://counterstress.glitch.me/EnviaQuest",{
       categoria: props.categoria,
       peso: props.peso,
       resposta: resposta,
       idUser: user.data[0].idUser 
     });
+
+    setLoading(false);
     
   }
 
     return (
       <>
+      {loading
+      ?
+      
+      
+      (
+      <View style = {styles.ViewLoading}>
+        <ActivityIndicator size="large" color="#C4BFE7" />
+      </View>)
+      :
+
+
+
+      (<>
+      
       {checked != '' ? 
       
       (<View style = {{marginTop: vh(2), marginBottom: vh(2),backgroundColor: '#b4b3b4'}}>
@@ -133,6 +152,12 @@ export default function Perguntas(props) {
           
 
         </View>) }
+      
+      
+      </>)}
+
+
+      
         
 
         
@@ -178,5 +203,13 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
   },
+
+  ViewLoading: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+   },
 
 });

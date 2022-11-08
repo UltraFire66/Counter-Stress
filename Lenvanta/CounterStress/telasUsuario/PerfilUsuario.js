@@ -62,7 +62,7 @@ export default function Perfil({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.telaPerfil}>
+      {/*<View style={styles.telaPerfil}>
         <ImageBackground source={Wallpaper} resizeMode="cover" style={styles.fundo} blurRadius={1.5}>
 
         <Pressable style = {styles.fechar} onPress = {() => navigation.goBack()} >
@@ -76,7 +76,7 @@ export default function Perfil({ navigation }) {
             source={Icone}
           />
         </ImageBackground>
-      </View>
+  </View>*/}
 
       <View style={styles.jogarDireita}>
         <Pressable style={styles.btnEditar}  onPress = {() => navigation.navigate("editarPerfil")}>
@@ -89,7 +89,7 @@ export default function Perfil({ navigation }) {
           <EvilIcons name="user" size={40}></EvilIcons>
           <Text style={styles.titulo}>Usuario:</Text>
         </View>
-        <Text style={styles.escrita}>{user.data[0].nick}</Text>
+        <Text style={styles.escrita}>{user.data[0].nameUser}</Text>
       </View>
 
       <View style={styles.escritaPerfil}>
@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
     width: "100%",
     display: "flex",
     alignItems: "flex-end",
+    marginTop: vh(20),
   },
 
   btnEditar: {

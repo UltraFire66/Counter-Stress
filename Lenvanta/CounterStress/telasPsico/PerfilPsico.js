@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "flex-end",
     marginBottom: vh(4),
+    marginTop: vh(20),
   },
 
   btnEditar: {
