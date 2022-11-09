@@ -57,7 +57,7 @@ export default function Perfil({ navigation,route }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.telaPerfil}>
+      {/*<View style={styles.telaPerfil}>
         <ImageBackground source={Wallpaper} resizeMode="cover" style={styles.fundo} blurRadius={1.5}>
 
         <Pressable style = {styles.fechar} onPress = {() => navigation.goBack()} >
@@ -71,7 +71,7 @@ export default function Perfil({ navigation,route }) {
             source={Icone}
           />
         </ImageBackground>
-      </View>
+      </View>*/}
 
       <View style={styles.escritaPerfil2}>
         <View style={styles.topo}>
@@ -110,7 +110,7 @@ export default function Perfil({ navigation,route }) {
         {psy != null ? (<Text style={styles.escrita}> {psy.contactNum}</Text>):null}
       </View>
 
-      <View style={styles.escritaPerfil}>
+      <View style={styles.escritaPerfilCidade}>
         <View style={styles.topo}>
           <FontAwesome name="map-marker" size={30}/>
           <Text style={styles.titulo}>Cidade e estado:</Text>
@@ -198,6 +198,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     marginLeft: vw(5),
     marginRight: vw(10),
+    marginBottom: vh(5),
+    marginTop: vh(15),
+    justifyContent: "flex-start",
+  },
+
+  escritaPerfilCidade: {
+    display: "flex",
+    flexDirection: 'column',
+    marginLeft: vw(5),
     marginBottom: vh(5),
     justifyContent: "flex-start",
   },

@@ -16,6 +16,8 @@ import Form from 'react-native-form';
 import { vh, vw } from 'react-native-expo-viewport-units';
 import { LinearGradient } from 'expo-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
+// import DatePicker from '@react-native-community/datetimepicker';
+
 
 export default function CadastroUsuario({navigation}) {
 
@@ -24,7 +26,7 @@ export default function CadastroUsuario({navigation}) {
   const [emailres,setEmail] = useState('');
   const [senhares,setSenha] = useState('');
   const [senhaNovamente,setSenhaNovamente] = useState('');
-  const [idadeUsu,setIdadeUsu] = useState('');//new Date();
+  const [idadeUsu,setIdadeUsu] = useState('09-10-2021');//new Date();
   const [cidade,setCidade] = useState('');
   const [estado,setEstado] = useState('');
 
@@ -41,7 +43,7 @@ export default function CadastroUsuario({navigation}) {
       profilepic: null,
       wallppPic: null,
       flag: 0,
-      born: null,
+      born: idadeUsu,
       city: cidade,
       state: estado
     }
@@ -84,9 +86,41 @@ export default function CadastroUsuario({navigation}) {
             placeholder="Digite sua senha novamente" 
             onChangeText={(value)=>setSenhaNovamente(value)}/>
 
-            <TextInput style={styles.escrever}
-            placeholder="Digite sua data de nascimento"
-            onChangeText={(value)=>setIdadeUsu(value)} />
+            {/*<DatePicker
+          style={styles.datePickerStyle}
+          date={idadeUsu}
+          mode="date"
+          placeholder="select date"
+          format="DD/MM/YYYY"
+          minDate="01-01-1900"
+          maxDate="01-01-2022"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              right: -5,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              borderColor : "gray",
+              alignItems: "flex-start",
+              borderWidth: 0,
+              borderBottomWidth: 1,
+            },
+            placeholderText: {
+              fontSize: 17,
+              color: "gray"
+            },
+            dateText: {
+              fontSize: 17,
+            }
+          }}
+          onDateChange={(date) => {
+            setIdadeUsu(date);
+          }}
+        />*/}
 
 
             <TextInput style={styles.escrever}
@@ -182,6 +216,10 @@ const styles = StyleSheet.create({
     border: 'solid 1px black',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  datePickerStyle: {
+    width: 230,
   },
 
   escritaBotao: {

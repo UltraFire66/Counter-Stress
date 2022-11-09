@@ -19,13 +19,13 @@ export default function Cat_Psico(props) {
     return (
       <View style = {styles.fundo}>
         <View style={styles.container}>
-          <View style = {styles.frente}>
+          {/*<View style = {styles.frente}>
             <ImageBackground
                 style={styles.circulo}
                 imageStyle={styles.usuario}
                 source={props.fotoPsi}>
             </ImageBackground>
-          </View>
+          </View>*/}
 
           <View style={styles.info}>
             <Text style={styles.nomepsi}>{props.nome}</Text>
