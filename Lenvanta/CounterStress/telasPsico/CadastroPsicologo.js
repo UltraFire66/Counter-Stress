@@ -24,6 +24,7 @@ export default function CadastroUsuario({navigation}) {
   const [emailres,setEmail] = useState('');
   const [senhares,setSenha] = useState('');
   const [senhaNovamente,setSenhaNovamente] = useState('');
+  const [idadeUsu,setIdadeUsu] = useState('');
   const [crp,setCrp] = useState('');
   const [rua,setRua] = useState('');
   const [numC,setNumC] = useState('');
@@ -43,11 +44,10 @@ export default function CadastroUsuario({navigation}) {
       nameUser: nomeres,
       pass: senhares,
       email: emailres,
-      nick: 5,
       profilepic: null,
       wallppPic: null,
       flag: 1,
-      born: null,
+      born: idadeUsu,
       city: cidade,
       state: estado,
       crp: crp,
@@ -94,6 +94,10 @@ export default function CadastroUsuario({navigation}) {
           <TextInput style={styles.escrever} 
           placeholder="Digite sua senha novamente" 
           onChangeText={(value)=>setSenhaNovamente(value)}/>
+
+          <TextInput style={styles.escrever}
+          placeholder="Digite sua data de nascimento"
+          onChangeText={(value)=>setIdadeUsu(value)} />
 
           <TextInput style={styles.escrever}
           placeholder="Digite o CRP"

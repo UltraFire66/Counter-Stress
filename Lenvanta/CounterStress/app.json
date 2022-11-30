@@ -5,12 +5,20 @@
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7c8ccdb8-2389-4dcf-9318-c70b9646de37"
+      }
+    },
+    "android": {
+      "package": "com.camillo_diego.CounterStress"
+    }
   },
   "android": {
     "adaptiveIcon": {
       "foregroundImage": "./assets/torii.png",
       "backgroundColor": "#FFFFFF"
-     }
-   }
+    }
+  }
 }
