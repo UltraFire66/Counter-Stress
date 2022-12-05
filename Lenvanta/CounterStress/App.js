@@ -35,7 +35,7 @@ import VerPsico from './telasUsuario/VerPsico';
 import Questionario from './telasUsuario/Questionario';
 import CriarME from './telasPsico/CriarME';
 import VisualizarResultados from './telasUsuario/VisualizarResultados';
-import ResultQuest from './telasUsuario/ResultQuest';
+import ResultQuest from './telasUsuario/ResultQuestNovo';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();

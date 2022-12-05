@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Pressable,
   FlatList,
-  Text
+  Text,
+  ScrollView
 } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -80,29 +81,34 @@ export default function CatalogoPsi({navigation}) {
       </Pressable>
         <View style = {{display: 'flex',alignItems: 'center'}}>
           
-          
 
               <FlatList
-
+              nestedScrollEnabled
               data = {naCidade.data}
               keyExtractor={item => item.idUser}
               renderItem = {renderItem}
               ListHeaderComponent = {
+                <ScrollView>
                 <Text style={{fontSize: vw(6),marginTop: vh(3)}}>Na sua cidade</Text>
+                </ScrollView>
               }
               />
 
               <FlatList
-
+              nestedScrollEnabled
               data = {total.data}
               keyExtractor={item => item.idUser}
               renderItem = {renderItem}
               ListHeaderComponent = {
                 <Text style={{fontSize: vw(6),marginTop: vh(3)}}>Outros</Text>
               }
+
+              ListFooterComponent = {
+                <View style = {{marginTop: vh(10)}}></View>
+              }
               />
 
-          
+             
             
               
         </View>

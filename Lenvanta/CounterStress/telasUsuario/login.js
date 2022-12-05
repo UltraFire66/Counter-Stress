@@ -54,7 +54,7 @@ export default function Login({navigation}) {
       <TextInput style={styles.escrever} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>
       :<TextInput style={styles.escrever2} placeholder="Digite seu email" value = {email} onChangeText = {(value) => {setEmail(value)}}/>}
      
-      <TextInput style={styles.escrever} placeholder="Digite sua senha" value = {senha} onChangeText = {(value) => {setSenha(value)}}/>
+      <TextInput style={styles.escrever} secureTextEntry={true} placeholder="Digite sua senha" value = {senha} onChangeText = {(value) => {setSenha(value)}}/>
 
       <Pressable style={styles.botao}  onPress = {handleLogin}>
         <Text style={styles.escritaBotao} >Login</Text>
