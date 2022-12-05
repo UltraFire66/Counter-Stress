@@ -68,7 +68,7 @@ export default function Questionario({navigation}) {
       menor: menor,
       data: cDate
     }).then((response)=> {
-      console.log(response.data.result[0]);
+     
       setResultado(response);
       
       setCarregando(false);

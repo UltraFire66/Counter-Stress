@@ -4,6 +4,7 @@ import {
   View,
   StyleSheet,
   Pressable,
+  ScrollView
 } from 'react-native';
 import { vh, vw } from 'react-native-expo-viewport-units';
 
@@ -16,40 +17,48 @@ export default function ResultQuest({route,navigation}) {
     
     return (
         <View style = {{marginTop: vh(6),}}>
-          <View style = {styles.fundo}>
-            <Text style = {styles.escrita}>Nota da categoria Ansiedade:</Text>
-          </View>
-          <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>{route.params.ansiedade}</Text>
-          </View>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escrita}>Nota da categoria Ansiedade:</Text>
+            </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escritaV}>{route.params.ansiedade}</Text>
+            </View>
 
-          <View style = {styles.fundo}>
-            <Text style = {styles.escrita}>Nota da categoria Depressão:</Text>
-          </View>
-          <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>{route.params.depressao}</Text>
-          </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escrita}>Nota da categoria Depressão:</Text>
+            </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escritaV}>{route.params.depressao}</Text>
+            </View>
 
-          <View style = {styles.fundo}>
-            <Text style = {styles.escrita}>Nota da categoria Estresse:</Text>
-          </View>
-          <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>{route.params.estresse}</Text>
-          </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escrita}>Nota da categoria Estresse:</Text>
+            </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escritaV}>{route.params.estresse}</Text>
+            </View>
 
-          <View style = {styles.fundo}>
-            <Text style = {styles.escrita}>Sua nota total no teste:</Text>
-          </View>
-          <View style = {styles.fundo}>
-            <Text style = {styles.escritaV}>{route.params.total}</Text>
-          </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escrita}>Sua nota total no teste:</Text>
+            </View>
+            <View style = {styles.fundo}>
+              <Text style = {styles.escritaV}>{route.params.total}</Text>
+            </View>
 
-          <View style = {styles.fundo2}> 
-            <Pressable style={styles.botao}  onPress = {() => navigation.navigate('Tab')}>
-                <Text style={styles.escritaBotao}>Sair do resultado</Text>
-            </Pressable>
-          </View>
-          
+            <View style = {styles.fundo}>
+              <Text style = {{fontSize: vh(3),textAlign: 'justify',fontWeight: "bold",marginTop: vh(4),marginBottom: vh(2)}}>
+                SISTEMA DE NOTAS
+              </Text>
+            </View>
+            
+
+            <View style = {styles.fundo2}> 
+              <Pressable style={styles.botao}  onPress = {() => navigation.navigate('Tab')}>
+                  <Text style={styles.escritaBotao}>Sair do resultado</Text>
+              </Pressable>
+            </View>
+          </ScrollView>
 
         </View>
 

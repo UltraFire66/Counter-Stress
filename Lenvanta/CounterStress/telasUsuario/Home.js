@@ -32,7 +32,7 @@ export default function Home({navigation}) {
   const [carregando,setCarregando] = useState(false);
  
   const [foto,setFoto] = useState('https://images.pexels.com/photos/624015/pexels-photo-624015.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800');
-  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem!');
+  const [frase,setFrase] = useState('Clique no botao para receber uma mensagem !');
   const [autor,setAutor] = useState('');
 
   const client = createClient('563492ad6f91700001000001b6804ae3f9b34c36b123675631140391');

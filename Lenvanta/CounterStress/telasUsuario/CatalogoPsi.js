@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,
   Pressable,
-  FlatList
+  FlatList,
+  Text
 } from 'react-native';
 
 import { LinearGradient } from 'expo-linear-gradient';
@@ -23,10 +24,13 @@ import Axios from 'axios';
 
 export default function CatalogoPsi({navigation}) {
 
-  const [entradas,setEntradas] = useState({});
+  const [naCidade,setNaCidade] = useState({});
+  const [total,setTotal] = useState({});
+
   const {user} = useContext(AuthContext);
 
   useEffect (() => {
+
     Axios.post("https://counterstress.glitch.me/MostrarPsyCidade", {id: user.data[0].idUser
        }).then((response) => {
         
@@ -34,7 +38,18 @@ export default function CatalogoPsi({navigation}) {
            alert('Sem dados encontrados');
        }
        else{
-           setEntradas(response);
+           setNaCidade(response);
+       }
+ });
+
+ Axios.post("https://counterstress.glitch.me/MostrarPsyTotal", {id: user.data[0].idUser
+       }).then((response) => {
+        
+       if(response.data.message == 'Nao encontrado'){
+           alert('Sem dados encontrados');
+       }
+       else{
+           setTotal(response);
        }
  });
 
@@ -63,19 +78,24 @@ export default function CatalogoPsi({navigation}) {
         <AntDesign name = "user" size = {35} />
 
       </Pressable>
-
-       
-      
-
-          <FlatList
-
-          data = {entradas.data}
-          keyExtractor={item => item.idUser}
-          renderItem = {renderItem}
+        <View style = {{display: 'flex',alignItems: 'center'}}>
           
-          />
-   
-        
+          
+
+              <FlatList
+
+              data = {naCidade.data}
+              keyExtractor={item => item.idUser}
+              renderItem = {renderItem}
+              ListHeaderComponent = {
+                <Text style={{fontSize: vw(6),marginTop: vh(3)}}>Na sua cidade</Text>
+              }
+              />
+
+          
+            
+              
+        </View>
       </LinearGradient>
 
       </>
