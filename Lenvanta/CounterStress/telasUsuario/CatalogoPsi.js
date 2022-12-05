@@ -92,6 +92,16 @@ export default function CatalogoPsi({navigation}) {
               }
               />
 
+              <FlatList
+
+              data = {total.data}
+              keyExtractor={item => item.idUser}
+              renderItem = {renderItem}
+              ListHeaderComponent = {
+                <Text style={{fontSize: vw(6),marginTop: vh(3)}}>Outros</Text>
+              }
+              />
+
           
             
               
